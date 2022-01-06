@@ -18,6 +18,18 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Sidenav from './sidenav';
 
+import {makeStyles} from '@mui/styles';
+
+const useStyles = makeStyles(theme=>({
+  appnav:{
+    background:theme.colors.main,
+    
+  }
+}))
+
+
+
+
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -59,6 +71,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Appbar() {
+
+  const classes = useStyles();
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -157,12 +172,12 @@ export default function Appbar() {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
+    <Box sx={{ flexGrow: 1 }} >
+      <AppBar position="static" >
+        <Toolbar className={classes.appnav}>
         <Sidenav>
             <IconButton>
-              <MenuIcon color="inherit" />
+              <MenuIcon  style={{color:'white'}} />
             </IconButton>
           </Sidenav>
 
