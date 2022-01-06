@@ -1,8 +1,9 @@
 import './App.css';
-import Appbar from './components/appbar';
 import { Route,Routes } from "react-router-dom";
-import Home from './pages/home';
-import Footer from './components/footer';
+
+import {Appbar,Footer} from './components'
+import {Home,GamesCategories} from './pages'
+
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
      <div className="main">
        <Routes>
          <Route path="/" element={<Home/>} />
+         <Route path="/games" element={<GamesCategories/>} />
        </Routes>
      </div>
      <Footer/>

@@ -34,6 +34,12 @@ export const theme = createTheme({
             fontSize:'40px',
            
            
+        },
+        productTitle:{
+            color:'white',
+            fontFamily:mainFont,
+            fontWeight:'700',
+            textAlign:'center'
         }
     }
 })
