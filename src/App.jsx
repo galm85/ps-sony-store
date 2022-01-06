@@ -1,8 +1,21 @@
 import './App.css';
+import Appbar from './components/appbar';
+import { Route,Routes } from "react-router-dom";
+import Home from './pages/home';
+import Footer from './components/footer';
 
 function App() {
   return (
-    <h1>Sony store</h1>
+   <div className="app">
+     
+     <Appbar/>
+     <div className="main">
+       <Routes>
+         <Route path="/" element={<Home/>} />
+       </Routes>
+     </div>
+     <Footer/>
+   </div>
   );
 }
 
