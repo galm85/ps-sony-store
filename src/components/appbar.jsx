@@ -16,6 +16,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Sidenav from './sidenav';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -159,15 +160,14 @@ export default function Appbar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
+        <Sidenav>
+            <IconButton>
+              <MenuIcon color="inherit" />
+            </IconButton>
+          </Sidenav>
+
+           
+          
           <Typography
             variant="h6"
             noWrap
