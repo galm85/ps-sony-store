@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import {makeStyles} from '@mui/styles'
-
 import {Box,Drawer,Button,List,Divider,ListItem,ListItemText,ListItemIcon} from '@mui/material';
-
+import {url} from '../config';
+import { useDispatch,useSelector } from 'react-redux';
 //icons
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
@@ -54,6 +54,8 @@ const useStyles = makeStyles(theme=>({
 export default function Sidenav({children}) {
 
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.users.user);
 
   const [state, setState] = React.useState({
     left: false,
@@ -77,13 +79,15 @@ export default function Sidenav({children}) {
     >
      
 
+        {user ? 
     <List>
   
-        
         <ListItem  className={classes.listItem}>
-            <ListItemIcon><AccountCircleIcon className={classes.icon}/></ListItemIcon>
-            <ListItemText><NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/profile'>Gal Mizrahi</NavLink></ListItemText>
+            {/* <ListItemIcon><AccountCircleIcon className={classes.icon}/></ListItemIcon> */}
+            <ListItemIcon><img src={`${url}/${user.image}`} alt="user image" style={{width:'30px',borderRadius:'50%'}} /></ListItemIcon>
+            <ListItemText><NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/profile'>{user.firstName + ' ' +user.lastName}</NavLink></ListItemText>
         </ListItem>
+        
         <ListItem className={classes.listItem}>
             <ListItemIcon><ShoppingCartIcon className={classes.icon}/></ListItemIcon>
             <ListItemText><NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/cart'>Cart</NavLink></ListItemText>
@@ -93,6 +97,18 @@ export default function Sidenav({children}) {
             <ListItemText><NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/admin'>Admin Panel</NavLink></ListItemText>
         </ListItem>
     </List>
+    :
+    <List>
+  
+        <ListItem  className={classes.listItem}>
+            <ListItemIcon><AccountCircleIcon className={classes.icon}/></ListItemIcon>
+            <ListItemText><NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/signin'>{user.firstName + ' ' +user.lastName}</NavLink></ListItemText>
+        </ListItem>
+        
+        
+    </List>
+
+        }
 
     <Divider/>
 

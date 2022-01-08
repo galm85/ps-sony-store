@@ -1,7 +1,7 @@
 import axios from 'axios';
-import {url} from '../../config.json';
+import {url} from '../../config';
 import jwtDecode from "jwt-decode";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 
 export const getAllUsers = ()=>async(dispatch)=>{
@@ -20,11 +20,11 @@ export const registerUser = (user)=>async(dispatch)=>{
             type:'registerUser',
             payload:user
         })
-        toast.info(res.data);
+        // toast.info(res.data);
         window.location = '/';
     }catch(error){
         if(error.response && error.response.data){
-            toast.error(error.response.data);
+            // toast.error(error.response.data);
         }
     }
 }
@@ -39,11 +39,11 @@ export const signInUser = (user)=>async(dispatch)=>{
             payload:signUser
         });
         window.location = '/';
-        toast.info('welcome back ' + signUser.firstName);
+        // toast.info('welcome back ' + signUser.firstName);
 
     }catch(error){
         if(error.response && error.response.data){
-         toast.error(error.response.data);
+        //  toast.error(error.response.data);
         }
     }
 }
@@ -79,7 +79,7 @@ export const deleteUser = (userId)=>async(dispatch)=>{
             type:"deleteUser",
             payload:userId
         })
-        toast.error(`${data.firstName} deleted`);
+        // toast.error(`${data.firstName} deleted`);
     } catch (error) {
         console.log(error)
     }
@@ -114,7 +114,7 @@ export const addToCart = (userId,product,amount) => async(dispatch)=>{
             type:'addNewItem',
             payload:res.data.cart
         })
-        toast.info(res.data.message);
+        // toast.info(res.data.message);
     } catch (error) {
         
     }
@@ -175,7 +175,7 @@ export const addToWishList = (userId,productId)=>async(dispatch)=>{
         type:'addToWishList',
         payload:res.data.wishList
     })
-    toast.info(res.data.message);
+    // toast.info(res.data.message);
     
 }
 
@@ -185,6 +185,6 @@ export const removeFromWishList = (userId,productId)=>async(dispatch)=>{
         type:'removeFromWishList',
         payload:res.data.wishList
     })
-    toast.error(res.data.message);
+    // toast.error(res.data.message);
 
 }

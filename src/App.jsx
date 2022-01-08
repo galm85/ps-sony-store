@@ -2,7 +2,7 @@ import './App.css';
 import { Route,Routes } from "react-router-dom";
 
 import {Appbar,Footer} from './components'
-import {Home,GamesCategories,ProductPage} from './pages'
+import {Home,GamesCategories,ProductPage,Signin} from './pages'
 
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
          <Route path="/" element={<Home/>} />
          <Route path="/games" element={<GamesCategories/>} />
          <Route path="/games/:productTitle" element={<ProductPage/>} />
+         <Route path="/signin" element={<Signin/>} />
        </Routes>
      </div>
      <Footer/>
