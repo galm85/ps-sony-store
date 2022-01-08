@@ -1,11 +1,13 @@
-import React,{useEffect,useState} from 'react';
-import { Container, Typography,Grid } from '@mui/material';
+import React,{useEffect} from 'react';
+import { Container, Typography,Grid,Divider } from '@mui/material';
 import {useDispatch,useSelector} from 'react-redux';
 import { getAllProducts } from '../redux/actions/productsAction';
 import { getGamesCategories } from '../redux/actions/categoriesActions';
-import {url} from '../config';
+
 import BasicSelect from '../components/select';
 import ProductCard from '../components/productCard';
+import BestSales from '../components/bestSales';
+import PageHeader from '../components/pageHeader';
 
 
 const GamesCategories = () => {
@@ -20,9 +22,12 @@ const GamesCategories = () => {
     },[])
     return ( 
         <>
+            <PageHeader title="games" image="gamesBanner.png" color="white"/>
 
-            <Typography variant='h1'>Games</Typography>
+                <div style={{matginTop:'50px',height:'100px'}}></div>
+            <BestSales />
 
+            <Divider/>
             <Container style={{display:'flex'}} maxWidth="xl">
 
                 <Grid container width='70%' style={{justifyContent:'space-between'}} >

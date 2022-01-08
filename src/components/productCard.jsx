@@ -2,7 +2,7 @@ import { Divider, Grid, Typography } from '@mui/material';
 import React from 'react'
 import {url} from '../config';
 import {makeStyles} from '@mui/styles';
-import { height } from '@mui/system';
+import {useNavigate} from 'react-router';
 
 const useStyles = makeStyles(theme=>({
     item:{
@@ -10,6 +10,7 @@ const useStyles = makeStyles(theme=>({
         margin:'10px 10px',
         transition:'all ease 0.2s',
         borderRadius:'10px',
+        cursor:'pointer',
         "&:hover $image":{
             boxShadow:'5px 5px 5px rgba(0,0,0,0.2)',
             transform:'scale(1.03)'
@@ -47,9 +48,9 @@ const useStyles = makeStyles(theme=>({
 const ProductCard = ({product}) => {
 
     const classes = useStyles();
-
+    const navigate = useNavigate();
     return ( 
-        <Grid item  sm={10} md={3} lg={2} className={classes.item} style={{margin:'20px 20px'}}>
+        <Grid item  sm={10} md={3} lg={2} className={classes.item} style={{margin:'20px 20px'}} onClick={()=>navigate(`/games/${product.title.toLowerCase()}`,{state:product})}>
            
             <img className={classes.image} src={`${url}/${product.image}`}  alt={product.title} />
             
