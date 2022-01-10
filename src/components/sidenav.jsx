@@ -102,7 +102,7 @@ export default function Sidenav({children}) {
   
         <ListItem  className={classes.listItem}>
             <ListItemIcon><AccountCircleIcon className={classes.icon}/></ListItemIcon>
-            <ListItemText><NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/signin'>{user.firstName + ' ' +user.lastName}</NavLink></ListItemText>
+            <ListItemText><NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/signin'>Sign in</NavLink></ListItemText>
         </ListItem>
         
         

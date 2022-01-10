@@ -91,6 +91,11 @@ export default function Appbar() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const logout = ()=>{
+    localStorage.removeItem('sony');
+    window.location = "/";
+  }
+
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -111,6 +116,7 @@ export default function Appbar() {
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
       <MenuItem onClick={handleMenuClose}><Link to="/signin">Sign In</Link></MenuItem>
+      <MenuItem onClick={handleMenuClose} onClickCapture={()=>logout()} >Logout</MenuItem>
     </Menu>
   );
 
