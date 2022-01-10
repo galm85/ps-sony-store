@@ -41,5 +41,11 @@ export const theme = createTheme({
             fontWeight:'700',
             textAlign:'center'
         }
+    },
+    TableCell:{
+        headCell:{
+            fontFamily:mainFont,
+            
+        }
     }
 })

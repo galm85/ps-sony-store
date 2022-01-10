@@ -209,7 +209,9 @@ export default function Appbar() {
 
               <IconButton size="large" aria-label="show 4 new mails" color="inherit">
                 <Badge badgeContent={4} color="error">
-                  <ShoppingCartIcon />
+                  <Link to="/cart" style={{color:"white"}}>
+                    <ShoppingCartIcon />
+                  </Link>
                 </Badge>
               </IconButton>
             
