@@ -5,6 +5,7 @@ import { useDispatch,useSelector } from 'react-redux';
 import { getCart, removeItemFromCart } from '../redux/actions/usersActions';
 import {url} from '../config';
 import { makeStyles } from '@mui/styles';
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles(theme=>({
     container:{
@@ -41,6 +42,7 @@ const Cart = () => {
     const user = useSelector(state => state.users.user);
     const cart = useSelector(state => state.users.cart);
     const totalPrice = useSelector(state=> state.users.totalPrice);
+    const navigate = useNavigate();
 
     useEffect(()=>{
         dispatch(getCart(user._id));
@@ -92,7 +94,7 @@ const Cart = () => {
                         <Typography variant="h3" gutterBottom>Total</Typography>
                         <Divider gutterBottom/>
                         <Typography variant="h3" style={{marginTop:'20px'}}>$ {totalPrice}</Typography>
-                        <Button  variant='contained' style={{background:"rgba(255, 200, 3, 0.966)",color:"black",position:'absolute',bottom:'20px',width:'85%'}} >Checkout</Button>
+                        <Button onClick={()=>navigate('/checkout')}  variant='contained' style={{background:"rgba(255, 200, 3, 0.966)",color:"black",position:'absolute',bottom:'20px',width:'85%'}} >Checkout</Button>
                     </Box>
                 </Grid>
             </Grid>

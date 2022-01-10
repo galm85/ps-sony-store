@@ -149,7 +149,7 @@ export const updateItemAmount = (userId,productId,op)=>async(dispatch)=>{
 
 
 export const clearCart = (userId)=>async(dispatch)=>{
-    console.log('action');
+  
     const res = await axios.patch(`${url}/users/cart/clear-cart/${userId}`);
     dispatch({
         type:'clearCart'

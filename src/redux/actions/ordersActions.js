@@ -1,6 +1,6 @@
 import axios from 'axios';
-import {url} from '../../config.json';
-import { toast } from "react-toastify";
+import {url} from '../../config';
+// import { toast } from "react-toastify";
 
 
 export const getAllOrders = ()=>async(dispatch)=>{
@@ -13,7 +13,10 @@ export const getAllOrders = ()=>async(dispatch)=>{
 
 export const addNewOrder = (order)=>async(dispatch)=>{
     const res = await axios.post(`${url}/orders`,order);
-    toast.info(res.data);
+    // toast.info(res.data);
+    alert(res.data);
+    
+    window.location = '/';
 
 }
 
@@ -28,6 +31,6 @@ export const getOrdersByUser = (userId)=>async(dispatch)=>{
 
 export const updateOrderStatus = (orderId,status)=>async(dispatch)=>{
     const res = await axios.patch(`${url}/orders/update-status/${orderId}`,{status:status});
-    toast.info(res.data);
+    // toast.info(res.data);
     window.location="/admin/orders";
 }
