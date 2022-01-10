@@ -5,6 +5,8 @@ import {makeStyles} from '@mui/styles';
 import { Link } from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
 import {url} from '../config';
+
+
 // icons
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
@@ -62,6 +64,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+
+
 export default function Appbar() {
 
   const dispatch = useDispatch();
@@ -69,8 +73,11 @@ export default function Appbar() {
   
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const user = useSelector(state => state.users.user);
 
+  const user = useSelector(state => state.users.user);
+  const itemsInCart = useSelector(state => state.users.cart.length)
+  
+  
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -207,13 +214,25 @@ export default function Appbar() {
           
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
 
-              <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                <Badge badgeContent={4} color="error">
-                  <Link to="/cart" style={{color:"white"}}>
-                    <ShoppingCartIcon />
-                  </Link>
-                </Badge>
+              {itemsInCart && itemsInCart > 0 ? 
+                <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+                  <Badge badgeContent={itemsInCart} color="error">
+                    <Link to="/cart" style={{color:"white"}}>
+                      <ShoppingCartIcon />
+                    </Link>
+                  </Badge>
               </IconButton>
+              :
+              <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+                  
+                    <Link to="/cart" style={{color:"white"}}>
+                      <ShoppingCartIcon />
+                    </Link>
+                  
+              </IconButton>
+              }
+
+              
             
               <IconButton size="large" aria-label="show 17 new notifications" color="inherit">
                 <Badge badgeContent={17} color="error">

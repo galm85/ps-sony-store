@@ -4,9 +4,9 @@ import {useLocation} from 'react-router';
 import {url} from '../config';
 import {useDispatch,useSelector} from 'react-redux';
 import { getBestSells } from '../redux/actions/productsAction';
-import ProductCard from '../components/productCard';
 import {makeStyles} from '@mui/styles';
 import BestSales from '../components/bestSales';
+import { addToCart } from '../redux/actions/usersActions';
 
 const useStyles = makeStyles(theme=>({
 
@@ -31,10 +31,20 @@ const ProductPage = () => {
     const location = useLocation();
     const [product,setProduct] = useState({...location.state});
     const products = useSelector(state => state.products.bestSells);
+    const user = useSelector(state => state.users.user);
     
     useEffect(()=>{
         dispatch(getBestSells())
     },[])
+
+    const addItem = (product)=>{
+        if(!user){
+            window.location = "/signin";
+            return;
+        }else{
+            dispatch(addToCart(user._id,product,1));
+        }
+    }
 
     return ( 
        <Container className={classes.container}>
@@ -49,7 +59,7 @@ const ProductPage = () => {
                    <Typography variant='h4'>Price: $ {product.price}</Typography>
                    <Typography variant='body1'>{product.description}</Typography>
                    <div>
-                       <Button variant="contained">Add To Cart</Button>
+                       <Button variant="contained" onClick={()=>addItem(product)}>Add To Cart</Button>
                    </div>
                </Grid>
            </Grid>
