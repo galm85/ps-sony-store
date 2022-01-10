@@ -1,5 +1,6 @@
 export {default as Home} from './home';
 export {default as GamesCategories} from './gamesCategories';
+export {default as HardwareCategories} from './hardwarwCategories';
 export {default as ProductPage} from './productPage';
 export {default as Cart} from './cart';
 export {default as Checkout} from './checkout';
