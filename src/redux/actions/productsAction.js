@@ -24,11 +24,18 @@ export const getProducts = (category)=>async(dispatch)=>{
 
 
 export const addNewProducts = (product)=>async(dispatch)=>{
-    await axios.post(`${url}/products`,product);
-    dispatch({
-        type:'addNewProduct',
-        payload:product
-    })
+    try{
+
+        await axios.post(`${url}/products`,product);
+        console.log(product);
+        dispatch({
+            type:'addNewProduct',
+            payload:product
+        })
+        window.location ="/admin-panel/products";
+    }catch(err){
+        console.log(err);
+    }
 }
 
 

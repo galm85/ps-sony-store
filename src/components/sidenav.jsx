@@ -94,7 +94,7 @@ export default function Sidenav({children}) {
         </ListItem>
         <ListItem className={classes.listItem}>
             <ListItemIcon><AdminPanelSettingsIcon className={classes.icon}/></ListItemIcon>
-            <ListItemText><NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/admin'>Admin Panel</NavLink></ListItemText>
+            <ListItemText><NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/admin-panel'>Admin Panel</NavLink></ListItemText>
         </ListItem>
     </List>
     :
