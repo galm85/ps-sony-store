@@ -72,7 +72,7 @@ export default function AdminProducts() {
                 <StyledTableCell align="left">{row.categorie}</StyledTableCell>
                 <StyledTableCell align="left">{row.onStock ? 'yes' :' no'}</StyledTableCell>
                 <StyledTableCell align="left">
-                    <IconButton><EditIcon color="primary" /></IconButton>
+                    <IconButton onClick={()=>navigate(`/admin-panel/products/edit-product/${row.title}`,{state:row})}><EditIcon color="primary" /></IconButton>
                     <IconButton><DeleteForeverIcon color="error" onClick={()=>dispatch(deleteProduct(row._id))}/></IconButton>
                 </StyledTableCell>
                 </StyledTableRow>

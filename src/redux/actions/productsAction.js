@@ -40,7 +40,10 @@ export const addNewProducts = (product)=>async(dispatch)=>{
 
 
 export const updateProduct = (productId,product)=>async(dispatch)=>{
-    const res = await axios.patch(`${url}/products/update-product/${productId}`,product);
+    if(window.confirm(`Save Changes on ${product.title}?`)){
+        const res = await axios.patch(`${url}/products/update-product/${productId}`,product);
+        window.location = '/admin-panel/products';
+    }
     //toast.info(res.data);
 }
 
