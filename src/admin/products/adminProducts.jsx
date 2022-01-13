@@ -5,7 +5,7 @@ import { url } from "../../config";
 import {Table,TableBody,TableContainer,TableCell,tableCellClasses,TableHead,TableRow,Paper,Container, IconButton, Typography, Button, Divider} from '@mui/material';
 import { useDispatch,useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getAllProducts } from '../../redux/actions/productsAction';
+import { deleteProduct, getAllProducts } from '../../redux/actions/productsAction';
 
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
@@ -73,7 +73,7 @@ export default function AdminProducts() {
                 <StyledTableCell align="left">{row.onStock ? 'yes' :' no'}</StyledTableCell>
                 <StyledTableCell align="left">
                     <IconButton><EditIcon color="primary" /></IconButton>
-                    <IconButton><DeleteForeverIcon color="error"/></IconButton>
+                    <IconButton><DeleteForeverIcon color="error" onClick={()=>dispatch(deleteProduct(row._id))}/></IconButton>
                 </StyledTableCell>
                 </StyledTableRow>
             ))}

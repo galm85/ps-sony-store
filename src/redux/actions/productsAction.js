@@ -46,12 +46,13 @@ export const updateProduct = (productId,product)=>async(dispatch)=>{
 
 
 export const deleteProduct = (productId)=>async(dispatch)=>{
-    const res = await axios.delete(`${url}/products/delete/${productId}`);
-    dispatch({
-        type:"deleteProduct",
-        payload:productId
-    })
-    //toast.error(res.data);
+    if(window.confirm('Delete This Product?')){
+        const res = await axios.delete(`${url}/products/delete/${productId}`);
+        dispatch({
+            type:"deleteProduct",
+            payload:productId
+        })
+    }
 }
 
 
