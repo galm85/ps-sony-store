@@ -52,7 +52,6 @@ const EditProduct = () => {
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        alert('submit');
         const data = new FormData();
         data.append('title',product.title);
         data.append('categorie',product.categorie);

@@ -51,6 +51,12 @@ export const productsReducers = (state=initialState,action)=>{
                 comingSoon:action.payload
             }
 
+        case 'getSearchProduct':
+            return{
+                ...state,
+                products:action.payload
+            }
+
 
 
         default: return state

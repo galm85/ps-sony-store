@@ -40,7 +40,8 @@ export const addNewProducts = (product)=>async(dispatch)=>{
 
 
 export const updateProduct = (productId,product)=>async(dispatch)=>{
-    if(window.confirm(`Save Changes on ${product.title}?`)){
+    console.log(product);
+    if(window.confirm(`Save Changes on this product?`)){
         const res = await axios.patch(`${url}/products/update-product/${productId}`,product);
         window.location = '/admin-panel/products';
     }
@@ -89,4 +90,18 @@ export const getComingSoon = ()=>async(dispatch)=>{
         type:'getComingSoon',
         payload:res.data
     })
+}
+
+
+export const getSearchProduct = (name)=>async(dispatch)=>{
+    try{
+        const res = await axios.get(`${url}/products/search/${name}`);
+        console.log(res.data);
+        dispatch({
+            type:'getSearchProduct',
+            payload:res.data
+        })
+    }catch(err){
+        console.log(err.response.data);
+    }
 }
