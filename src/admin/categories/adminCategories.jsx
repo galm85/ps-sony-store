@@ -70,7 +70,7 @@ export default function AdminCategories() {
                 <StyledTableCell align="left">{row.title}</StyledTableCell>
                 <StyledTableCell align="left">{row.parentCategorieTitle}</StyledTableCell>
                 <StyledTableCell align="left">
-                    <IconButton><EditIcon color="primary" /></IconButton>
+                    <IconButton onClick={()=>navigate(`/admin-panel/categories/edit-category/${row.title.toLowerCase()}`,{state:row})} ><EditIcon color="primary" /></IconButton>
                     <IconButton><DeleteForeverIcon color="error" onClick={()=>dispatch(deleteCategory(row._id))}/></IconButton>
                 </StyledTableCell>
                 </StyledTableRow>

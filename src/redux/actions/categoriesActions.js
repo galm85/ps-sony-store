@@ -70,3 +70,16 @@ export const deleteCategory =(categoryId)=>async(dispatch)=>{
     }
 }
 
+
+export const updateCategory = (categoryId,category)=>async(dispatch)=>{
+    if(window.confirm('Save Changes to this Category?')){
+
+        try{
+            const res = await axios.patch(`${url}/categories/update/${categoryId}`,category);
+            alert(res.data);
+            window.location = '/admin-panel/categories'
+        }catch(err){
+            alert(err.response.data)
+        }
+    }
+}
