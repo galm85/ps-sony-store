@@ -6,7 +6,7 @@ import {Table,TableBody,TableContainer,TableCell,tableCellClasses,TableHead,Tabl
 import { useDispatch,useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import {getAllCategories} from '../../redux/actions/categoriesActions';
+import {deleteCategory, getAllCategories} from '../../redux/actions/categoriesActions';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 
@@ -71,7 +71,7 @@ export default function AdminCategories() {
                 <StyledTableCell align="left">{row.parentCategorieTitle}</StyledTableCell>
                 <StyledTableCell align="left">
                     <IconButton><EditIcon color="primary" /></IconButton>
-                    <IconButton><DeleteForeverIcon color="error"/></IconButton>
+                    <IconButton><DeleteForeverIcon color="error" onClick={()=>dispatch(deleteCategory(row._id))}/></IconButton>
                 </StyledTableCell>
                 </StyledTableRow>
             ))}

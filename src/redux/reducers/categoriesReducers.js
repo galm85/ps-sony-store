@@ -35,6 +35,12 @@ export const categoriesReducers = (state=initialState,action)=>{
                 categories:state.categories.push(action.payload)
             }
 
+        case 'deleteCategory':
+            return{
+                ...state,
+                categories:state.categories.filter(item=>item._id !== action.payload),
+            }
+
 
         default: return state
     }

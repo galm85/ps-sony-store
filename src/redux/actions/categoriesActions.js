@@ -53,3 +53,20 @@ export const addNewCategory = (category)=>async(dispatch)=>{
     }
 
 
+
+export const deleteCategory =(categoryId)=>async(dispatch)=>{
+    if(window.confirm('Delete Category?')){
+
+        try{
+            const res = await axios.delete(`${url}/categories/${categoryId}`);
+            dispatch({
+                type:'deleteCategory',
+                payload:categoryId
+            });
+            alert(res.data);
+        }catch(err){
+            console.log(err)
+        }
+    }
+}
+
