@@ -40,11 +40,16 @@ export const getHardwareCategories = ()=>async(dispatch)=>{
 
 
 export const addNewCategory = (category)=>async(dispatch)=>{
-    await axios.post(`${url}/categories`,category);
-    dispatch({
-        type:'addNewCategory',
-        payload:category
-    })
-}
+    try{
+        await axios.post(`${url}/categories`,category);
+        dispatch({
+            type:'addNewCategory',
+            payload:category
+        })
+        window.location = '/admin-panel/categories';
+    }catch(err){
+        console.log(err);
+    }
+    }
 
 

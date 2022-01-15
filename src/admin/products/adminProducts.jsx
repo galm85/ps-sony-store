@@ -44,7 +44,8 @@ export default function AdminProducts() {
   
 
     React.useEffect(()=>{
-      
+      dispatch(getAllProducts());
+
 
     },[])
 
