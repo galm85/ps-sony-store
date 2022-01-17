@@ -13,7 +13,7 @@ export const getAllUsers = ()=>async(dispatch)=>{
 }
 
 
-export const registerUser = (user)=>async(dispatch)=>{
+export const registerUser = (user,admin=null)=>async(dispatch)=>{
     try{
         const res = await axios.post(`${url}/users`,user);
         dispatch({
@@ -21,7 +21,12 @@ export const registerUser = (user)=>async(dispatch)=>{
             payload:user
         })
         // toast.info(res.data);
-        window.location = '/';
+        if(admin){
+            window.location = '/admin-panel/users';
+        }else{
+            window.location = '/';
+
+        }
     }catch(error){
         if(error.response && error.response.data){
             // toast.error(error.response.data);
@@ -72,16 +77,19 @@ export const getUserData = (userId) =>async(dispatch)=>{
 
 
 export const deleteUser = (userId)=>async(dispatch)=>{
-    console.log(userId);
-    try {
-        const {data} = await axios.delete(`${url}/users/delete-user/${userId}`);
-        dispatch({
-            type:"deleteUser",
-            payload:userId
-        })
-        // toast.error(`${data.firstName} deleted`);
-    } catch (error) {
-        console.log(error)
+    
+    if(window.confirm('Delete This User?')){
+
+        try {
+            const {data} = await axios.delete(`${url}/users/delete-user/${userId}`);
+            dispatch({
+                type:"deleteUser",
+                payload:userId
+            })
+            // toast.error(`${data.firstName} deleted`);
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
 

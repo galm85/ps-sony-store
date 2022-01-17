@@ -2,7 +2,7 @@ import React from 'react'
 import { makeStyles } from '@mui/styles';
 import { NavLink, Route, Routes } from 'react-router-dom';
 import { Divider } from '@mui/material';
-import {AdminCategories,AdminProducts, EditCategory, EditProduct, NewCategory, NewProduct} from './index';
+import {AdminCategories,AdminProducts, AdminUsers, EditCategory, EditProduct, NewCategory, NewProduct,NewAdmin,EditUser} from './index';
 
 
 
@@ -86,6 +86,9 @@ const Dashboard = () => {
                     <Route path="products" element={<AdminProducts/>}/>
                     <Route path="products/add-new-products" element={<NewProduct/>}/>
                     <Route path="products/edit-product/:product" element={<EditProduct/>}/>
+                    <Route path="users" element={<AdminUsers/>}/>
+                    <Route path="users/new-admin" element={<NewAdmin/>}/>
+                    <Route path="users/edit-user" element={<EditUser/>}/>
                 </Routes>
             </div>
 
