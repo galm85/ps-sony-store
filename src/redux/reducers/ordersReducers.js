@@ -17,6 +17,18 @@ export const ordersReducer = (state=initialState,action)=>{
                 orders:action.payload
             }
 
+        case 'searchByEmail':
+            return{
+                ...state,
+                orders:action.payload
+            }
+            
+        case 'searchById':
+            return{
+                ...state,
+                orders:action.payload
+            }
+
 
         default: return state
     }

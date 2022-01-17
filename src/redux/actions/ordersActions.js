@@ -30,7 +30,37 @@ export const getOrdersByUser = (userId)=>async(dispatch)=>{
 
 
 export const updateOrderStatus = (orderId,status)=>async(dispatch)=>{
-    const res = await axios.patch(`${url}/orders/update-status/${orderId}`,{status:status});
-    // toast.info(res.data);
-    window.location="/admin/orders";
+    try{
+        const res = await axios.patch(`${url}/orders/update-status/${orderId}`,{status:status});
+        alert(res.data);
+    }catch(err){
+        alert(err.response.data);
+    }
+    
+}
+
+
+
+export const getOrderByEmailSearch = (email)=>async(dispatch)=>{
+    try{
+        const res = await axios.get(`${url}/orders/search/${email}`);
+        dispatch({
+            type:'searchByEmail',
+            payload:res.data
+        })
+    }catch(err){
+        console.log(err)
+    }
+}
+
+export const getOrderById = (orderId)=>async(dispatch)=>{
+    try{
+        const res = await axios.get(`${url}/orders/search-by-id/${orderId}`);
+        dispatch({
+            type:'searchById',
+            payload:res.data
+        })
+    }catch(err){
+        console.log(err)
+    }
 }

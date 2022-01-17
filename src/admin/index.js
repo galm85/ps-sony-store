@@ -14,5 +14,7 @@ export {default as AdminUsers} from './users/adminUsers';
 export {default as EditUser} from './users/editUser';
 export {default as NewAdmin} from './users/newAdmin';
 
+export {default as AdminOrders} from './orders/adminOrders';
+export {default as SingleOrder} from './orders/singleOrder';
 
 

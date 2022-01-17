@@ -40,11 +40,36 @@ export const theme = createTheme({
             fontFamily:mainFont,
             fontWeight:'700',
             textAlign:'center'
-        }
+        },
+        rowLight:{
+            fontFamily:mainFont,
+            fontWeight:'300',
+            fontSize:'1.1rem'
+        },
+        rowNormal:{
+            fontFamily:mainFont,
+            fontWeight:'400',
+            fontSize:'1.1rem'
+
+        },
+        rowBold:{
+            fontFamily:mainFont,
+            fontWeight:'600',
+            fontSize:'1.1rem'
+ 
+        },
+        rowBlack:{
+            fontFamily:mainFont,
+            fontWeight:'700',
+            fontSize:'1.1rem',
+            
+            
+        },
     },
     TableCell:{
         headCell:{
             fontFamily:mainFont,
+           
             
         }
     }
