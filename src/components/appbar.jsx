@@ -78,6 +78,7 @@ export default function Appbar() {
   const itemsInCart = useSelector(state => state.users.cart.length)
   
   
+  
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 

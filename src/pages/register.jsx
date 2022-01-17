@@ -15,13 +15,13 @@ import {Input} from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {useDispatch} from 'react-redux';
 import { registerUser } from '../redux/actions/usersActions';
-
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="https://www.galwebdev.com/" >
+        GWD
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -31,7 +31,7 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignUp() {
+export default function Register() {
     
     const dispatch = useDispatch();
     const [image,setImage] = React.useState(null);
@@ -39,7 +39,6 @@ export default function SignUp() {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        // eslint-disable-next-line no-console
         console.log({
         email: data.get('email'),
         password: data.get('password'),
@@ -74,16 +73,16 @@ export default function SignUp() {
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
+            <AccountCircleIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            Register
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  autoComplete="given-name"
+                  autoComplete="firstName"
                   name="firstName"
                   required
                   fullWidth
@@ -123,6 +122,36 @@ export default function SignUp() {
                   autoComplete="new-password"
                 />
               </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="phone"
+                  label="Phone"
+                  name="phone"
+                  autoComplete="phone"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="address"
+                  label="Address"
+                  name="address"
+                  autoComplete="address"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="state"
+                  label="State"
+                  name="state"
+                  autoComplete="state"
+                />
+              </Grid>
             <Grid item xs={12} style={{textAlign:'center'}}>
                 <label htmlFor="contained-button-file">
                     <Input accept="image/*" id="contained-button-file" name="image" multiple type="file" style={{display:'none'}} onChange={handleImage} />
@@ -145,6 +174,8 @@ export default function SignUp() {
                 />
               </Grid>
             </Grid>
+
+            
             <Button
               type="submit"
               fullWidth

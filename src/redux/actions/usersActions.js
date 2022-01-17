@@ -135,7 +135,7 @@ export const removeItemFromCart = (userId,productId)=>async(dispatch)=>{
         
         dispatch({
             type:'removeItemFromCart',
-            payload:res.data.cart
+            payload:productId
         })
     } catch (error) {
         

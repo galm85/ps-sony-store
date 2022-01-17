@@ -46,10 +46,12 @@ const Cart = () => {
 
     useEffect(()=>{
         dispatch(getCart(user._id));
-    },[])
+    },[totalPrice])
 
     const removeItem = (userId,itemId)=>{
        dispatch(removeItemFromCart(userId,itemId));
+       window.location.reload();
+
     }
 
     return ( 

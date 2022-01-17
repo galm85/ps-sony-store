@@ -48,8 +48,8 @@ export const usersReducers = (state=initialState,action)=>{
         case 'addNewItem':
             return{
                 ...state,
-                user:{...state.user,cart:action.payload}
-
+                user:{...state.user,cart:action.payload},
+                cart:action.payload
             }
 
         case 'updateItemAmount':
@@ -61,7 +61,8 @@ export const usersReducers = (state=initialState,action)=>{
         case 'removeItemFromCart':
             return{
                 ...state,
-                user:{...state.user,cart:action.payload}
+                user:{...state.user},
+                cart:state.cart.filter(item => item._id !== action.payload)
             }
 
 
