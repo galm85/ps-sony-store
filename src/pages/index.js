@@ -7,3 +7,4 @@ export {default as Checkout} from './checkout';
 export {default as Profile} from './profile';
 export {default as Signin} from './signin';
 export {default as Register} from './register';
+export {default as SearchPage} from './searchPage';

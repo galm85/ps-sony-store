@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
-import {AppBar,Box,Toolbar,IconButton,Typography,InputBase,Badge,MenuItem,Menu} from '@mui/material';
+import {AppBar,Box,Toolbar,IconButton,Typography,InputBase,Badge,MenuItem,Menu, Button} from '@mui/material';
 import {makeStyles} from '@mui/styles';
 import { Link } from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
 import {url} from '../config';
+import { useNavigate } from 'react-router-dom';
 
 
 // icons
@@ -70,7 +71,8 @@ export default function Appbar() {
 
   const dispatch = useDispatch();
   const classes = useStyles();
-  
+  const navigate = useNavigate();
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -78,6 +80,13 @@ export default function Appbar() {
   const itemsInCart = useSelector(state => state.users.cart.length)
   
   
+  const [search, setSearch] = React.useState(null);
+  
+  const handleSearch = (e)=>{
+    if(e.key === 'Enter'){
+      navigate(`/search/${search}`,{state:search});
+    }
+  }
   
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -180,6 +189,9 @@ export default function Appbar() {
     </Menu>
   );
 
+
+  
+
   return (
     <Box sx={{ flexGrow: 1 }} >
       <AppBar position="static" >
@@ -208,7 +220,10 @@ export default function Appbar() {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
+              onChange={(e)=>setSearch(e.target.value)}
+              onKeyPress={handleSearch}
             />
+            
           </Search>
 
           <Box sx={{ flexGrow: 1 }} />

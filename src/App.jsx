@@ -2,7 +2,7 @@ import './App.css';
 import { Route,Routes } from "react-router-dom";
 
 import {Appbar,Footer} from './components'
-import {Home,GamesCategories,ProductPage,Signin, Register, Cart, Checkout, HardwareCategories, Profile} from './pages';
+import {Home,GamesCategories,ProductPage,Signin, Register, Cart, Checkout, HardwareCategories, Profile, SearchPage} from './pages';
 import {Dashboard} from './admin';
 
 
@@ -22,6 +22,7 @@ function App() {
          <Route path="/signin" element={<Signin/>} />
          <Route path="/register" element={<Register/>} />
          <Route path="/profile" element={<Profile/>} />
+         <Route path="/search/:value" element={<SearchPage/>} />
          
          
          <Route path="/admin-panel/*" element={<Dashboard/>} />
