@@ -59,11 +59,14 @@ const Checkout = () => {
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        console.log(order);
+        
         let fullOrder = {...order};
         fullOrder.orderDetails = [...cart];
+        fullOrder.userId = user._id;
+        fullOrder.totalPrice = totalPrice;
         dispatch(clearCart(user._id))
-         dispatch(addNewOrder(fullOrder));
+        dispatch(addNewOrder(fullOrder));
+         
     }
 
     return ( 
@@ -76,8 +79,8 @@ const Checkout = () => {
                         <Grid container className={classes.formContainer}>
                             <Grid Item sm={12} md={5}>
                                 <Typography variant="h3">Billing Address</Typography>
-                                <TextField id="standard-basic" name='name' fullWidth type='text' onChange={handleChange} required label="Full Name" variant="standard"  />
-                                <TextField id="standard-basic" name='email' fullWidth  type='email' onChange={handleChange} required label="email" variant="standard"  />
+                                <TextField id="standard-basic" name='name' fullWidth type='text' onChange={handleChange} value={user.firstName + " "+user.lastName} required label="Full Name" variant="standard"  />
+                                <TextField id="standard-basic" name='email' fullWidth  type='email' onChange={handleChange} value={user.email} required label="email" variant="standard"  />
                                 <TextField id="standard-basic" name='address' fullWidth  type='text' onChange={handleChange} required label="Address" variant="standard" />
                                 <TextField id="standard-basic" name='state' fullWidth  type='text' onChange={handleChange} required label="State" variant="standard" />
                                 <TextField id="standard-basic" name='phone' fullWidth  type='text' onChange={handleChange} required label="Phone" variant="standard" />

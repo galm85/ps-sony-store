@@ -45,7 +45,11 @@ const Cart = () => {
     const navigate = useNavigate();
 
     useEffect(()=>{
-        dispatch(getCart(user._id));
+        if(user){
+            dispatch(getCart(user._id));
+        }else{
+            navigate('/signin')
+        }
     },[totalPrice])
 
     const removeItem = (userId,itemId)=>{

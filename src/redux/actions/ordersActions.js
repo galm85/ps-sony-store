@@ -12,11 +12,16 @@ export const getAllOrders = ()=>async(dispatch)=>{
 }
 
 export const addNewOrder = (order)=>async(dispatch)=>{
-    const res = await axios.post(`${url}/orders`,order);
-    // toast.info(res.data);
-    alert(res.data);
+    try{
+
+        const res = await axios.post(`${url}/orders`,order);
+        // toast.info(res.data);
+        alert(res.data);
+    }catch(err){
+        console.log(err.response.data);
+    }
     
-    window.location = '/';
+     window.location = '/';
 
 }
 
@@ -62,5 +67,22 @@ export const getOrderById = (orderId)=>async(dispatch)=>{
         })
     }catch(err){
         console.log(err)
+    }
+}
+
+
+export const deleteOrder = (orderId)=>async(dispatch)=>{
+    if(window.confirm('Delete this Order?')){
+
+        try{
+            const res = await axios.delete(`${url}/orders/delete-order/${orderId}`);
+            dispatch({
+                type:'deleteOrder',
+                payload:orderId
+            })
+            alert('Order Deleted')
+        }catch(err){
+            console.log(err.response.data);
+        }
     }
 }

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
 import {url} from '../config';
 import { useNavigate } from 'react-router-dom';
-
+import {getCart} from '../redux/actions/usersActions'
 
 // icons
 import MenuIcon from '@mui/icons-material/Menu';
@@ -82,6 +82,14 @@ export default function Appbar() {
   
   const [search, setSearch] = React.useState(null);
   
+
+  React.useEffect(()=>{
+    if(user){
+      dispatch(getCart(user._id))
+    }
+  },[])
+
+
   const handleSearch = (e)=>{
     if(search !== null && search !== ''){
       if(e.key === 'Enter'){
@@ -111,8 +119,10 @@ export default function Appbar() {
   };
 
   const logout = ()=>{
-    localStorage.removeItem('sony');
-    window.location = "/";
+    if(window.confirm('Leave ?')){
+      localStorage.removeItem('sony');
+      window.location = "/";
+    }
   }
 
   const menuId = 'primary-search-account-menu';
@@ -132,9 +142,8 @@ export default function Appbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link to="/signin">Sign In</Link></MenuItem>
+      <MenuItem onClick={handleMenuClose}><span onClick={()=>navigate('/profile')}>My account</span></MenuItem>
+      <MenuItem onClick={handleMenuClose}><span onClick={()=>navigate('/signin')}>Sign In</span></MenuItem>
       <MenuItem onClick={handleMenuClose} onClickCapture={()=>logout()} >Logout</MenuItem>
     </Menu>
   );

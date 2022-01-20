@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { makeStyles } from '@mui/styles';
 import {deleteCategory, getAllCategories} from '../../redux/actions/categoriesActions';
-import { getAllOrders, getOrderByEmailSearch, getOrderById } from '../../redux/actions/ordersActions';
+import { deleteOrder, getAllOrders, getOrderByEmailSearch, getOrderById } from '../../redux/actions/ordersActions';
 import SearchBar from '../../components/searchBar';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -113,7 +113,7 @@ export default function AdminCategories() {
                     <StyledTableCell align="left">{row.name}</StyledTableCell>
                     <StyledTableCell align="left">{row.email}</StyledTableCell>
                     <StyledTableCell align="left">{row.status}</StyledTableCell>
-                    <StyledTableCell align="left"  style={{position:'relative',zIndex:200}} onClick={(e)=>{e.stopPropagation();dispatch(deleteCategory(row._id))}}>
+                    <StyledTableCell align="left"  style={{position:'relative',zIndex:200}} onClick={(e)=>{e.stopPropagation();dispatch(deleteOrder(row._id))}}>
                         <IconButton ><DeleteForeverIcon color="error" /></IconButton>
                     </StyledTableCell>
                 </StyledTableRow>
