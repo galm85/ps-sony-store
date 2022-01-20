@@ -13,7 +13,7 @@ const SearchPage = () => {
     const dispatch = useDispatch();
     const products = useSelector(state=>state.products.products);
     const navigate = useNavigate();
-    
+
     React.useEffect(()=>{
         dispatch(getSearchProduct(value));
     },[value])
@@ -29,7 +29,7 @@ const SearchPage = () => {
                 {products && products.map(item=>(
                     <ProductCard key={item._id} product={item}/>
                 ))}
-                
+                {products.length === 0 && <h2 style={{margin:"50px auto"}}><i>No Products found...</i></h2>}
             </Grid>
 
 

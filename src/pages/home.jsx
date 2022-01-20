@@ -4,7 +4,7 @@ import {makeStyles} from '@mui/styles';
 import {useDispatch,useSelector} from 'react-redux';
 import { getBestSells,getComingSoon,getNewGames} from '../redux/actions/productsAction';
 import GameCard from '../components/gameCard';
-
+import ProductCard from '../components/productCard'
 const useStyles = makeStyles(theme=>({
     
     container:{
@@ -58,7 +58,7 @@ const Home = () => {
                 <Typography variant='h3' align='center'  >Best Selles</Typography>
                 <Grid container className={classes.gamesRow}>
                 {bestSells && bestSells.map(row=>(
-                    <GameCard game={row} key={row._id}/>
+                    <ProductCard product={row} key={row._id}/>
                 ))}
                 </Grid>   
             </Container>
@@ -69,7 +69,7 @@ const Home = () => {
                 <Typography variant='h3' align='center'>New Games</Typography>
                 <Grid container className={classes.gamesRow}>
                 {newGames && newGames.map(row=>(
-                   <GameCard game={row} key={row._id}/>
+                   <ProductCard product={row} key={row._id}/>
                 ))}
                 </Grid>   
             </Container>
@@ -80,7 +80,7 @@ const Home = () => {
                 <Typography variant='h3' align='center'>Pre Order</Typography>
                 <Grid container className={classes.gamesRow}>
                 {comingSoon && comingSoon.map(row=>(
-                    <GameCard game={row} key={row._id}/>
+                    <ProductCard product={row} key={row._id}/>
                 ))}
                 </Grid>   
             </Container>

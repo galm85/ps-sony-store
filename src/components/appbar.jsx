@@ -83,8 +83,10 @@ export default function Appbar() {
   const [search, setSearch] = React.useState(null);
   
   const handleSearch = (e)=>{
-    if(e.key === 'Enter'){
-      navigate(`/search/${search}`,{state:search});
+    if(search !== null && search !== ''){
+      if(e.key === 'Enter'){
+        navigate(`/search/${search}`,{state:search});
+      }
     }
   }
   
