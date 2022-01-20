@@ -12,7 +12,6 @@ import {getCart, getWishList} from '../redux/actions/usersActions'
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Sidenav from './sidenav';
@@ -21,8 +20,10 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const useStyles = makeStyles(theme=>({
   appnav:{
-    background:theme.colors.main,
-    
+    background:theme.colors.main, 
+  },
+  mobileLink:{
+    color:theme.colors.main
   }
 }))
 
@@ -167,26 +168,7 @@ export default function Appbar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <ShoppingCartIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
+      {user ? 
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -194,11 +176,52 @@ export default function Appbar() {
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
           color="inherit"
-        >
+          >
+            
+              <img src={url+"/"+user.image} style={{borderRadius:'50%'}} width="30px" alt="profile" />
+            
+        </IconButton>
+       
+      </MenuItem>
+      :
+      <MenuItem onClick={handleProfileMenuOpen}>
+        <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+          >
           <AccountCircle />
         </IconButton>
-        <p>My Profile</p>
+        
       </MenuItem>
+
+      }
+       
+      <MenuItem>
+        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+          <Badge badgeContent={itemsInCart} color="error">
+            <Link to="/cart" className={classes.mobileLink}>
+              <ShoppingCartIcon />
+            </Link>
+          </Badge>
+        </IconButton>
+        
+      </MenuItem>
+           
+      <MenuItem>
+          <IconButton size="large" aria-label="show 17 new notifications" color="inherit">
+                <Badge badgeContent={itemInWishList} color="error">
+                  <Link to="/wish-list" className={classes.mobileLink}> 
+                    <FavoriteIcon />
+                  </Link>
+                </Badge>
+              </IconButton>
+        
+      </MenuItem>
+
+      
     </Menu>
   );
 
@@ -222,8 +245,9 @@ export default function Appbar() {
             noWrap
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
+            onClick={()=>navigate('/')}
           >
-            SONY
+           <i className="fab fa-playstation" style={{fontSize:'2rem'}} ></i>
           </Typography>
 
           <Search>
@@ -235,6 +259,7 @@ export default function Appbar() {
               inputProps={{ 'aria-label': 'search' }}
               onChange={(e)=>setSearch(e.target.value)}
               onKeyPress={handleSearch}
+              autoComplete='e.e'
             />
             
           </Search>

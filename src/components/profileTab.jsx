@@ -4,10 +4,11 @@ import Tab from '@mui/material/Tab';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import PersonPinIcon from '@mui/icons-material/PersonPin';
 import ShopIcon from '@mui/icons-material/Shop';
-import { Container, Button, Table, TableBody, TableCell, TableHead, TableRow, TextField } from '@mui/material';
+import { Container, Button, Table, TableBody, TableCell, TableHead, TableRow, TextField, Grid } from '@mui/material';
 import { url } from '../config';
+import ProductCard from './productCard';
 
-export default function ProfileTab({orders,favorites}) {
+export default function ProfileTab({orders,wishList}) {
   const [value, setValue] = React.useState(0);
   const [oldPassword, setOldPassword] = React.useState(null);
 
@@ -29,6 +30,7 @@ export default function ProfileTab({orders,favorites}) {
             <Tab icon={<PersonPinIcon />} label="Edit USer" />
         </Tabs>
         
+        {/* ORDERS TAB */}
             {value === 0 &&
             <div style={{marginTop:"40px"}}>
                 <Table>
@@ -61,11 +63,23 @@ export default function ProfileTab({orders,favorites}) {
                 </Table>
             </div>
             }
+        {/* END ORDERS TAB */}
+
+        {/* WISH LIST TAB */}
             {value === 1 &&
             <div style={{marginTop:"40px"}}>
-                <h1>Favorites</h1>
+                <Grid container>
+                    {wishList && wishList.map((item,index)=>(
+                    <ProductCard key={index} product={item} fromWishList={true}/>
+                    ))}
+                    {(wishList || wishList.length === 0 ) && <h2><i>No Favorite products</i></h2>}
+                </Grid>
             </div>
             }
+        {/* END WISH LIST TAB */}
+
+
+
             {value === 2 &&
             <div style={{marginTop:"40px",width:'100%'}}>
                 <TextField style={{width:'50%',margin:'auto'}} id="outlined-basic" label="Old Password" type="password"  variant="standard" onChange={(e)=>setOldPassword(e.target.value)} />

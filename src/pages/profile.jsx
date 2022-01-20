@@ -5,6 +5,7 @@ import { useSelector,useDispatch } from 'react-redux';
 import {url} from '../config';
 import ProfileTab from '../components/profileTab';
 import { getOrdersByUser } from '../redux/actions/ordersActions';
+import {getWishList} from '../redux/actions/usersActions';
 
 const useStyles = makeStyles(theme=>({
     imageContainer:{
@@ -26,9 +27,14 @@ export default function Profile(){
 
     const user = useSelector(state=>state.users.user);
     const orders = useSelector(state=>state.orders.orders);
+    const wishList = useSelector(state=>state.users.wishList);
 
     React.useEffect(()=>{
+        if(!user){
+            window.location = "/signin";
+        }
         dispatch(getOrdersByUser(user._id));
+        dispatch(getWishList(user._id));
     },[])
 
 
@@ -49,7 +55,7 @@ export default function Profile(){
                     </div>
                     <Divider style={{margin:'20px 0'}}/>
                     <div className={classes.tab}>
-                        <ProfileTab orders={orders}/>
+                        <ProfileTab orders={orders} wishList={wishList}/>
                     </div>
                 </Grid>
 
