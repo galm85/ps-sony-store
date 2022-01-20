@@ -178,21 +178,29 @@ export const getWishList = (userId)=>async(dispatch)=>{
 
 
 export const addToWishList = (userId,productId)=>async(dispatch)=>{
-    const res = await axios.patch(`${url}/users/wish-list/add/${userId}`,{productId});
-    dispatch({
-        type:'addToWishList',
-        payload:res.data.wishList
-    })
-    // toast.info(res.data.message);
+    try{
+
+        const res = await axios.patch(`${url}/users/wish-list/add/${userId}`,{productId});
+        dispatch({
+            type:'addToWishList',
+            payload:res.data.wishList
+        })
+    }catch(err){
+        console.log(err);
+    }
+    
     
 }
 
 export const removeFromWishList = (userId,productId)=>async(dispatch)=>{
-    const res = await axios.patch(`${url}/users/wish-list/remove/${userId}`,{productId});
-    dispatch({
-        type:'removeFromWishList',
-        payload:res.data.wishList
-    })
-    // toast.error(res.data.message);
+    if(window.confirm("Remove from your wish List?")){
+
+        const res = await axios.patch(`${url}/users/wish-list/remove/${userId}`,{productId});
+        dispatch({
+            type:'removeFromWishList',
+            payload:productId
+        })
+        alert(res.data);
+    }
 
 }

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
 import {url} from '../config';
 import { useNavigate } from 'react-router-dom';
-import {getCart} from '../redux/actions/usersActions'
+import {getCart, getWishList} from '../redux/actions/usersActions'
 
 // icons
 import MenuIcon from '@mui/icons-material/Menu';
@@ -16,6 +16,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Sidenav from './sidenav';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 
 const useStyles = makeStyles(theme=>({
@@ -77,15 +78,16 @@ export default function Appbar() {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
   const user = useSelector(state => state.users.user);
-  const itemsInCart = useSelector(state => state.users.cart.length)
-  
+  const itemsInCart = useSelector(state => state.users.cart.length);
+  const itemInWishList = useSelector(state=>state.users.wishList.length);
   
   const [search, setSearch] = React.useState(null);
   
 
   React.useEffect(()=>{
     if(user){
-      dispatch(getCart(user._id))
+      dispatch(getCart(user._id));
+      dispatch(getWishList(user._id));
     }
   },[])
 
@@ -262,8 +264,10 @@ export default function Appbar() {
               
             
               <IconButton size="large" aria-label="show 17 new notifications" color="inherit">
-                <Badge badgeContent={17} color="error">
-                  <NotificationsIcon />
+                <Badge badgeContent={itemInWishList} color="error">
+                  <Link to="/wish-list" style={{color:'white'}}> 
+                    <FavoriteIcon />
+                  </Link>
                 </Badge>
               </IconButton>
               {user ? 

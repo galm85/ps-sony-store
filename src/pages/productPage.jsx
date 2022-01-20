@@ -6,8 +6,8 @@ import {useDispatch,useSelector} from 'react-redux';
 import { getBestSells } from '../redux/actions/productsAction';
 import {makeStyles} from '@mui/styles';
 import BestSales from '../components/bestSales';
-import { addToCart } from '../redux/actions/usersActions';
-
+import { addToCart, addToWishList } from '../redux/actions/usersActions';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 const useStyles = makeStyles(theme=>({
 
     container:{
@@ -54,7 +54,10 @@ const ProductPage = () => {
                    <img className={classes.image} src={`${url}/${product.image}`} alt={product.title + 'image'} />
                </Grid>
                <Grid item sm={12} lg={6}>
-                   <Typography variant='h2'>{product.title}</Typography>
+                   <div style={{display:'flex',justifyContent:'space-between'}}>
+                        <Typography variant='h2'>{product.title}</Typography>
+                        <Button onClick={()=>dispatch(addToWishList(user._id,product._id))}><FavoriteBorderIcon /></Button>
+                   </div>
                    <Divider/>
                    <Typography variant='h4'>Price: $ {product.price}</Typography>
                    <Typography variant='body1'>{product.description}</Typography>

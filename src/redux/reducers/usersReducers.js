@@ -85,14 +85,14 @@ export const usersReducers = (state=initialState,action)=>{
             case 'addToWishList':
                 return{
                     ...state,
-                    user:{...state.user,wishList:action.payload}
+                    wishList:action.payload
                 }
         
         
         case 'removeFromWishList':
             return{
                 ...state,
-                user:{...state.user,wishList:action.payload}
+                wishList:state.wishList.filter(item=>item._id !== action.payload)
             }
 
         default: return state
