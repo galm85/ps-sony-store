@@ -4,6 +4,6 @@ export {default as HardwareCategories} from './hardwarwCategories';
 export {default as ProductPage} from './productPage';
 export {default as Cart} from './cart';
 export {default as Checkout} from './checkout';
-
+export {default as Profile} from './profile';
 export {default as Signin} from './signin';
 export {default as Register} from './register';

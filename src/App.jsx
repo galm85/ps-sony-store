@@ -2,7 +2,7 @@ import './App.css';
 import { Route,Routes } from "react-router-dom";
 
 import {Appbar,Footer} from './components'
-import {Home,GamesCategories,ProductPage,Signin, Register, Cart, Checkout, HardwareCategories} from './pages';
+import {Home,GamesCategories,ProductPage,Signin, Register, Cart, Checkout, HardwareCategories, Profile} from './pages';
 import {Dashboard} from './admin';
 
 
@@ -21,6 +21,7 @@ function App() {
          <Route path="/checkout" element={<Checkout/>} />
          <Route path="/signin" element={<Signin/>} />
          <Route path="/register" element={<Register/>} />
+         <Route path="/profile" element={<Profile/>} />
          
          
          <Route path="/admin-panel/*" element={<Dashboard/>} />
