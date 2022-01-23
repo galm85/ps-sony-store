@@ -2,7 +2,7 @@ import './App.css';
 import { Route,Routes } from "react-router-dom";
 
 import {Appbar,Footer} from './components'
-import {Home,GamesCategories,ProductPage,Signin, Register, Cart, Checkout, HardwareCategories, Profile, SearchPage, WishList, Services} from './pages';
+import {Home,GamesCategories,ProductPage,Signin, Register, Cart, Checkout, HardwareCategories, Profile, SearchPage, WishList, Services, News} from './pages';
 import {Dashboard} from './admin';
 
 
@@ -25,6 +25,7 @@ function App() {
          <Route path="/search/:value" element={<SearchPage/>} />
          <Route path="/wish-list" element={<WishList/>} />
          <Route path="/services" element={<Services/>} />
+         <Route path="/news" element={<News/>} />
          
          
          <Route path="/admin-panel/*" element={<Dashboard/>} />
