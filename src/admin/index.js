@@ -17,4 +17,8 @@ export {default as NewAdmin} from './users/newAdmin';
 export {default as AdminOrders} from './orders/adminOrders';
 export {default as SingleOrder} from './orders/singleOrder';
 
+export {default as AdminNews} from './news/adminNews';
+export {default as EditArticles} from './news/editArticle';
+export {default as NewArticle} from './news/newArticle';
+
 

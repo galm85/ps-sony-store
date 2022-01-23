@@ -2,7 +2,7 @@ import React from 'react'
 import { makeStyles } from '@mui/styles';
 import { NavLink, Route, Routes } from 'react-router-dom';
 import { Divider } from '@mui/material';
-import {AdminCategories,AdminProducts, AdminUsers, EditCategory, EditProduct, NewCategory, NewProduct,NewAdmin,EditUser, AdminOrders,SingleOrder} from './index';
+import {AdminCategories,AdminProducts, AdminUsers, EditCategory, EditProduct, NewCategory, NewProduct,NewAdmin,EditUser, AdminOrders,SingleOrder, AdminNews, NewArticle} from './index';
 
 
 
@@ -76,6 +76,7 @@ const Dashboard = () => {
                <Divider/>
                <NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/admin-panel/messages'>Messages</NavLink>
                <Divider/>
+               <NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/admin-panel/news'>News</NavLink>
            </div>
             <div className={classes.adminPage}>
                 <Routes>
@@ -91,6 +92,8 @@ const Dashboard = () => {
                     <Route path="users/edit-user" element={<EditUser/>}/>
                     <Route path="orders" element={<AdminOrders/>}/>
                     <Route path="orders/:orderID" element={<SingleOrder/>}/>
+                    <Route path="news" element={<AdminNews/>}/>
+                    <Route path="news/add-new-article" element={<NewArticle/>}/>
                 </Routes>
             </div>
 
