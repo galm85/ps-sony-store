@@ -1,7 +1,8 @@
 import {createTheme} from '@mui/material/styles';
 
 const mainColor = "#192a56"
-const mainFont = 'Quicksand ,sans-serif';
+const secondFont = 'Quicksand ,sans-serif';
+const mainFont = 'Lato, sans-serif';
 
 export const theme = createTheme({
     colors:{
@@ -13,7 +14,7 @@ export const theme = createTheme({
         cyan:'#00a8ff'
     },
     fonts:{
-        main:'Quicksand'
+        main:mainFont
     },
     fontW:{
         thin:'300',
@@ -32,6 +33,14 @@ export const theme = createTheme({
             fontFamily:mainFont,
             fontWeight:'700',
             fontSize:'40px',
+           
+           
+        },
+        h5:{
+            color:'#273c75',
+            fontFamily:mainFont,
+            fontWeight:'300',
+            fontSize:'20px',
            
            
         },

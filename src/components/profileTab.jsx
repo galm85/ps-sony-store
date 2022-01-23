@@ -37,8 +37,9 @@ export default function ProfileTab({orders,wishList}) {
                     <TableHead>
                         <TableRow>
                             <TableCell width="20%">Date</TableCell>
-                            <TableCell width="60%">Items</TableCell>
-                            <TableCell width="20%">Total</TableCell>
+                            <TableCell width="50%">Items</TableCell>
+                            <TableCell width="15%">status</TableCell>
+                            <TableCell width="15%">Total</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -47,7 +48,7 @@ export default function ProfileTab({orders,wishList}) {
                             <TableCell>{new Date(row.createdAt).toDateString()}</TableCell>
                             <TableCell>
                                 {row.orderDetails && row.orderDetails.map(item=>(
-                                    <div style={{display:'flex'}}>
+                                    <div style={{display:'flex',marginBottom:'10px'}}>
                                         <img src={url+"/"+item.image} width="40px" alt="product image" />
                                         <div style={{marginLeft:'20px'}}>
                                             <p>{item.title}</p>
@@ -56,6 +57,7 @@ export default function ProfileTab({orders,wishList}) {
                                     </div>
                                 ))}
                             </TableCell>
+                            <TableCell>{row.status}</TableCell>
                             <TableCell>$ {row.totalPrice}</TableCell>
                         </TableRow>   
                     ))}
@@ -72,7 +74,7 @@ export default function ProfileTab({orders,wishList}) {
                     {wishList && wishList.map((item,index)=>(
                     <ProductCard key={index} product={item} fromWishList={true}/>
                     ))}
-                    {(wishList || wishList.length === 0 ) && <h2><i>No Favorite products</i></h2>}
+                    {(wishList && wishList.length === 0 ) && <h2><i>No Favorite products</i></h2>}
                 </Grid>
             </div>
             }
