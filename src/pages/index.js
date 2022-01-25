@@ -11,3 +11,4 @@ export {default as SearchPage} from './searchPage';
 export {default as WishList} from './wishList';
 export {default as Services} from './services';
 export {default as News} from './news';
+export {default as SingleArticle} from './singleArticle';

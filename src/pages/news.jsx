@@ -4,8 +4,9 @@ import { Button, Container, Divider, Grid } from '@mui/material';
 import PageHeader from '../components/pageHeader';
 import { Box } from '@mui/system';
 import {useSelector,useDispatch} from 'react-redux';
-import { getAllArticles, getPostedArticles } from '../redux/actions/articlesActions';
+import {getPostedArticles } from '../redux/actions/articlesActions';
 import {url} from '../config';
+import {useNavigate} from 'react-router-dom';
 
 
 
@@ -31,12 +32,13 @@ export default function News(){
 
     const dispatch = useDispatch();
     const articles = useSelector(state=>state.articles.articles);
-    
+    const navigate = useNavigate()
+    const classes = useStyles ();
+
     React.useEffect(()=>{
         dispatch(getPostedArticles());
     },[])
 
-    const classes = useStyles ();
 
     
     
@@ -63,7 +65,7 @@ export default function News(){
 
                         <Grid container className={classes.articleContianer} key={row._id}>
                             <Grid item sm={4}>
-                                <img src={`${url}/${row.image}`} width="100%" alt="article main image" />
+                                <img src={`${url}/${row.image}`} width="100%" alt="article main image" onClick={()=>navigate(`/news/${row.title.toLowerCase().replace(/ /g,'-')}`,{state:row})}/>
                             </Grid>
                             <Grid item sm={7} className={classes.article}>
                                 <h3>{row.title}</h3>

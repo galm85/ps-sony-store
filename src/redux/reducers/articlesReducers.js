@@ -1,5 +1,6 @@
 const initialState = {
-    articles:[]
+    articles:[],
+    article:null
 }
 
 
@@ -25,6 +26,12 @@ export const articleReducer = (state=initialState,action)=>{
             return{
                 ...state,
                 articles:state.articles.filter(item=>item._id !== action.payload )
+            }
+
+        case 'getSingleArticle':
+            return{
+                ...state,
+                article:action.payload
             }
 
         default: return state;

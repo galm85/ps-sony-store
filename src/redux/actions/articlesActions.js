@@ -80,3 +80,29 @@ export const deleteArticle = (articleId)=>async(dispatch)=>{
     }
 }
 
+
+//get single article
+export const getSingleArticle = (articleId)=>async(dispatch)=>{
+    try{
+        const res = await axios.get(`${url}/articles/single-article/${articleId}`);
+        dispatch({
+            type:'getSingleArticle',
+            payload:res.data,
+        })
+
+    }catch(err){
+        console.log(err.response.data)
+    }
+}
+
+
+//like/no like to article
+export const likeArticle = (articleId,op)=>async(dispatch)=>{
+    try{
+
+        const res = await axios.patch(`${url}/articles/likes/${articleId}/${op}`);
+      
+    }catch(err){
+        console.log(err.response.data)
+    }
+}

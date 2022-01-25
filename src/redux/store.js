@@ -8,6 +8,7 @@ import { usersReducers } from "./reducers/usersReducers";
 import { ordersReducer } from "./reducers/ordersReducers";
 import { messagesReducer } from "./reducers/messagesReducer";
 import { articleReducer } from "./reducers/articlesReducers";
+import { commentsReducer } from "./reducers/commentsReducers";
 
 const middlewares = [thunk];
 const initialState = {};
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
     users:usersReducers,
     orders:ordersReducer,
     messages:messagesReducer,
-    articles:articleReducer
+    articles:articleReducer,
+    comments:commentsReducer
 });
 
 const store = createStore(rootReducer,initialState,compose(
