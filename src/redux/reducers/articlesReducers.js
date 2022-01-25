@@ -15,7 +15,11 @@ export const articleReducer = (state=initialState,action)=>{
             }
             
 
-
+        case 'getPostedArticles':
+            return{
+                ...state,
+                articles:action.payload
+            }
 
 
         default: return state;

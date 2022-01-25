@@ -4,9 +4,8 @@ import { Button, Container, Divider, Grid } from '@mui/material';
 import PageHeader from '../components/pageHeader';
 import { Box } from '@mui/system';
 import {useSelector,useDispatch} from 'react-redux';
-import { getAllArticles } from '../redux/actions/articlesActions';
+import { getAllArticles, getPostedArticles } from '../redux/actions/articlesActions';
 import {url} from '../config';
-
 
 
 
@@ -34,10 +33,14 @@ export default function News(){
     const articles = useSelector(state=>state.articles.articles);
     
     React.useEffect(()=>{
-        dispatch(getAllArticles());
+        dispatch(getPostedArticles());
     },[])
 
     const classes = useStyles ();
+
+    
+    
+
     return(
         <>
         <PageHeader image="newsbanner.png" title="PS NEWS" color="white"/> 
@@ -53,25 +56,25 @@ export default function News(){
                         <Button>Read More</Button>
                     </Grid>
                 </Grid>
-
                 <Divider style={{margin:'30px 0'}}/>
                 <Box  className={classes.articlesBox} >
                     
                     {articles && articles.map(row=>(
 
-                        <Grid container className={classes.articleContianer}>
+                        <Grid container className={classes.articleContianer} key={row._id}>
                             <Grid item sm={4}>
                                 <img src={`${url}/${row.image}`} width="100%" alt="article main image" />
                             </Grid>
                             <Grid item sm={7} className={classes.article}>
                                 <h3>{row.title}</h3>
-                                <p>{row.article.substring(0,4)}...</p>
+                                <div dangerouslySetInnerHTML={{ __html: row.article.substring(0,100) + '...' }}></div>
                             </Grid>
                         </Grid>
                     
                     ))}
                     
                 </Box>
+                
 
         </Container>
         </>
