@@ -21,6 +21,11 @@ export const articleReducer = (state=initialState,action)=>{
                 articles:action.payload
             }
 
+        case 'deleteArticle':
+            return{
+                ...state,
+                articles:state.articles.filter(item=>item._id !== action.payload )
+            }
 
         default: return state;
     }

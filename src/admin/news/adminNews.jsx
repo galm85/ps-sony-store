@@ -8,7 +8,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { makeStyles } from '@mui/styles';
 import {deleteCategory, getAllCategories} from '../../redux/actions/categoriesActions';
 import { deleteOrder, getAllOrders, getOrderByEmailSearch, getOrderById } from '../../redux/actions/ordersActions';
-import { getAllArticles } from '../../redux/actions/articlesActions';
+import { deleteArticle, getAllArticles } from '../../redux/actions/articlesActions';
 import SearchBar from '../../components/searchBar';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -109,7 +109,7 @@ export default function AdminNews() {
             </TableHead>
             <TableBody >
             {articles && articles.map((row,index) => (
-                <StyledTableRow key={row._id} className={classes.row} onClick={()=>navigate(`/admin-panel/orders/${row._id}`,{state:row})} style={{cursor:'pointer'}} >
+                <StyledTableRow key={row._id} className={classes.row} onClick={()=>navigate(`/admin-panel/news/edit/${row._id}`,{state:row})} style={{cursor:'pointer'}} >
                     <StyledTableCell component="th" scope="row">{index+1}</StyledTableCell>
                     <StyledTableCell align="left">{new Date(row.createdAt).toLocaleDateString()} - {new Date(row.createdAt).toLocaleTimeString()}</StyledTableCell>
                     <StyledTableCell align="left"><img src={`${url}/${row.image}`} width="50px" alt="article image" /></StyledTableCell>
@@ -117,7 +117,7 @@ export default function AdminNews() {
                     <StyledTableCell align="left">{row.comments.length}</StyledTableCell>
                     <StyledTableCell align="left">{row.author?row.author : 'Admin'}</StyledTableCell>
                     
-                    <StyledTableCell align="left"  style={{position:'relative',zIndex:200}} onClick={(e)=>{e.stopPropagation();dispatch(deleteOrder(row._id))}}>
+                    <StyledTableCell align="left"  style={{position:'relative',zIndex:200}} onClick={(e)=>{e.stopPropagation();dispatch(deleteArticle(row._id))}}>
                         <IconButton ><DeleteForeverIcon color="error" /></IconButton>
                     </StyledTableCell>
                 </StyledTableRow>

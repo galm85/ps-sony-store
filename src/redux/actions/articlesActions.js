@@ -49,5 +49,34 @@ export const postNewArticle = (article)=>async(dispatch)=>{
 
 
 //edit article
+export const updateArticle = (article,articleId)=>async(dispatch)=>{
+    try{
+
+        const res  = await axios.patch(`${url}/articles/update-article/${articleId}`,article);
+        alert(res.data);
+        window.location = '/admin-panel/news';
+
+    }catch(err){
+        console.log(err.response.data);
+    }
+}
 
 //delete article
+export const deleteArticle = (articleId)=>async(dispatch)=>{
+    if(window.confirm('Delete This Article?')){
+
+        try{
+            
+            const res = await axios.delete(`${url}/articles/${articleId}`);
+            alert(res.data);
+            dispatch({
+                type:'deleteArticle',
+                payload:articleId
+            })
+            
+        }catch(err){
+            console.log(err.response.data);
+        }
+    }
+}
+
