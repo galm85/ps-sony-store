@@ -2,7 +2,8 @@ import React from 'react'
 import { makeStyles } from '@mui/styles';
 import { NavLink, Route, Routes } from 'react-router-dom';
 import { Divider } from '@mui/material';
-import {AdminCategories,AdminProducts, AdminUsers, EditCategory, EditProduct, NewCategory, NewProduct,NewAdmin,EditUser, AdminOrders,SingleOrder, AdminNews, NewArticle, EditArticle, AdminMessages,SingleMessage} from './index';
+import {Home,AdminCategories,AdminProducts, AdminUsers, EditCategory, EditProduct, NewCategory, NewProduct,NewAdmin,EditUser, AdminOrders,SingleOrder, AdminNews, NewArticle, EditArticle, AdminMessages,SingleMessage} from './index';
+
 
 
 
@@ -66,6 +67,8 @@ const Dashboard = () => {
     return ( 
        <div className={classes.adminContainer}>
            <div className={classes.adminNav}>
+               <NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/admin-panel/menu'>Dashboard</NavLink>
+               <Divider/>
                <NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/admin-panel/categories'>Categories</NavLink>
                <Divider/>
                <NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/admin-panel/products'>Products</NavLink>
@@ -80,7 +83,7 @@ const Dashboard = () => {
            </div>
             <div className={classes.adminPage}>
                 <Routes>
-                    <Route path="/admin-panel" element={<Dashboard/>}/>
+                    <Route path="/menu" element={<Home/>}/>
                     <Route path="categories" element={<AdminCategories/>}/>
                     <Route path="categories/add-new-category" element={<NewCategory/>}/>
                     <Route path="categories/edit-category/:category" element={<EditCategory/>}/>
