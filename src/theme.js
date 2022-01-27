@@ -11,7 +11,8 @@ export const theme = createTheme({
         gray:'#dcdde1',
         green:'#4cd137',
         naval:'#40739e',
-        cyan:'#00a8ff'
+        cyan:'#00a8ff',
+        secondary:'#8338ec'
     },
     fonts:{
         main:mainFont
