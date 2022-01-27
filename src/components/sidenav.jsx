@@ -4,10 +4,8 @@ import {makeStyles} from '@mui/styles'
 import {Box,Drawer,Button,List,Divider,ListItem,ListItemText,ListItemIcon} from '@mui/material';
 import {url} from '../config';
 import { useDispatch,useSelector } from 'react-redux';
+import {useNavigate} from 'react-router-dom';
 //icons
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import CategoryIcon from '@mui/icons-material/Category';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
@@ -27,9 +25,10 @@ const useStyles = makeStyles(theme=>({
 
   },
   listItem:{
-   
+    cursor:'pointer',
     "&:hover":{
-      background:'rgba(255,255,255,0.3)'
+      background:'rgba(255,255,255,0.3)',
+      
     }
   },
   active:{
@@ -51,11 +50,15 @@ const useStyles = makeStyles(theme=>({
 }))
 
 
+
+
 export default function Sidenav({children}) {
 
   const classes = useStyles();
   const dispatch = useDispatch();
   const user = useSelector(state => state.users.user);
+  const navigate = useNavigate();
+
 
   const [state, setState] = React.useState({
     left: false,
@@ -82,17 +85,16 @@ export default function Sidenav({children}) {
         {user ? 
     <List>
   
-        <ListItem  className={classes.listItem}>
-            {/* <ListItemIcon><AccountCircleIcon className={classes.icon}/></ListItemIcon> */}
+        <ListItem  className={classes.listItem} onClick={()=>navigate('/profile')}>
             <ListItemIcon><img src={`${url}/${user.image}`} alt="user image" style={{width:'30px',borderRadius:'50%'}} /></ListItemIcon>
             <ListItemText><NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/profile'>{user.firstName + ' ' +user.lastName}</NavLink></ListItemText>
         </ListItem>
         
-        <ListItem className={classes.listItem}>
+        <ListItem className={classes.listItem} onClick={()=>navigate('/cart')}>
             <ListItemIcon><ShoppingCartIcon className={classes.icon}/></ListItemIcon>
             <ListItemText><NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/cart'>Cart</NavLink></ListItemText>
         </ListItem>
-        <ListItem className={classes.listItem}>
+        <ListItem className={classes.listItem} onClick={()=>navigate('/admin-panel')}>
             <ListItemIcon><AdminPanelSettingsIcon className={classes.icon}/></ListItemIcon>
             <ListItemText><NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/admin-panel'>Admin Panel</NavLink></ListItemText>
         </ListItem>
@@ -100,7 +102,7 @@ export default function Sidenav({children}) {
     :
     <List>
   
-        <ListItem  className={classes.listItem}>
+        <ListItem  className={classes.listItem} onClick={()=>navigate('/signin')}>
             <ListItemIcon><AccountCircleIcon className={classes.icon}/></ListItemIcon>
             <ListItemText><NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/signin'>Sign in</NavLink></ListItemText>
         </ListItem>
@@ -113,27 +115,27 @@ export default function Sidenav({children}) {
     <Divider/>
 
     <List>
-        <ListItem className={classes.listItem}>
+        <ListItem className={classes.listItem} onClick={()=>navigate('/')}>
             <ListItemIcon><HomeIcon className={classes.icon}/></ListItemIcon>
             <ListItemText><NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/'>Home</NavLink></ListItemText>
         </ListItem>
-        <ListItem className={classes.listItem}>
+        <ListItem className={classes.listItem} onClick={()=>navigate('/games')}>
             <ListItemIcon><SportsEsportsIcon className={classes.icon}/></ListItemIcon>
             <ListItemText><NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/games'>Games</NavLink></ListItemText>
         </ListItem>
-        <ListItem className={classes.listItem}>
+        <ListItem className={classes.listItem} onClick={()=>navigate('/hardware')}>
             <ListItemIcon><StorageIcon className={classes.icon}/></ListItemIcon>
             <ListItemText><NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/hardware'>Hardware</NavLink></ListItemText>
         </ListItem>
-        <ListItem className={classes.listItem}>
+        <ListItem className={classes.listItem} onClick={()=>navigate('/services')}>
             <ListItemIcon><RssFeedIcon className={classes.icon}/></ListItemIcon>
             <ListItemText><NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/services'>Services</NavLink></ListItemText>
         </ListItem>
-        <ListItem className={classes.listItem}>
+        <ListItem className={classes.listItem} onClick={()=>navigate('/news')}>
             <ListItemIcon><AnnouncementIcon className={classes.icon}/></ListItemIcon>
             <ListItemText><NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/news'>News</NavLink></ListItemText>
         </ListItem>
-        <ListItem className={classes.listItem}>
+        <ListItem className={classes.listItem} onClick={()=>navigate('/support')}>
             <ListItemIcon><HelpCenterIcon className={classes.icon}/></ListItemIcon>
             <ListItemText><NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive}  to='/support'>Support</NavLink></ListItemText>
         </ListItem>
@@ -142,7 +144,7 @@ export default function Sidenav({children}) {
     <Divider/>
 
     <List>
-        <ListItem className={classes.listItem}>
+        <ListItem className={classes.listItem} onClick={()=>navigate('/logout')}>
             <ListItemIcon><LogoutIcon className={classes.icon}/></ListItemIcon>
             <ListItemText><NavLink className={classes.nonActive} to='/logout'>Logout</NavLink></ListItemText>
         </ListItem>
