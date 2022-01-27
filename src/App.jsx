@@ -2,7 +2,7 @@ import './App.css';
 import { Route,Routes } from "react-router-dom";
 
 import {Appbar,Footer} from './components'
-import {Home,GamesCategories,ProductPage,Signin, Register, Cart, Checkout, HardwareCategories, Profile, SearchPage, WishList, Services, News, SingleArticle} from './pages';
+import {Home,GamesCategories,ProductPage,Signin, Register, Cart, Checkout, HardwareCategories, Profile, SearchPage, WishList, Services, News, SingleArticle, Support} from './pages';
 import {Dashboard} from './admin';
 
 
@@ -27,6 +27,7 @@ function App() {
          <Route path="/services" element={<Services/>} />
          <Route path="/news" element={<News/>} />
          <Route path="/news/:articleTitle" element={<SingleArticle/>} />
+         <Route path="/support" element={<Support/>} />
          
          
          <Route path="/admin-panel/*" element={<Dashboard/>} />

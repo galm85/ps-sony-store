@@ -21,4 +21,6 @@ export {default as AdminNews} from './news/adminNews';
 export {default as EditArticle} from './news/editArticle';
 export {default as NewArticle} from './news/newArticle';
 
+export {default as AdminMessages} from './messages/adminMessages';
+export {default as SingleMessage} from './messages/singleMessage';
 

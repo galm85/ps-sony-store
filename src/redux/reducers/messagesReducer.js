@@ -18,6 +18,12 @@ export const messagesReducer = (state=initialState,action)=>{
                 messages:state.messages.push(action.payload)
             }
 
+        case 'deleteMessage':
+            return{
+                ...state,
+                messages:state.messages.filter(item=>item._id !== action.payload)
+            }
+
         case 'updateStatus':
             let updateMessages = [...state.messages];
             for(let message of updateMessages){
@@ -30,6 +36,11 @@ export const messagesReducer = (state=initialState,action)=>{
                 messages:updateMessages
             }
 
+        case 'getMessagesByEmail':
+            return{
+                ...state,
+                messages:action.payload
+            }
 
         default: return state;
     }
