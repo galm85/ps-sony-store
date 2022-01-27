@@ -32,7 +32,7 @@ export const theme = createTheme({
             color:'#273c75',
             fontFamily:mainFont,
             fontWeight:'700',
-            fontSize:'40px',
+            fontSize:'30px',
            
            
         },
@@ -44,11 +44,18 @@ export const theme = createTheme({
            
            
         },
+        mainProductTitle:{
+            color:mainColor,
+            fontFamily:mainFont,
+            fontWeight:'700',
+            textAlign:'center',
+            fontSize:'3rem'
+        },
         productTitle:{
             color:'white',
             fontFamily:mainFont,
             fontWeight:'700',
-            textAlign:'center'
+            textAlign:'center',
         },
         rowLight:{
             fontFamily:mainFont,

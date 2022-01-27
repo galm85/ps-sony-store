@@ -55,14 +55,14 @@ const ProductPage = () => {
                </Grid>
                <Grid item sm={12} lg={6}>
                    <div style={{display:'flex',justifyContent:'space-between'}}>
-                        <Typography variant='h2'>{product.title}</Typography>
+                        <Typography variant='mainProductTitle'>{product.title}</Typography>
                         <Button onClick={()=>dispatch(addToWishList(user._id,product._id))}><FavoriteBorderIcon /></Button>
                    </div>
-                   <Divider/>
-                   <Typography variant='h4'>Price: $ {product.price}</Typography>
-                   <Typography variant='body1'>{product.description}</Typography>
-                   <div>
-                       <Button variant="contained" onClick={()=>addItem(product)}>Add To Cart</Button>
+                   <Divider style={{margin:'30px 0'}}/>
+                   <Typography variant='h3' style={{margin:'20px 0'}}>Price: $ {product.price}</Typography>
+                   <Typography variant='rowLight' >{product.description}</Typography>
+                   <div >
+                       <Button style={{marginTop:'50px'}} variant="contained" onClick={()=>addItem(product)}>Add To Cart</Button>
                    </div>
                </Grid>
            </Grid>
