@@ -8,6 +8,9 @@ import {makeStyles} from '@mui/styles';
 import BestSales from '../components/bestSales';
 import { addToCart, addToWishList } from '../redux/actions/usersActions';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import EditIcon from '@mui/icons-material/Edit';
+import {useNavigate} from 'react-router-dom';
+
 const useStyles = makeStyles(theme=>({
 
     container:{
@@ -32,6 +35,7 @@ const ProductPage = () => {
     const [product,setProduct] = useState({...location.state});
     const products = useSelector(state => state.products.bestSells);
     const user = useSelector(state => state.users.user);
+    const navigate = useNavigate();
     
     useEffect(()=>{
         dispatch(getBestSells())
@@ -58,10 +62,17 @@ const ProductPage = () => {
                         <Typography variant='mainProductTitle'>{product.title}</Typography>
                         <Button onClick={()=>dispatch(addToWishList(user._id,product._id))}><FavoriteBorderIcon /></Button>
                    </div>
+
                    <Divider style={{margin:'30px 0'}}/>
-                   <Typography variant='h3' style={{margin:'20px 0'}}>Price: $ {product.price}</Typography>
+
+                   <div style={{display:'flex',justifyContent:'space-between',marginBottom:'50px'}}>
+                        <Typography variant='h3' >Price: $ {product.price}</Typography>
+                        {user && user.role === 'admin' && <Button onClick={()=>navigate(`/admin-panel/products/edit-product/${product.title}`,{state:product})}><EditIcon color="warning" /></Button>}
+                   </div>
+
                    <Typography variant='rowLight' >{product.description}</Typography>
-                   <div >
+                   
+                   <div>
                        <Button style={{marginTop:'50px'}} variant="contained" onClick={()=>addItem(product)}>Add To Cart</Button>
                    </div>
                </Grid>

@@ -38,13 +38,13 @@ const useStyles = makeStyles(theme=>({
         bottom:'0',
         textAlign:'center',
         width:'100%',
-        background:'rgba(0,0,0,0.5)',
+        background:'rgba(0,0,0,0.8)',
         color:'white'   
     },
     image:{
         width:'100%',
         height:'100%',
-        objectFit:'cover',
+        objectFit:'contain',
         borderRadius:'10px',
         transition:'all ease 0.2s',
 
@@ -73,13 +73,13 @@ const ProductCard = ({product,fromWishList}) => {
     }
     
     return ( 
-        <Grid item  sm={10} md={3} lg={2} className={classes.item} style={{margin:'20px 20px'}} onClick={()=>navigate(`/games/${product.title.toLowerCase()}`,{state:product})}>
+        <Grid item  sm={10} md={3} lg={2} className={classes.item} style={{margin:'40px 20px'}} onClick={()=>navigate(`/games/${product.title.toLowerCase()}`,{state:product})}>
            
             <img className={classes.image} src={`${url}/${product.image}`}  alt={product.title} />
             <div className={classes.data}>
                 <Typography variant="productTitle">{product.title}</Typography>
                 <Divider/>
-                <Typography variant="productTitle">price: {product.price}</Typography>
+                <Typography variant="productTitle">price:  $ {product.price}</Typography>
 
             </div>
             {fromWishList && 

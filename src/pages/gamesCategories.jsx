@@ -32,7 +32,11 @@ const GamesCategories = () => {
 
                 <Grid container width='70%' style={{justifyContent:'space-between'}} >
                     {games && games.map(game=>(
+                        <>
+                        {(game.categorie !== 'Consoles' && game.categorie !== 'Accessories') &&
                        <ProductCard key={game._id} product={game}/>
+                        }
+                        </>
                     ))}
                 </Grid>
 
