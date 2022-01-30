@@ -5,12 +5,13 @@ import {useDispatch,useSelector} from 'react-redux';
 import { getBestSells,getComingSoon,getNewGames} from '../redux/actions/productsAction';
 import GameCard from '../components/gameCard';
 import ProductCard from '../components/productCard'
+import ShowAlert from '../components/alert';
 const useStyles = makeStyles(theme=>({
+    
     
     container:{
         textAlign:'center',
         margin:"50px auto",
-       
         
     },
     bannerBtn:{
@@ -48,7 +49,7 @@ const Home = () => {
     },[])
 
     return ( 
-        <>
+        <div className={classes.page}>
             <div className={classes.banner}>
                 <img className={classes.bannerImage} src="./images/banner.png"  alt="games banner" />
             </div>
@@ -84,7 +85,9 @@ const Home = () => {
                 ))}
                 </Grid>   
             </Container>
-        </>
+
+            
+        </div>
      );
 }
  

@@ -10,6 +10,7 @@ import { addToCart, addToWishList } from '../redux/actions/usersActions';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import EditIcon from '@mui/icons-material/Edit';
 import {useNavigate} from 'react-router-dom';
+import ShowAlert from '../components/alert';
 
 const useStyles = makeStyles(theme=>({
 
@@ -46,9 +47,14 @@ const ProductPage = () => {
             window.location = "/signin";
             return;
         }else{
+            
             dispatch(addToCart(user._id,product,1));
+            
         }
+        
     }
+
+    const displayAlert = React.useRef(null);
 
     return ( 
        <Container className={classes.container}>
@@ -60,7 +66,7 @@ const ProductPage = () => {
                <Grid item sm={12} lg={6}>
                    <div style={{display:'flex',justifyContent:'space-between'}}>
                         <Typography variant='mainProductTitle'>{product.title}</Typography>
-                        <Button onClick={()=>dispatch(addToWishList(user._id,product._id))}><FavoriteBorderIcon /></Button>
+                        <Button onClick={()=>{dispatch(addToWishList(user._id,product._id));displayAlert.current.show()}}><FavoriteBorderIcon /></Button>
                    </div>
 
                    <Divider style={{margin:'30px 0'}}/>
@@ -83,6 +89,8 @@ const ProductPage = () => {
            
            <BestSales/>
            
+           <ShowAlert ref={displayAlert} message='add to favorie' type='success'/>
+          
        </Container>
      );
 }
