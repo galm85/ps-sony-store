@@ -10,7 +10,6 @@ import { addToCart, addToWishList } from '../redux/actions/usersActions';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import EditIcon from '@mui/icons-material/Edit';
 import {useNavigate} from 'react-router-dom';
-import ShowAlert from '../components/alert';
 
 const useStyles = makeStyles(theme=>({
 
@@ -89,7 +88,6 @@ const ProductPage = () => {
            
            <BestSales/>
            
-           <ShowAlert ref={displayAlert} message='add to favorie' type='success'/>
           
        </Container>
      );

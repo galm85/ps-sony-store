@@ -20,7 +20,8 @@ const rootReducer = combineReducers({
     orders:ordersReducer,
     messages:messagesReducer,
     articles:articleReducer,
-    comments:commentsReducer
+    comments:commentsReducer,
+
 });
 
 const store = createStore(rootReducer,initialState,compose(

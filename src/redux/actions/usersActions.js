@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {url} from '../../config';
 import jwtDecode from "jwt-decode";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 
 export const getAllUsers = ()=>async(dispatch)=>{
@@ -44,11 +44,12 @@ export const signInUser = (user)=>async(dispatch)=>{
             payload:signUser
         });
         window.location = '/';
-        // toast.info('welcome back ' + signUser.firstName);
-
+        
+        toast.dark('welcome back ' + signUser.firstName,{progressClassName:'Toastify__progress-bar--success',})
     }catch(error){
         if(error.response && error.response.data){
-        //  toast.error(error.response.data);
+        
+        toast.dark(error.response.data,{progressClassName:'Toastify__progress-bar--error',})
         }
     }
 }
@@ -122,7 +123,7 @@ export const addToCart = (userId,product,amount) => async(dispatch)=>{
             type:'addNewItem',
             payload:res.data.cart
         })
-        // toast.info(res.data.message);
+        toast.dark(res.data.message,{progressClassName:'Toastify__progress-bar--info',})
     } catch (error) {
         
     }
@@ -137,6 +138,7 @@ export const removeItemFromCart = (userId,productId)=>async(dispatch)=>{
             type:'removeItemFromCart',
             payload:productId
         })
+        toast.dark('Removed From Cart',{progressClassName:'Toastify__progress-bar--error',})
     } catch (error) {
         
     }
@@ -185,6 +187,8 @@ export const addToWishList = (userId,productId)=>async(dispatch)=>{
             type:'addToWishList',
             payload:res.data.wishList
         })
+        toast.dark('add To Favorite',{progressClassName:'Toastify__progress-bar--info',})
+       
     }catch(err){
         console.log(err);
     }
@@ -200,7 +204,7 @@ export const removeFromWishList = (userId,productId)=>async(dispatch)=>{
             type:'removeFromWishList',
             payload:productId
         })
-        alert(res.data);
+        toast.dark('Removed from Wish List',{progressClassName:'Toastify__progress-bar--error',})
     }
 
 }

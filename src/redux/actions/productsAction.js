@@ -1,7 +1,5 @@
 import axios from 'axios';
-// import {url} from '../../config.json'
-//import { toast } from "react-toastify";
-// let url = "https://gal-sony-store.herokuapp.com";
+import { toast } from "react-toastify";
 import {url} from '../../config';
 
 
@@ -32,6 +30,7 @@ export const addNewProducts = (product)=>async(dispatch)=>{
             type:'addNewProduct',
             payload:product
         })
+        toast.dark('New Peoduct Added',{progressClassName:'Toastify__progress-bar--success',})
         window.location ="/admin-panel/products";
     }catch(err){
         console.log(err);
@@ -40,12 +39,12 @@ export const addNewProducts = (product)=>async(dispatch)=>{
 
 
 export const updateProduct = (productId,product)=>async(dispatch)=>{
-    console.log(product);
     if(window.confirm(`Save Changes on this product?`)){
         const res = await axios.patch(`${url}/products/update-product/${productId}`,product);
         window.location = '/admin-panel/products';
     }
-    //toast.info(res.data);
+    toast.dark('Product Updated',{progressClassName:'Toastify__progress-bar--success',})
+
 }
 
 
@@ -56,6 +55,8 @@ export const deleteProduct = (productId)=>async(dispatch)=>{
             type:"deleteProduct",
             payload:productId
         })
+        toast.dark('Product Deleted',{progressClassName:'Toastify__progress-bar--error',})
+
     }
 }
 
