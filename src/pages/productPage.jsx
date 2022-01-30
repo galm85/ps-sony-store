@@ -60,6 +60,7 @@ const ProductPage = () => {
            
            <Grid container className={classes.dataContainer}>
                <Grid item sm={12} lg={5}>
+                   
                    <img className={classes.image} src={`${url}/${product.image}`} alt={product.title + 'image'} />
                </Grid>
                <Grid item sm={12} lg={6}>
@@ -71,14 +72,25 @@ const ProductPage = () => {
                    <Divider style={{margin:'30px 0'}}/>
 
                    <div style={{display:'flex',justifyContent:'space-between',marginBottom:'50px'}}>
+                       {product.onSale ? 
+                       <div style={{display:'flex',flexDirection:'column'}}>
+                       <Typography variant='h3' style={{textDecoration:'line-through'}} >Price: $ {product.price}</Typography>
+                       <Typography variant='h3' style={{color:'red',marginTop:'20px'}} >Sale Price: $ {product.salePrice}</Typography>
+                       </div>
+                    :
                         <Typography variant='h3' >Price: $ {product.price}</Typography>
+                    }
                         {user && user.role === 'admin' && <Button onClick={()=>navigate(`/admin-panel/products/edit-product/${product.title}`,{state:product})}><EditIcon color="warning" /></Button>}
                    </div>
 
                    <Typography variant='rowLight' >{product.description}</Typography>
                    
                    <div>
+                       {product.onStock ?
                        <Button style={{marginTop:'50px'}} variant="contained" onClick={()=>addItem(product)}>Add To Cart</Button>
+                       :
+                       <Button style={{marginTop:'50px'}} variant="contained" disabled >Out Of Stock</Button>
+                    }
                    </div>
                </Grid>
            </Grid>

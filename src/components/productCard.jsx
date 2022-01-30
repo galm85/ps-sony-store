@@ -79,8 +79,21 @@ const ProductCard = ({product,fromWishList}) => {
             <div className={classes.data}>
                 <Typography variant="productTitle">{product.title}</Typography>
                 <Divider/>
-                <Typography variant="productTitle">price:  $ {product.price}</Typography>
+                {product.onSale ? 
+                <div style={{display:'flex',flexDirection:'column'}}>
+                    <Typography  variant="productTitle" style={{textDecoration:'line-through'}}>price:  $ {product.price}</Typography>
+                    <Typography variant="productTitle">Sale:  $ {product.salePrice}</Typography>
+                </div>
+                :
+                    <Typography variant="productTitle">price:  $ {product.price}</Typography>
+                }
 
+                {!product.onStock && 
+                <>
+                    <Divider/>
+                    <Typography variant="productTitle">out of stock</Typography>
+                </>
+                }
             </div>
             {fromWishList && 
                 <div className={classes.remove} onClickCapture={(e)=>removeFromFavorite(e)}>
