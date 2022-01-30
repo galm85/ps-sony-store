@@ -6,6 +6,7 @@ import {url} from '../config';
 import ProfileTab from '../components/profileTab';
 import { getOrdersByUser } from '../redux/actions/ordersActions';
 import {getWishList} from '../redux/actions/usersActions';
+import Loader from '../components/loader';
 
 const useStyles = makeStyles(theme=>({
     imageContainer:{
@@ -40,27 +41,35 @@ export default function Profile(){
 
     return(
        
-        <Container style={{marginTop:'50px'}}>
-            <Grid container>
-                <Grid item sm={12} md={4}>
-                    <div className={classes.imageContainer}>
-                        <img className={classes.image} src={url+"/"+user.image} alt="user image" />
-                    </div>
-                </Grid>
-              
-                <Grid item sm={12} md={8}>
-                    <div className={classes.dataContainer}>
-                        <Typography variant="h2">{user.firstName +" "+ user.lastName}</Typography>
-                        <Typography variant="h4">{user.email}</Typography>
-                    </div>
-                    <Divider style={{margin:'20px 0'}}/>
-                    <div className={classes.tab}>
-                        <ProfileTab orders={orders} wishList={wishList}/>
-                    </div>
-                </Grid>
 
+        <>
+        {!user ? <Loader/> :
+        <Container style={{marginTop:'50px'}}>
+          
+        <Grid container>
+            <Grid item sm={12} md={4}>
+                <div className={classes.imageContainer}>
+                    <img className={classes.image} src={url+"/"+user.image} alt="user image" />
+                </div>
             </Grid>
-        </Container>
+          
+            <Grid item sm={12} md={8}>
+                <div className={classes.dataContainer}>
+                    <Typography variant="h2">{user.firstName +" "+ user.lastName}</Typography>
+                    <Typography variant="h4">{user.email}</Typography>
+                </div>
+                <Divider style={{margin:'20px 0'}}/>
+                <div className={classes.tab}>
+                    <ProfileTab orders={orders} wishList={wishList}/>
+                </div>
+            </Grid>
+
+        </Grid>
+    </Container>
+        }
+        </>
+
+        
     )
 
 }

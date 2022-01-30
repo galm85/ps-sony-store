@@ -72,6 +72,8 @@ export default function Sidenav({children}) {
     setState({ ...state, [anchor]: open });
   };
 
+  
+
   const list = (anchor) => (
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
@@ -143,14 +145,7 @@ export default function Sidenav({children}) {
 
     <Divider/>
 
-    <List>
-        <ListItem className={classes.listItem} onClick={()=>navigate('/logout')}>
-            <ListItemIcon><LogoutIcon className={classes.icon}/></ListItemIcon>
-            <ListItemText><NavLink className={classes.nonActive} to='/logout'>Logout</NavLink></ListItemText>
-        </ListItem>
-        
-    </List>
-
+    
 
     </Box>
   );

@@ -6,6 +6,7 @@ import { getCart, removeItemFromCart } from '../redux/actions/usersActions';
 import {url} from '../config';
 import { makeStyles } from '@mui/styles';
 import { useNavigate } from 'react-router-dom';
+import Loader from '../components/loader';
 
 const useStyles = makeStyles(theme=>({
     container:{
@@ -104,6 +105,7 @@ const Cart = () => {
                     </Box>
                 </Grid>
             </Grid>
+            
        </Container>
      );
 }

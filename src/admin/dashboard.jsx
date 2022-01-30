@@ -1,9 +1,10 @@
-import React from 'react'
+import * as React from 'react'
 import { makeStyles } from '@mui/styles';
 import { NavLink, Route, Routes } from 'react-router-dom';
 import { Divider } from '@mui/material';
 import {Home,AdminCategories,AdminProducts, AdminUsers, EditCategory, EditProduct, NewCategory, NewProduct,NewAdmin,EditUser, AdminOrders,SingleOrder, AdminNews, NewArticle, EditArticle, AdminMessages,SingleMessage} from './index';
-
+import { useSelector } from 'react-redux';
+import Loader from '../components/loader';
 
 
 
@@ -62,12 +63,20 @@ const useStyles = makeStyles(theme=>({
 const Dashboard = () => {
 
     const classes = useStyles();
+    const user = useSelector(state=>state.users.user);
 
+    React.useEffect(()=>{
+        if(!user || user.role !== 'admin'){
+            window.location = '/';
+        }
+    },[])
 
     return ( 
        <div className={classes.adminContainer}>
+           {(!user || user.role !== 'admin') ? <Loader/> : 
+           <>
            <div className={classes.adminNav}>
-               <NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/admin-panel/menu'>Dashboard</NavLink>
+               <NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/admin-panel'>Dashboard</NavLink>
                <Divider/>
                <NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/admin-panel/categories'>Categories</NavLink>
                <Divider/>
@@ -83,7 +92,7 @@ const Dashboard = () => {
            </div>
             <div className={classes.adminPage}>
                 <Routes>
-                    <Route path="/menu" element={<Home/>}/>
+                    <Route path="/" element={<Home/>}/>
                     <Route path="categories" element={<AdminCategories/>}/>
                     <Route path="categories/add-new-category" element={<NewCategory/>}/>
                     <Route path="categories/edit-category/:category" element={<EditCategory/>}/>
@@ -102,7 +111,7 @@ const Dashboard = () => {
                     <Route path="messages/:messageId" element={<SingleMessage/>}/>
                 </Routes>
             </div>
-
+            </>}    
        </div>
      );
 }

@@ -145,9 +145,15 @@ export default function Appbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}><span onClick={()=>navigate('/profile')}>My account</span></MenuItem>
-      <MenuItem onClick={handleMenuClose}><span onClick={()=>navigate('/signin')}>Sign In</span></MenuItem>
-      <MenuItem onClick={handleMenuClose} onClickCapture={()=>logout()} >Logout</MenuItem>
+      {user ? 
+        <>
+        <MenuItem onClick={handleMenuClose}><span onClick={()=>navigate('/profile')}>My account</span></MenuItem>
+        <MenuItem onClick={handleMenuClose} onClickCapture={()=>logout()} >Logout</MenuItem>
+        </> 
+        : 
+        <MenuItem onClick={handleMenuClose}><span onClick={()=>navigate('/signin')}>Sign In</span></MenuItem>
+    }
+      
     </Menu>
   );
 
