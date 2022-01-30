@@ -25,9 +25,8 @@ const HardwareCategories = () => {
             <PageHeader title="Hardware" image="hardwareBanner.png" color="white"/>
 
                 <div style={{matginTop:'50px',height:'100px'}}></div>
-            <BestSales />
-
-            <Divider/>
+          
+           
             <Container style={{display:'flex'}} maxWidth="xl">
 
                 <Grid container width='70%' style={{justifyContent:'space-between'}} >

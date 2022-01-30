@@ -25,9 +25,7 @@ const GamesCategories = () => {
             <PageHeader title="games" image="gamesBanner.png" color="white"/>
 
                 <div style={{matginTop:'50px',height:'100px'}}></div>
-            <BestSales />
-
-            <Divider/>
+           
             <Container style={{display:'flex'}} maxWidth="xl">
 
                 <Grid container width='70%' style={{justifyContent:'space-between'}} >
@@ -46,6 +44,8 @@ const GamesCategories = () => {
                 
             </Container>
 
+            <Divider style={{margin:'30px 0'}} />
+            <BestSales />
         </>
      );
 }

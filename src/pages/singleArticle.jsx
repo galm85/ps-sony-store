@@ -62,7 +62,7 @@ export default function SingleArticle(){
             
             <Grid container>
                 <Grid item sm={12} className={classes.titleContainer}>
-                    <Typography variant="h1">{article.title}</Typography>
+                    <Typography variant="h2">{article.title}</Typography>
                     {like ?
                     <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
                     <ThumbUpIcon className={classes.like} fontSize='large' onClick={()=>handleLike()}/>

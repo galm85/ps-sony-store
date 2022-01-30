@@ -7,7 +7,7 @@ import {useSelector,useDispatch} from 'react-redux';
 import {getPostedArticles } from '../redux/actions/articlesActions';
 import {url} from '../config';
 import {useNavigate} from 'react-router-dom';
-
+import EditIcon from '@mui/icons-material/Edit';
 
 
 
@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme=>({
         margin:'40px 0',
     },
     articleContianer:{fontFamily:theme.fonts.main,},
-    article:{padding:'0 40px'},
+    article:{padding:'0 40px',maxHeight:'100px'},
 }))
 
 
@@ -32,6 +32,7 @@ export default function News(){
 
     const dispatch = useDispatch();
     const articles = useSelector(state=>state.articles.articles);
+    const user = useSelector(state=>state.users.user);
     const navigate = useNavigate()
     const classes = useStyles ();
 
@@ -69,8 +70,13 @@ export default function News(){
                             </Grid>
                             <Grid item sm={7} className={classes.article}>
                                 <h3>{row.title}</h3>
-                                <div dangerouslySetInnerHTML={{ __html: row.article.substring(0,100) + '...' }}></div>
                             </Grid>
+
+                            {user && user.role === 'admin' && 
+                                <Grid item sm={1}>
+                                    <Button color="warning" onClick={()=>navigate(`/admin-panel/news/edit/${row._id}`,{state:row})}><EditIcon/></Button>
+                                </Grid>
+                            }
                         </Grid>
                     
                     ))}
