@@ -1,6 +1,9 @@
 import axios from 'axios';
 import {url} from '../../config';
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
+import  {Navigate}  from 'react-router';
+
+
 
 
 export const getAllOrders = ()=>async(dispatch)=>{
@@ -13,15 +16,14 @@ export const getAllOrders = ()=>async(dispatch)=>{
 
 export const addNewOrder = (order)=>async(dispatch)=>{
     try{
-
         const res = await axios.post(`${url}/orders`,order);
-        // toast.info(res.data);
-        alert(res.data);
+        toast.dark('Thank you for the oirder',{progressClassName:'Toastify__progress-bar--info'})
+        window.location = `/order-accepted`
+       
     }catch(err){
         console.log(err.response.data);
     }
     
-     window.location = '/';
 
 }
 

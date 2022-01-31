@@ -13,3 +13,4 @@ export {default as Services} from './services';
 export {default as News} from './news';
 export {default as SingleArticle} from './singleArticle';
 export {default as Support} from './support';
+export {default as OrderAccepted} from './orderAccepted';

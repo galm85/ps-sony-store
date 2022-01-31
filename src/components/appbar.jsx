@@ -184,7 +184,7 @@ export default function Appbar() {
           color="inherit"
           >
             
-              <img src={url+"/"+user.image} style={{borderRadius:'50%'}} width="30px" alt="profile" />
+              <img src={url+"/"+user.image} style={{borderRadius:'50%',height:'30px'}} width="30px" alt="profile" />
             
         </IconButton>
        
@@ -252,6 +252,7 @@ export default function Appbar() {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
             onClick={()=>navigate('/')}
+            style={{cursor:'pointer'}}
           >
            <i className="fab fa-playstation" style={{fontSize:'2rem'}} ></i>
           </Typography>
@@ -304,7 +305,7 @@ export default function Appbar() {
               {user ? 
               
               <IconButton size="large" edge="end" aria-label="account of current user" aria-controls={menuId} aria-haspopup="true" onClick={handleProfileMenuOpen} color="inherit">
-                <img src={`${url}/${user.image}`} alt="" width="30px" style={{borderRadius:'50%'}}/>
+                <img src={`${url}/${user.image}`} alt="" width="30px" height="30px" style={{borderRadius:'50%'}}/>
               </IconButton>
               :
 

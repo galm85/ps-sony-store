@@ -24,12 +24,12 @@ export const registerUser = (user,admin=null)=>async(dispatch)=>{
         if(admin){
             window.location = '/admin-panel/users';
         }else{
-            window.location = '/';
+            window.location = '/signin';
 
         }
     }catch(error){
         if(error.response && error.response.data){
-            // toast.error(error.response.data);
+            toast.dark(error.response.data,{progressClassName:'Toastify__progress-bar--error',})
         }
     }
 }
@@ -43,9 +43,9 @@ export const signInUser = (user)=>async(dispatch)=>{
             type:'signInUser',
             payload:signUser
         });
-        window.location = '/';
         
         toast.dark('welcome back ' + signUser.firstName,{progressClassName:'Toastify__progress-bar--success',})
+        window.location = '/';
     }catch(error){
         if(error.response && error.response.data){
         
@@ -88,8 +88,10 @@ export const deleteUser = (userId)=>async(dispatch)=>{
                 payload:userId
             })
             // toast.error(`${data.firstName} deleted`);
+            toast.dark(`${data.firstName} deleted`,{progressClassName:'Toastify__progress-bar--error',})
         } catch (error) {
-            console.log(error)
+            toast.error(error.response.data,{progressClassName:'Toastify__progress-bar--error',})
+
         }
     }
 }
@@ -138,7 +140,7 @@ export const removeItemFromCart = (userId,productId)=>async(dispatch)=>{
             type:'removeItemFromCart',
             payload:productId
         })
-        toast.dark('Removed From Cart',{progressClassName:'Toastify__progress-bar--error',})
+        toast.dark('Item removed from the Cart',{progressClassName:'Toastify__progress-bar--error',})
     } catch (error) {
         
     }

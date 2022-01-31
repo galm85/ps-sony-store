@@ -8,14 +8,15 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import {Input} from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {useDispatch} from 'react-redux';
+import {useDispatch,useSelector} from 'react-redux';
 import { registerUser } from '../redux/actions/usersActions';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -35,16 +36,21 @@ export default function Register() {
     
     const dispatch = useDispatch();
     const [image,setImage] = React.useState(null);
+    const user = useSelector(state=>state.users.user);
+
+
+    React.useEffect(()=>{
+      if(user){
+        window.location = '/';
+      }
+    },[])
+
     
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        console.log({
-        email: data.get('email'),
-        password: data.get('password'),
-        image:data.get('image'),
-        });
-
+        data.append('role','user');
+        
         dispatch(registerUser(data));
     };
 

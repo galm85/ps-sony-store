@@ -1,4 +1,4 @@
-import { Box, Button, Container,Divider,Grid, TextField, Typography } from '@mui/material';
+import { Box, Button, Container,Divider,Grid, TextField, Typography,MenuItem,InputLabel,Select,FormControl } from '@mui/material';
 import React,{useState,useEffect} from 'react';
 import { makeStyles } from '@mui/styles';
 import { useDispatch,useSelector } from "react-redux";
@@ -38,6 +38,16 @@ const useStyles = makeStyles(theme=>({
    
 }))
 
+const renderYears = ()=>{
+    const years=[];
+    const currentYear =  new Date().getFullYear();
+    years.push(currentYear);
+   for(let i =1;i<7;i++){
+       let current = currentYear+i;
+       years.push(current);
+   }
+   return years;
+}
 
 
 const Checkout = () => {
@@ -48,6 +58,8 @@ const Checkout = () => {
     const cart = useSelector(state => state.users.cart);
     const totalPrice = useSelector(state => state.users.totalPrice);
     const [order,setOrder] = useState({});
+    const years = renderYears();
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     
     useEffect(()=>{
         dispatch(getCart(user._id))
@@ -64,6 +76,7 @@ const Checkout = () => {
         fullOrder.orderDetails = [...cart];
         fullOrder.userId = user._id;
         fullOrder.totalPrice = totalPrice;
+        fullOrder.cardExpireDate = String(`${order.month}/${order.year}`);
         dispatch(clearCart(user._id))
         dispatch(addNewOrder(fullOrder));
          
@@ -89,9 +102,49 @@ const Checkout = () => {
                                 <Typography variant="h3">Payments</Typography>
                                 <TextField id="standard-basic" name='cardNumber' fullWidth type='number' onChange={handleChange} required label="Card Number" variant="standard" />
                                 <TextField id="standard-basic" name='idNumber' fullWidth type='number' onChange={handleChange} required label="Card Holder ID" variant="standard" />
-                                <TextField id="standard-basic" name='securityNumber' fullWidth  type='number' onChange={handleChange} required label="CCV" variant="standard" />
-                                <TextField id="standard-basic" name='year' fullWidth type='number' onChange={handleChange} required label="Expire Year" variant="standard" />
-                                <TextField id="standard-basic" name='month' fullWidth  type='number' onChange={handleChange} required label="Expire Month" variant="standard" />
+                                <TextField id="standard-basic" name='securityNumber' inputProps={{ min:100,max:9999 }} fullWidth  type='number' onChange={handleChange} required label="CCV" variant="standard" />
+                                
+                                <Grid container style={{display:'flex',justifyContent:'space-between'}}>
+                                    <Typography style={{width:'100%',marginTop:'30px'}} variant='rowLight'>Card Expire Date</Typography>
+                                    <Grid item sm={5}>
+                                        <FormControl variant='standard' fullWidth>
+                                        <InputLabel id="year">Year</InputLabel>
+                                            <Select
+                                                labelId="year"
+                                                id="year"
+                                                value={order.year}
+                                                label="Age"
+                                                onChange={handleChange}
+                                                name='year'
+                                                
+                                            >
+                                                {years.map(year=>(
+                                                <MenuItem key={year} value={year}>{year}</MenuItem>
+                                                ))}
+                                                
+                                            </Select>
+                                        </FormControl>
+                                    </Grid>
+                                    <Grid item sm={5}>
+                                        <FormControl variant='standard' fullWidth>
+                                        <InputLabel id="month">Month</InputLabel>
+                                            <Select
+                                                labelId="month"
+                                                id="month"
+                                                value={order.month}
+                                                label="month"
+                                                onChange={handleChange}
+                                                name='month'
+                                            >
+                                                {months.map((month,index)=>(
+                                                <MenuItem key={month} value={index+1}>{month}</MenuItem>
+                                                ))}
+                                                
+                                            </Select>
+                                        </FormControl>
+                                    </Grid>
+                                </Grid>
+                                
                             </Grid>
                             <Button type='submit' style={{width:'100%',marginTop:'50px'}} variant="contained">Place Order</Button>
                         </Grid> 

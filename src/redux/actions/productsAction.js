@@ -40,10 +40,16 @@ export const addNewProducts = (product)=>async(dispatch)=>{
 
 export const updateProduct = (productId,product)=>async(dispatch)=>{
     if(window.confirm(`Save Changes on this product?`)){
-        const res = await axios.patch(`${url}/products/update-product/${productId}`,product);
-        window.location = '/admin-panel/products';
+        try{
+            const res = await axios.patch(`${url}/products/update-product/${productId}`,product);
+            toast.dark('Product Updated',{progressClassName:'Toastify__progress-bar--success',})
+            window.location = '/admin-panel/products';
+
+        }catch(error){
+            toast.dark(error.response.data,{progressClassName:'Toastify__progress-bar--info',})
+
+        }
     }
-    toast.dark('Product Updated',{progressClassName:'Toastify__progress-bar--success',})
 
 }
 

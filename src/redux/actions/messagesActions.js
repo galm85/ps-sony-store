@@ -1,9 +1,11 @@
 import axios from 'axios';
 import {url} from '../../config'
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
+
+
+
 
 export const getAllMessages = ()=>async(dispatch)=>{
-  
     const res = await axios.get(`${url}/messages`);
     dispatch({
         type:'getAllMessages',
@@ -15,7 +17,7 @@ export const getAllMessages = ()=>async(dispatch)=>{
 export const addNewMessage = (message)=>async(dispatch)=>{
     try{
         const res = await axios.post(`${url}/messages`,message); 
-        alert(res.data);
+        toast.dark(res.data,{progressClassName:'Toastify__progress-bar--info',})
         window.location = '/';
     }catch(err){
         console.log(err.response.data);
@@ -31,7 +33,7 @@ export const deleteMessage = (messageId)=>async(dispatch)=>{
                 type:'deleteMessage',
                 payload:messageId,
             })
-            alert(res.data);
+            toast.dark(res.data,{progressClassName:'Toastify__progress-bar--info',})
         } catch (error) {
             console.log(error.response.data);
         }
@@ -47,6 +49,8 @@ export const updateStatus = (messageId,status)=>async(dispatch)=>{
     })
     
     window.location = '/admin-panel/messages';
+    toast.dark(res.data,{progressClassName:'Toastify__progress-bar--info',})
+
 }
 
 

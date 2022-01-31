@@ -88,7 +88,7 @@ export default function Sidenav({children}) {
     <List>
   
         <ListItem  className={classes.listItem} onClick={()=>navigate('/profile')}>
-            <ListItemIcon><img src={`${url}/${user.image}`} alt="user image" style={{width:'30px',borderRadius:'50%'}} /></ListItemIcon>
+            <ListItemIcon><img src={`${url}/${user.image}`} alt="user image" style={{width:'30px',height:'30px',borderRadius:'50%'}} /></ListItemIcon>
             <ListItemText><NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/profile'>{user.firstName + ' ' +user.lastName}</NavLink></ListItemText>
         </ListItem>
         
@@ -96,10 +96,12 @@ export default function Sidenav({children}) {
             <ListItemIcon><ShoppingCartIcon className={classes.icon}/></ListItemIcon>
             <ListItemText><NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/cart'>Cart</NavLink></ListItemText>
         </ListItem>
+        {user.role === 'admin' &&
         <ListItem className={classes.listItem} onClick={()=>navigate('/admin-panel')}>
             <ListItemIcon><AdminPanelSettingsIcon className={classes.icon}/></ListItemIcon>
             <ListItemText><NavLink className={(navData)=>navData.isActive ? classes.active : classes.nonActive} to='/admin-panel'>Admin Panel</NavLink></ListItemText>
         </ListItem>
+        }
     </List>
     :
     <List>
@@ -114,7 +116,7 @@ export default function Sidenav({children}) {
 
         }
 
-    <Divider/>
+    <Divider color="white"/>
 
     <List>
         <ListItem className={classes.listItem} onClick={()=>navigate('/')}>

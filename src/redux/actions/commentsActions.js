@@ -1,5 +1,6 @@
 import axios from 'axios';
 import {url} from '../../config';
+import { toast } from "react-toastify";
 
 
 
@@ -60,6 +61,8 @@ export const postNewComment = (comment)=>async(dispatch)=>{
             type:'postNewComment',
             payload:comment,
         })
+        toast.dark('Ypur comment recived',{progressClassName:'Toastify__progress-bar--info'})
+
     }catch(err){
         console.log(err.response.data);
     }

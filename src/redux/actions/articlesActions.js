@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {url} from '../../config';
-
+import { toast } from 'react-toastify';
 
 
 
@@ -39,7 +39,7 @@ export const getPostedArticles = ()=>async(dispatch)=>{
 export const postNewArticle = (article)=>async(dispatch)=>{
     try{
         const res = await axios.post(`${url}/articles`,article)
-        alert(res.data);
+        toast.dark(res.data,{progressClassName:'Toastify__progress-bar--info',})
         window.location = '/admin-panel/news';
     }catch(err){
         console.log(err.response.data);
@@ -53,7 +53,7 @@ export const updateArticle = (article,articleId)=>async(dispatch)=>{
     try{
 
         const res  = await axios.patch(`${url}/articles/update-article/${articleId}`,article);
-        alert(res.data);
+        toast.dark(res.data,{progressClassName:'Toastify__progress-bar--info',})
         window.location = '/admin-panel/news';
 
     }catch(err){
@@ -68,12 +68,12 @@ export const deleteArticle = (articleId)=>async(dispatch)=>{
         try{
             
             const res = await axios.delete(`${url}/articles/${articleId}`);
-            alert(res.data);
             dispatch({
                 type:'deleteArticle',
                 payload:articleId
             })
-            
+            toast.dark(res.data,{progressClassName:'Toastify__progress-bar--info',})
+
         }catch(err){
             console.log(err.response.data);
         }
