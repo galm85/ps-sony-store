@@ -19,7 +19,12 @@ const useStyles = makeStyles(theme=>({
     imageContainer:{width:'100%',height:'30vh',background:'red'},
     image:{width:"100%",height:'100%',objectFit:'cover'},
     like:{color:theme.colors.main,height:'auto'},
-    comments:{marginTop:'30px',display:'flex',justifyContent:'space-around'}
+    comments:{marginTop:'30px',display:'flex',justifyContent:'space-around'},
+    text:{
+     '& p':{
+         margin:'20px 0',
+     }
+    }
 }))
 
 export default function SingleArticle(){
@@ -89,7 +94,7 @@ export default function SingleArticle(){
             
             <Grid container>
                 <Grid item sm={12} lg={10} className={classes.articleContainer}>
-                    <div dangerouslySetInnerHTML={{__html:article.article}}></div>
+                    <div className={classes.text}  dangerouslySetInnerHTML={{__html:article.article}}></div>
                 </Grid>
             </Grid>
 
