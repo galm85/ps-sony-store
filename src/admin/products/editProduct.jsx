@@ -3,9 +3,10 @@ import React,{useEffect,useState} from 'react';
 import { makeStyles } from '@mui/styles';
 import { useDispatch,useSelector } from 'react-redux';
 import { getAllCategories } from '../../redux/actions/categoriesActions';
-import { addNewProducts, updateProduct } from '../../redux/actions/productsAction';
+import { updateProduct } from '../../redux/actions/productsAction';
 import { useNavigate, useLocation } from "react-router-dom";
 import {url} from '../../config';
+import ConfirmMenu from '../../components/confirm';
 
 const useStyles = makeStyles(theme=>({
     container:{
@@ -28,12 +29,10 @@ const EditProduct = () => {
     const [product,setProduct] = useState({...location.state});
     const categories = useSelector(state => state.categories.categories);
     const [image,setImage] = useState(url + "/" + product.image);
+    const [confirmObject,setConfirmObject] =  React.useState({isOpen:false});
 
     const goBack = ()=>{
-        if(window.confirm('Are you sure to cancel? changes will not save')){
-
             navigate('/admin-panel/products')
-        }
     }
 
     const handleChange = (e)=>{
@@ -50,8 +49,8 @@ const EditProduct = () => {
         }
     }
 
-    const handleSubmit = (e)=>{
-        e.preventDefault();
+    const handleSubmit = ()=>{
+        
         const data = new FormData();
         data.append('title',product.title);
         data.append('categorie',product.categorie);
@@ -158,12 +157,13 @@ const EditProduct = () => {
                     </Grid>
                     
                     <div style={{display:'flex',justifyContent:'space-around',margin:'50px 0'}}>
-                        <Button type="button" variant="outlined" color="error" onClick={()=>goBack()}>Cancel</Button>
-                        <Button type="submit" variant='contained'>Save</Button>
+                        <Button type="button" variant="outlined" color="error" onClick={()=>setConfirmObject({isOpen:true,title:'Cancel Update Product?',subtitle:'Changes Will Not Save',yesBtn:'retun to products',noBtn:'continue edit',onConfirm:goBack})}>Cancel</Button>
+                        <Button type="button" variant='contained' onClick={()=>setConfirmObject({isOpen:true,title:'Save changes?',yesBtn:'Save',noBtn:'Cancel',onConfirm:handleSubmit})}>Save</Button>
                     </div>
                 </form>
           
 
+                <ConfirmMenu confirmObject={confirmObject} setConfirmObject={setConfirmObject} />
 
         </Container>
      );

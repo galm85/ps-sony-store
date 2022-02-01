@@ -6,10 +6,9 @@ import { useDispatch,useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { makeStyles } from '@mui/styles';
-import {deleteCategory, getAllCategories} from '../../redux/actions/categoriesActions';
-import { deleteOrder, getAllOrders, getOrderByEmailSearch, getOrderById } from '../../redux/actions/ordersActions';
 import { deleteArticle, getAllArticles } from '../../redux/actions/articlesActions';
 import SearchBar from '../../components/searchBar';
+import ConfirmMenu from '../../components/confirm';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -50,28 +49,23 @@ const useStyles = makeStyles(theme=>({
 export default function AdminNews() {
   
     const dispatch = useDispatch();
-    const orders = useSelector(state => state.orders.orders);
     const articles = useSelector(state => state.articles.articles);
     const navigate = useNavigate();
     const classes = useStyles();
     const [search,setSearch] = React.useState(null);
-    const [searchBy,setSearchBy] = React.useState('id');
+    const [confirmObject,setConfirmObject] = React.useState({isOpen:false});
 
     const handleSearch = (e)=>{
         setSearch(e.target.value);
     }
     const handleClick = (e)=>{
         if(search === '' || search === null){
-            dispatch(getAllOrders());
          
         }else{
-            dispatch(getOrderByEmailSearch(search));
-            // dispatch(getOrderById(search));
         }
     }
 
     React.useEffect(()=>{
-        dispatch(getAllOrders());
         dispatch(getAllArticles());
     },[])
 
@@ -117,7 +111,7 @@ export default function AdminNews() {
                     <StyledTableCell align="left">{row.comments.length}</StyledTableCell>
                     <StyledTableCell align="left">{row.author?row.author : 'Admin'}</StyledTableCell>
                     
-                    <StyledTableCell align="left"  style={{position:'relative',zIndex:200}} onClick={(e)=>{e.stopPropagation();dispatch(deleteArticle(row._id))}}>
+                    <StyledTableCell align="left"  style={{position:'relative',zIndex:200}} onClick={(e)=>{e.stopPropagation();setConfirmObject({isOpen:true,title:'Delete Article?',yesBtn:'Delete',noBtn:'Cancel',onConfirm:()=>dispatch(deleteArticle(row._id))})}}>
                         <IconButton ><DeleteForeverIcon color="error" /></IconButton>
                     </StyledTableCell>
                 </StyledTableRow>
@@ -126,7 +120,7 @@ export default function AdminNews() {
         </Table>
         </TableContainer>
 
-
+        <ConfirmMenu confirmObject={confirmObject} setConfirmObject={setConfirmObject} />
 
     </Container>
   );

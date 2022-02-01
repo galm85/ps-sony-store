@@ -39,7 +39,7 @@ export const addNewProducts = (product)=>async(dispatch)=>{
 
 
 export const updateProduct = (productId,product)=>async(dispatch)=>{
-    if(window.confirm(`Save Changes on this product?`)){
+    console.log('update');
         try{
             const res = await axios.patch(`${url}/products/update-product/${productId}`,product);
             toast.dark('Product Updated',{progressClassName:'Toastify__progress-bar--success',})
@@ -49,13 +49,13 @@ export const updateProduct = (productId,product)=>async(dispatch)=>{
             toast.dark(error.response.data,{progressClassName:'Toastify__progress-bar--info',})
 
         }
-    }
+    
 
 }
 
 
 export const deleteProduct = (productId)=>async(dispatch)=>{
-    if(window.confirm('Delete This Product?')){
+  
         const res = await axios.delete(`${url}/products/delete/${productId}`);
         dispatch({
             type:"deleteProduct",
@@ -63,7 +63,7 @@ export const deleteProduct = (productId)=>async(dispatch)=>{
         })
         toast.dark('Product Deleted',{progressClassName:'Toastify__progress-bar--error',})
 
-    }
+   
 }
 
 

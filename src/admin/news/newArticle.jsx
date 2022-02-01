@@ -5,6 +5,8 @@ import { makeStyles } from '@mui/styles';
 import TextEditor from '../../components/textEditor';
 import {useDispatch,useSelector} from 'react-redux';
 import { postNewArticle } from '../../redux/actions/articlesActions';
+import ConfirmMenu from '../../components/confirm';
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles(theme=>({
     container:{ display:'flex',justifyContent:'center'},
@@ -21,6 +23,8 @@ export default function NewArticle(){
     const [article,setArticle] = React.useState({status:'draft'});
     const [image,setImage] = React.useState(null);
     const user = useSelector(state=>state.users.user);
+    const navigate = useNavigate();
+    const [confirmObject,setConfirmObject] = React.useState({isOpen:false});
 
     const handleChange =(e)=>{
         setArticle({...article,[e.target.name]:e.target.value});
@@ -37,8 +41,7 @@ export default function NewArticle(){
         }
     }
 
-    const handleSubmit =(e)=>{
-        e.preventDefault();
+    const handleSubmit =()=>{
         const data = new FormData();
         data.append('title',article.title);
         data.append('image',article.image);
@@ -99,14 +102,22 @@ export default function NewArticle(){
                         <TextEditor fn={handleEditor}/>
                         
                         </FormGroup>
-                        <div style={{textAlign:'center',margin:'50px 0'}}>
-                            {article.status === 'draft' ? <Button type="submit" color='success' variant="contained" >SAVE Draft</Button> : <Button type="submit" variant="contained" >Post</Button>}
+                        <div style={{display:'flex',justifyContent:'space-around',margin:'50px 0'}}>
+                            <Button type="button" variant="outlined" color="error" onClick={()=>setConfirmObject({isOpen:true,title:'Go Back?',subtitle:'Changes will NOT save',yesBtn:'continue without save',noBtn:'continue edit',onConfirm:()=>navigate('/admin-panel/news')})}>Cancel</Button>
+
+                            {article.status === 'draft' ? 
+                            <Button type="button" onClick={()=>setConfirmObject({isOpen:true,title:'Save Draft?',subtitle:'The article will save to drafts',yesBtn:'save draft',noBtn:'continue edit',onConfirm:handleSubmit})} color='success' variant="contained" >SAVE Draft</Button> 
+                            : 
+                            <Button type="button" variant="contained" onClick={()=>setConfirmObject({isOpen:true,title:'Save & Post?',subtitle:'The article will Post immediately',yesBtn:'Post',noBtn:'continue edit',onConfirm:handleSubmit})}>Post</Button>
+                            }
+
                             
                         </div>
 
                     </form>
                 </Grid>
             </Grid>
+            <ConfirmMenu confirmObject={confirmObject} setConfirmObject={setConfirmObject}/>
 
         </Container>
     )

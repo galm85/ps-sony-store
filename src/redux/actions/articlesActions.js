@@ -63,8 +63,7 @@ export const updateArticle = (article,articleId)=>async(dispatch)=>{
 
 //delete article
 export const deleteArticle = (articleId)=>async(dispatch)=>{
-    if(window.confirm('Delete This Article?')){
-
+  
         try{
             
             const res = await axios.delete(`${url}/articles/${articleId}`);
@@ -77,7 +76,7 @@ export const deleteArticle = (articleId)=>async(dispatch)=>{
         }catch(err){
             console.log(err.response.data);
         }
-    }
+    
 }
 
 

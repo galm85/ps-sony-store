@@ -14,7 +14,7 @@ import { Typography } from '@mui/material';
 const useStyles = makeStyles(theme=>({
   dialog:{
      minHeight:'200px',
-     minWidth:'400px',
+     minWidth:'600px',
     position:'absolute',
     top:'-200px'
   },
@@ -69,7 +69,7 @@ export default function ConfirmMenu({confirmObject,setConfirmObject}) {
         
         <DialogContent className={classes.content}>
             <Typography variant="h3">{confirmObject.title}</Typography>
-            <Typography variant='h5'>{confirmObject.subtitle}</Typography>
+            <Typography variant='h5'>{confirmObject.subtitle ? confirmObject.subtitle : '' }</Typography>
         </DialogContent>
         
         <DialogActions className={classes.actions} style={{display:'flex',justifyContent:'space-around',padding:'20px'}}>

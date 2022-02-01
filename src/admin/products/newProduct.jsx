@@ -6,7 +6,6 @@ import { getAllCategories } from '../../redux/actions/categoriesActions';
 import { addNewProducts } from '../../redux/actions/productsAction';
 
 
-
 const useStyles = makeStyles(theme=>({
     container:{
         marginTop:'20px',

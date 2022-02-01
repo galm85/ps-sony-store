@@ -2,7 +2,7 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import { url } from "../../config";
 import SearchBar from '../../components/searchBar';
-
+import ConfirmMenu from '../../components/confirm';
 import {Table,TableBody,TableContainer,TableCell,tableCellClasses,TableHead,TableRow,Paper,Container, IconButton, Typography, Button, Divider, Grid} from '@mui/material';
 import { useDispatch,useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -40,7 +40,7 @@ export default function AdminProducts() {
     const products = useSelector(state => state.products.products);
     const navigate = useNavigate();
     const [search,setSearch] = React.useState(null);
-
+    const [confirmObject,setConfirmObject] =  React.useState({isOpen:false});
   
 
     React.useEffect(()=>{
@@ -114,7 +114,7 @@ export default function AdminProducts() {
                 <StyledTableCell align="left">{row.comingSoon ? <CheckCircleIcon color="success"/> :<RemoveCircleIcon color="error"/>}</StyledTableCell>
                 <StyledTableCell align="left">
                     <IconButton onClick={()=>navigate(`/admin-panel/products/edit-product/${row.title}`,{state:row})}><EditIcon color="primary" /></IconButton>
-                    <IconButton><DeleteForeverIcon color="error" onClick={()=>dispatch(deleteProduct(row._id))}/></IconButton>
+                    <IconButton><DeleteForeverIcon color="error" onClick={()=>setConfirmObject({isOpen:true,title:'Delete Product?',subtitle:'The Product will Delete Forever',yesBtn:'Delete',noBtn:'cencel',onConfirm:()=>dispatch(deleteProduct(row._id))})}/></IconButton>
                 </StyledTableCell>
                 </StyledTableRow>
             ))}
@@ -123,6 +123,7 @@ export default function AdminProducts() {
         </TableContainer>
 
 
+        <ConfirmMenu confirmObject={confirmObject} setConfirmObject={setConfirmObject}/>
 
     </Container>
   );
