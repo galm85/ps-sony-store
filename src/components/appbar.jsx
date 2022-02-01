@@ -16,6 +16,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Sidenav from './sidenav';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import ConfirmMenu from './confirm';
 
 
 const useStyles = makeStyles(theme=>({
@@ -83,6 +84,7 @@ export default function Appbar() {
   const itemInWishList = useSelector(state=>state.users.wishList.length);
   
   const [search, setSearch] = React.useState(null);
+  const [confirmObject,setConfirmObject] = React.useState({isOpen:false});
   
 
   React.useEffect(()=>{
@@ -122,10 +124,8 @@ export default function Appbar() {
   };
 
   const logout = ()=>{
-    if(window.confirm('Leave ?')){
       localStorage.removeItem('sony');
       window.location = "/";
-    }
   }
 
   const menuId = 'primary-search-account-menu';
@@ -148,7 +148,7 @@ export default function Appbar() {
       {user ? 
         <>
         <MenuItem onClick={handleMenuClose}><span onClick={()=>navigate('/profile')}>My account</span></MenuItem>
-        <MenuItem onClick={handleMenuClose} onClickCapture={()=>logout()} >Logout</MenuItem>
+        <MenuItem onClick={handleMenuClose} onClickCapture={()=>setConfirmObject({...confirmObject,isOpen:true,title:"Logout",subtitle:'Are You Sure?',noBtn:"Cancel",yesBtn:'Logout',onConfirm:()=>logout()})} >Logout</MenuItem>
         </> 
         : 
         <MenuItem onClick={handleMenuClose}><span onClick={()=>navigate('/signin')}>Sign In</span></MenuItem>
@@ -332,6 +332,7 @@ export default function Appbar() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+      <ConfirmMenu confirmObject={confirmObject} setConfirmObject={setConfirmObject} />
     </Box>
   );
 }
