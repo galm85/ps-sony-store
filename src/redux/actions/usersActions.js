@@ -22,9 +22,9 @@ export const registerUser = (user,admin=null)=>async(dispatch)=>{
         })
         // toast.info(res.data);
         if(admin){
-            window.location = '/admin-panel/users';
+            window.location = './admin-panel/users';
         }else{
-            window.location = '/signin';
+            window.location = './signin';
 
         }
     }catch(error){
@@ -45,7 +45,7 @@ export const signInUser = (user)=>async(dispatch)=>{
         });
         
         toast.dark('welcome back ' + signUser.firstName,{progressClassName:'Toastify__progress-bar--success',})
-        window.location = '/';
+        window.location = './';
     }catch(error){
         if(error.response && error.response.data){
         

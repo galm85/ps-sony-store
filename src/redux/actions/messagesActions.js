@@ -18,7 +18,7 @@ export const addNewMessage = (message)=>async(dispatch)=>{
     try{
         const res = await axios.post(`${url}/messages`,message); 
         toast.dark(res.data,{progressClassName:'Toastify__progress-bar--info',})
-        window.location = '/';
+        window.location = './';
     }catch(err){
         console.log(err.response.data);
     }
@@ -48,7 +48,7 @@ export const updateStatus = (messageId,status)=>async(dispatch)=>{
         payload:{messageId,status}
     })
     
-    window.location = '/admin-panel/messages';
+    window.location = './admin-panel/messages';
     toast.dark(res.data,{progressClassName:'Toastify__progress-bar--info',})
 
 }

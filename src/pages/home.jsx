@@ -85,7 +85,7 @@ const Home = () => {
             
             {promoteProduct &&
                 <div style={{position:'relative'}}>
-                    <img src="/images/unchartedBanner.png" width='100%' alt="" />
+                    <img src="./images/unchartedBanner.png" width='100%' alt="" />
                     <Button variant="contained" style={{position:'absolute',top:'70%',right:'10%'}} onClick={()=>navigate(`/games/uncharted-collection`,{state:promoteProduct})}>Order Now</Button>
                 </div>
                 }
@@ -105,7 +105,7 @@ const Home = () => {
             
             {promoteProduct &&
                 <div style={{position:'relative'}}>
-                    <img src="/images/ps5banner.png" width='100%' alt="ps5 banner" />
+                    <img src="./images/ps5banner.png" width='100%' alt="ps5 banner" />
                     
                 </div>
                 }

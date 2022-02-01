@@ -125,7 +125,7 @@ export default function Appbar() {
 
   const logout = ()=>{
       localStorage.removeItem('sony');
-      window.location = "/";
+      window.location = "./";
   }
 
   const menuId = 'primary-search-account-menu';

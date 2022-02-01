@@ -11,6 +11,7 @@ import AddComment from '../components/addCommentModal';
 import { getCommentsByArticleId } from '../redux/actions/commentsActions';
 import DetailsAccordion from '../components/detailsAccordion';
 
+
 const useStyles = makeStyles(theme=>({
     container:{margin:'50px 0'},
     titleContainer:{display:'flex',justifyContent:'space-between',alignItems:'center'},
@@ -36,6 +37,7 @@ export default function SingleArticle(){
     const [like,setLike] = React.useState(false);
     const article = useSelector(state=>state.articles.article)
     const comments = useSelector(state=>state.comments.comments);
+    const user = useSelector(state=>state.users.user);
 
     const handleLike = async ()=>{
         let op = 'remove like';
@@ -113,7 +115,8 @@ export default function SingleArticle(){
                     </Grid>
                     
                     <Grid item sm={3}>
-                        <AddComment btn='Add Comment' articleId={article._id}/>
+                        {user ?  <AddComment btn='Add Comment' articleId={article._id}/> : <Button onClick={()=>navigate('/signin')}>Sign in to comment</Button>}
+                      
                     </Grid>
                 
             </Grid>

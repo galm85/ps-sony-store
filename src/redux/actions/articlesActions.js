@@ -40,7 +40,7 @@ export const postNewArticle = (article)=>async(dispatch)=>{
     try{
         const res = await axios.post(`${url}/articles`,article)
         toast.dark(res.data,{progressClassName:'Toastify__progress-bar--info',})
-        window.location = '/admin-panel/news';
+        window.location = './admin-panel/news';
     }catch(err){
         console.log(err.response.data);
     }
@@ -54,7 +54,7 @@ export const updateArticle = (article,articleId)=>async(dispatch)=>{
 
         const res  = await axios.patch(`${url}/articles/update-article/${articleId}`,article);
         toast.dark(res.data,{progressClassName:'Toastify__progress-bar--info',})
-        window.location = '/admin-panel/news';
+        window.location = './admin-panel/news';
 
     }catch(err){
         console.log(err.response.data);

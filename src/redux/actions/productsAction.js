@@ -31,7 +31,7 @@ export const addNewProducts = (product)=>async(dispatch)=>{
             payload:product
         })
         toast.dark('New Peoduct Added',{progressClassName:'Toastify__progress-bar--success',})
-        window.location ="/admin-panel/products";
+        window.location ="./admin-panel/products";
     }catch(err){
         console.log(err);
     }
@@ -43,7 +43,7 @@ export const updateProduct = (productId,product)=>async(dispatch)=>{
         try{
             const res = await axios.patch(`${url}/products/update-product/${productId}`,product);
             toast.dark('Product Updated',{progressClassName:'Toastify__progress-bar--success',})
-            window.location = '/admin-panel/products';
+            window.location = './admin-panel/products';
 
         }catch(error){
             toast.dark(error.response.data,{progressClassName:'Toastify__progress-bar--info',})

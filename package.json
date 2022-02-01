@@ -1,6 +1,7 @@
 {
   "name": "sony",
   "version": "0.1.0",
+  "homepage": "https://galwebdev.com/my-projects/ps-store/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.7.1",

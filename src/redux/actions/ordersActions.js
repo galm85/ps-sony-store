@@ -18,7 +18,7 @@ export const addNewOrder = (order)=>async(dispatch)=>{
     try{
         const res = await axios.post(`${url}/orders`,order);
         toast.dark('Thank you for the oirder',{progressClassName:'Toastify__progress-bar--info'})
-        window.location = `/order-accepted`
+        window.location = `./order-accepted`
        
     }catch(err){
         console.log(err.response.data);

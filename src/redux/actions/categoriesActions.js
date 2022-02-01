@@ -46,7 +46,7 @@ export const addNewCategory = (category)=>async(dispatch)=>{
             type:'addNewCategory',
             payload:category
         })
-        window.location = '/admin-panel/categories';
+        window.location = './admin-panel/categories';
     }catch(err){
         console.log(err);
     }
@@ -77,7 +77,7 @@ export const updateCategory = (categoryId,category)=>async(dispatch)=>{
         try{
             const res = await axios.patch(`${url}/categories/update/${categoryId}`,category);
             alert(res.data);
-            window.location = '/admin-panel/categories'
+            window.location = './admin-panel/categories'
         }catch(err){
             alert(err.response.data)
         }
