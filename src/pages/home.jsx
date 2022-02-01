@@ -46,6 +46,7 @@ const Home = () => {
     const comingSoon = useSelector(state => state.products.comingSoon);
     const navigate = useNavigate();
     const [promoteProduct,setPromoteProduct] = useState(null);
+    
 
     const getPromotePeoduct = async ()=>{
         const res = await axios.get(`${url}/products/product-by-id/61e02241acceb5000477e7ac`);

@@ -37,7 +37,7 @@ export default function Register() {
     const dispatch = useDispatch();
     const [image,setImage] = React.useState(null);
     const user = useSelector(state=>state.users.user);
-
+    
 
     React.useEffect(()=>{
       if(user){
