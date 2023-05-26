@@ -1,7 +1,8 @@
 import axios from 'axios';
-import {url} from '../../config';
+// import {url} from '../../config';
 import { toast } from "react-toastify";
 import  {Navigate}  from 'react-router';
+const url = process.env.REACT_APP_API_URL;
 
 
 

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { toast } from "react-toastify";
-import {url} from '../../config';
+// import {url} from '../../config';
+const url = process.env.REACT_APP_API_URL;
 
 
 export const getAllProducts = ()=>async(dispatch)=>{

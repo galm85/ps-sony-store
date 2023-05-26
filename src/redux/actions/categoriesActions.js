@@ -1,5 +1,6 @@
 import axios from 'axios';
-import {url} from '../../config'
+// const url = process.env.REACT_APP_API_URL;
+const url = process.env.REACT_APP_API_URL;
 
 
 

@@ -82,7 +82,7 @@ const Cart = () => {
                                 {cart && cart.map((item,index)=>(
                                     <TableRow key={item._id}>
                                         <TableCell className={classes.bodyCell}>{index+1}</TableCell>
-                                        <TableCell className={classes.bodyCell}><img src={`${url}/${item.image}`} width="50px" alt="product image" /></TableCell>
+                                        <TableCell className={classes.bodyCell}><img src={item.image} width="50px" alt="product image" /></TableCell>
                                         <TableCell className={classes.bodyCell}>{item.title}</TableCell>
                                         <TableCell className={classes.bodyCell}>$ {item.price}</TableCell>
                                         <TableCell className={classes.bodyCell}>{item.amount}</TableCell>

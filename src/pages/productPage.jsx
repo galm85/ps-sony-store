@@ -61,7 +61,7 @@ const ProductPage = () => {
            <Grid container className={classes.dataContainer}>
                <Grid item sm={12} lg={5}>
                    
-                   <img className={classes.image} src={`${url}/${product.image}`} alt={product.title + 'image'} />
+                   <img className={classes.image} src={product.image} alt={product.title + 'image'} />
                </Grid>
                <Grid item sm={12} lg={6}>
                    <div style={{display:'flex',justifyContent:'space-between'}}>

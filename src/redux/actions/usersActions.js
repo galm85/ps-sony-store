@@ -1,7 +1,8 @@
 import axios from 'axios';
-import {url} from '../../config';
+// import {url} from '../../config';
 import jwtDecode from "jwt-decode";
 import { toast } from "react-toastify";
+const url = process.env.REACT_APP_API_URL;
 
 
 export const getAllUsers = ()=>async(dispatch)=>{

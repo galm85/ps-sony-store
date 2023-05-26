@@ -7,7 +7,7 @@ const GameCard = ({game}) => {
     return ( 
         <Grid item  sm={12} md={4} lg={2} >
             <h3>{game.title}</h3>
-            <img src={`${url}/${game.image}`} width="100%" alt="" />
+            <img src={game.image} width="100%" alt="" />
         </Grid>
      );
 }
