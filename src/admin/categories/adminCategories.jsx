@@ -66,7 +66,7 @@ export default function AdminCategories() {
             {categories && categories.map((row,index) => (
                 <StyledTableRow key={row._id}>
                 <StyledTableCell component="th" scope="row">{index+1}</StyledTableCell>
-                <StyledTableCell align="left"><img src={`${url}/${row.image}`} width="40px" alt="category image" /></StyledTableCell>
+                <StyledTableCell align="left"><img src={row.image} width="40px" alt={row.title} /></StyledTableCell>
                 <StyledTableCell align="left">{row.title}</StyledTableCell>
                 <StyledTableCell align="left">{row.parentCategorieTitle}</StyledTableCell>
                 <StyledTableCell align="left">
