@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { updateCategory } from '../../redux/actions/categoriesActions';
 import {useNavigate, useLocation} from 'react-router-dom';
 import {url} from '../../config';
+import Loader from '../../components/loader';
 
 const useStyles = makeStyles(theme=>({
     container:{
@@ -27,6 +28,8 @@ const EditCategory = () => {
     const navigate = useNavigate();
     const [category,setCategory] = useState({...location.state});
     const [image,setImage] = useState(url+"/"+location.state.image);
+    const [loading,setLoading] = useState(false);
+
 
     const handleChange = (e)=>{
         setCategory({...category,[e.target.name]:e.target.value});
@@ -42,13 +45,15 @@ const EditCategory = () => {
         }
     }
 
-    const handleSubmit = (e)=>{
+    const handleSubmit = async (e)=>{
         e.preventDefault();
+        setLoading(true);
         const data = new FormData();
         data.append('title',category.title);
         data.append('image',category.image);
         data.append('parentCategorieTitle',category.parentCategorieTitle ? category.parentCategorieTitle : null);
-        dispatch(updateCategory(category._id,data));
+        await dispatch(updateCategory(category._id,data));
+        setLoading(false);
     }
 
     const goBack = ()=>{
@@ -62,6 +67,8 @@ const EditCategory = () => {
 
     return ( 
         <Container className={classes.container}>
+            
+            {loading && <Loader size={200}/>}
             <Typography variant="h1" align='center' style={{marginBottom:'100px'}}>Edit Category</Typography>
             
            

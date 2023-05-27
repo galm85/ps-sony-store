@@ -73,6 +73,7 @@ const ProductCard = ({product,fromWishList}) => {
     }
     
     return ( 
+
         <Grid item  sm={10} md={3} lg={2} className={classes.item} style={{margin:'40px 20px'}} onClick={()=>navigate(`/games/${product.title.toLowerCase().replace(/ /g,'-')}`,{state:product})}>
            
             <img className={classes.image} src={product.image}   alt={product.title} />

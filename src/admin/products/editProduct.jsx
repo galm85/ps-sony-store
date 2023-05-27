@@ -7,6 +7,7 @@ import { updateProduct } from '../../redux/actions/productsAction';
 import { useNavigate, useLocation } from "react-router-dom";
 import {url} from '../../config';
 import ConfirmMenu from '../../components/confirm';
+import Loader from '../../components/loader';
 
 const useStyles = makeStyles(theme=>({
     container:{
@@ -30,6 +31,7 @@ const EditProduct = () => {
     const categories = useSelector(state => state.categories.categories);
     const [image,setImage] = useState(url + "/" + product.image);
     const [confirmObject,setConfirmObject] =  React.useState({isOpen:false});
+    const [loading,setLoading] = React.useState(false);
 
     const goBack = ()=>{
             navigate('/admin-panel/products')
@@ -49,8 +51,9 @@ const EditProduct = () => {
         }
     }
 
-    const handleSubmit = ()=>{
-        
+    const handleSubmit = async(e)=>{
+       
+        setLoading(true);
         const data = new FormData();
         data.append('title',product.title);
         data.append('categorie',product.categorie);
@@ -65,7 +68,8 @@ const EditProduct = () => {
         data.append('newGame',product.newGame ? true : false);
         data.append('comingSoon',product.comingSoon ? true : false);
 
-        dispatch(updateProduct(product._id,data));
+        await dispatch(updateProduct(product._id,data));
+        setLoading(false);
     }
 
     const handleSwitch = (e)=>{
@@ -73,13 +77,16 @@ const EditProduct = () => {
     }
 
     useEffect(()=>{
+        setLoading(true);
         dispatch(getAllCategories());
+        setLoading(false);
     },[])
 
     return ( 
         <Container className={classes.container}>
             <Typography variant="h1" align='center' style={{marginBottom:'100px'}}>Add New Product</Typography>
             
+               {loading &&  <Loader/>}
            
                 <form onSubmit={handleSubmit}>
                     <Grid container className={classes.rowContainer} >
