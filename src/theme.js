@@ -1,21 +1,26 @@
 import {createTheme} from '@mui/material/styles';
 
-const mainColor = "#192a56"
-const secondFont = 'Quicksand ,sans-serif';
-const mainFont = 'Lato, sans-serif';
+const headingFont = "'Space Grotesk', 'Inter', sans-serif";
+const bodyFont = "'Inter', 'Lato', sans-serif";
 
 export const theme = createTheme({
     colors:{
-        main:'#192a56',
-        light:'#273c75',
-        gray:'#dcdde1',
-        green:'#4cd137',
+        main:'#0e1117',
+        surface:'#1a1f2e',
+        surface2:'#252b3a',
+        light:'#2d3650',
+        gray:'#b0bcd8',
+        grayLight:'#f0f4ff',
+        green:'#4ade80',
         naval:'#40739e',
         cyan:'#00a8ff',
-        secondary:'#8338ec'
+        psBlue:'#0067dd',
+        secondary:'#8338ec',
+        border:'rgba(255,255,255,0.08)',
     },
     fonts:{
-        main:mainFont
+        main:bodyFont,
+        heading:headingFont,
     },
     fontW:{
         thin:'300',
@@ -23,72 +28,220 @@ export const theme = createTheme({
         bold:'600',
         black:'700'
     },
+    palette:{
+        mode:'dark',
+        primary:{
+            main:'#0067dd',
+            light:'#3399ff',
+            dark:'#004faa',
+        },
+        secondary:{
+            main:'#8338ec',
+        },
+        background:{
+            default:'#0e1117',
+            paper:'#1a1f2e',
+        },
+        text:{
+            primary:'#eef2ff',
+            secondary:'#a8b8d8',
+        },
+        success:{
+            main:'#4ade80',
+        },
+        error:{
+            main:'#ef4444',
+        },
+        warning:{
+            main:'#f59e0b',
+        },
+    },
+    shape:{
+        borderRadius:12,
+    },
     typography:{
+        fontFamily:bodyFont,
         h1:{
-            color:'#273c75',
-            fontFamily:mainFont,
-            fontWeight:'700'
+            color:'#eef2ff',
+            fontFamily:headingFont,
+            fontWeight:700,
+            letterSpacing:'-0.02em',
+        },
+        h2:{
+            color:'#eef2ff',
+            fontFamily:headingFont,
+            fontWeight:700,
+            letterSpacing:'-0.015em',
         },
         h3:{
-            color:'#273c75',
-            fontFamily:mainFont,
-            fontWeight:'700',
-            fontSize:'30px',
-           
-           
+            color:'#eef2ff',
+            fontFamily:headingFont,
+            fontWeight:700,
+            fontSize:'2rem',
+            letterSpacing:'-0.01em',
+        },
+        h4:{
+            color:'#eef2ff',
+            fontFamily:headingFont,
+            fontWeight:600,
         },
         h5:{
-            color:'#273c75',
-            fontFamily:mainFont,
-            fontWeight:'300',
-            fontSize:'20px',
-           
-           
+            color:'#c8d4f0',
+            fontFamily:headingFont,
+            fontWeight:500,
+            fontSize:'1.15rem',
+        },
+        h6:{
+            color:'#c8d4f0',
+            fontFamily:headingFont,
+            fontWeight:500,
+        },
+        body1:{
+            color:'#d0daf0',
+            fontFamily:bodyFont,
+        },
+        body2:{
+            color:'#a8b8d8',
+            fontFamily:bodyFont,
         },
         mainProductTitle:{
-            color:mainColor,
-            fontFamily:mainFont,
-            fontWeight:'700',
+            color:'#eef2ff',
+            fontFamily:headingFont,
+            fontWeight:700,
             textAlign:'center',
-            fontSize:'3rem'
+            fontSize:'2.8rem',
+            letterSpacing:'-0.02em',
         },
         productTitle:{
             color:'white',
-            fontFamily:mainFont,
-            fontWeight:'700',
+            fontFamily:headingFont,
+            fontWeight:600,
             textAlign:'center',
         },
         rowLight:{
-            fontFamily:mainFont,
-            fontWeight:'300',
-            fontSize:'1.1rem'
+            fontFamily:bodyFont,
+            fontWeight:400,
+            fontSize:'1rem',
+            color:'#b8c8e8',
+            lineHeight:1.8,
         },
         rowNormal:{
-            fontFamily:mainFont,
-            fontWeight:'400',
-            fontSize:'1.1rem'
-
+            fontFamily:bodyFont,
+            fontWeight:400,
+            fontSize:'1rem',
+            color:'#d0daf0',
         },
         rowBold:{
-            fontFamily:mainFont,
-            fontWeight:'600',
-            fontSize:'1.1rem'
- 
+            fontFamily:bodyFont,
+            fontWeight:600,
+            fontSize:'1rem',
+            color:'#eef2ff',
         },
         rowBlack:{
-            fontFamily:mainFont,
-            fontWeight:'700',
-            fontSize:'1.1rem',
-            
-            
+            fontFamily:headingFont,
+            fontWeight:700,
+            fontSize:'1rem',
+            color:'#eef2ff',
         },
     },
     TableCell:{
         headCell:{
-            fontFamily:mainFont,
-           
-            
+            fontFamily:headingFont,
         }
     },
-    
+    components:{
+        MuiOutlinedInput:{
+            styleOverrides:{
+                root:{
+                    '& .MuiOutlinedInput-notchedOutline':{
+                        borderColor:'rgba(255,255,255,0.2)',
+                    },
+                    '&:hover .MuiOutlinedInput-notchedOutline':{
+                        borderColor:'rgba(255,255,255,0.4)',
+                    },
+                    '&.Mui-focused .MuiOutlinedInput-notchedOutline':{
+                        borderColor:'#0067dd',
+                    },
+                    '& .MuiInputBase-input':{
+                        color:'#eef2ff',
+                    },
+                },
+            },
+        },
+        MuiInputLabel:{
+            styleOverrides:{
+                root:{
+                    color:'#8090b8',
+                    fontFamily:bodyFont,
+                    '&.Mui-focused':{
+                        color:'#3399ff',
+                    },
+                },
+            },
+        },
+        MuiFormControlLabel:{
+            styleOverrides:{
+                label:{
+                    color:'#a8b8d8',
+                    fontSize:'0.9rem',
+                    fontFamily:bodyFont,
+                },
+            },
+        },
+        MuiTableCell:{
+            styleOverrides:{
+                root:{
+                    borderBottom:'1px solid rgba(255,255,255,0.06)',
+                    fontFamily:bodyFont,
+                    color:'#c8d8f0',
+                },
+            },
+        },
+        MuiDivider:{
+            styleOverrides:{
+                root:{
+                    borderColor:'rgba(255,255,255,0.08)',
+                },
+            },
+        },
+        MuiListItemText:{
+            styleOverrides:{
+                primary:{
+                    color:'#c8d8f0',
+                    fontFamily:bodyFont,
+                },
+            },
+        },
+        MuiMenuItem:{
+            styleOverrides:{
+                root:{
+                    fontFamily:bodyFont,
+                    color:'#d0daf0',
+                },
+            },
+        },
+        MuiTypography:{
+            styleOverrides:{
+                root:{
+                    letterSpacing:'inherit',
+                },
+            },
+        },
+        MuiButton:{
+            styleOverrides:{
+                root:{
+                    fontFamily:headingFont,
+                    fontWeight:600,
+                    letterSpacing:'0.01em',
+                },
+            },
+        },
+        MuiAppBar:{
+            styleOverrides:{
+                root:{
+                    backgroundImage:'none',
+                },
+            },
+        },
+    },
 })

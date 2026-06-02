@@ -9,25 +9,33 @@ import { useNavigate } from 'react-router-dom';
 const useStyles = makeStyles(theme=>({
     container:{
         display:"flex",
-        justifyContent:'space-between'
+        justifyContent:'space-between',
+        gap:'24px',
+        paddingTop:'40px',
+        paddingBottom:'40px',
     },
     headRow:{
-        background:'black',
-    
+        background:'rgba(0,103,221,0.1)',
     },
     headCell:{
-        color:"white",
+        color:'#c0cce8',
         fontFamily:theme.fonts.main,
-        fontSize:'2rem'
+        fontSize:'0.8rem',
+        fontWeight:700,
+        textTransform:'uppercase',
+        letterSpacing:'0.07em',
     },
-    bodyCell:{},
+    bodyCell:{
+        color:'#c0cce8',
+    },
     checkout:{
         minHeight:"400px",
-        padding:'20px',
+        padding:'28px',
         position:'relative',
-        background:'rgba(0,0,0,0.1)',
-        borderRadius:'15px',
-        boxShadow:'2px 2px 2px rgba(0,0,0,0.4)'
+        background:'#1a1f2e',
+        borderRadius:'16px',
+        border:'1px solid rgba(255,255,255,0.06)',
+        boxShadow:'0 8px 32px rgba(0,0,0,0.4)',
     },
     checkoutBtn:{
         color:"yellow"
@@ -63,7 +71,7 @@ const Cart = () => {
 
             <Grid container  className={classes.container}>
                 <Grid item sm={12} md={8}>
-                    <TableContainer component={Paper}>
+                    <TableContainer component={Paper} sx={{background:'#1a1f2e',border:'1px solid rgba(255,255,255,0.06)',borderRadius:2}}>
                         <Table>
                             <TableHead>
                                 <TableRow className={classes.headRow}>
@@ -99,7 +107,7 @@ const Cart = () => {
                         <Typography variant="h3" gutterBottom>Total</Typography>
                         <Divider gutterBottom/>
                         <Typography variant="h3" style={{marginTop:'20px'}}>$ {totalPrice}</Typography>
-                        <Button onClick={()=>navigate('/checkout')}  variant='contained' style={{background:"rgba(255, 200, 3, 0.966)",color:"black",position:'absolute',bottom:'20px',width:'85%'}} >Checkout</Button>
+                        <Button onClick={()=>navigate('/checkout')}  variant='contained' style={{background:'linear-gradient(135deg, #f59e0b, #fbbf24)',color:'black',fontWeight:700,borderRadius:'12px',textTransform:'none',position:'absolute',bottom:'20px',width:'85%'}} >Checkout</Button>
                     </Box>
                 </Grid>
             </Grid>

@@ -14,40 +14,46 @@ import HomeIcon from '@mui/icons-material/Home';
 const useStyles = makeStyles(theme=>({
 
     footer:{
-        background:theme.colors.main,
+        background:'#090c12',
+        borderTop:'1px solid rgba(255,255,255,0.06)',
         minHeight:'5vh',
         width:'100%',
         fontFamily:theme.fonts.main,
         color:'white',
-        padding:'50px',
-        
+        padding:'60px 50px 30px',
     },
     para:{
         textAlign:'center',
         lineHeight:'3',
         fontFamily:theme.fonts.main,
-        color:'white',
+        color:'#8090b8',
         fontWeight:theme.fontW.thin,
-        
+        fontSize:'0.85rem',
     },
     gwdLink:{
-        color:theme.colors.secondary,
+        color:'#3399ff',
         textDecoration:'none',
-        fontWeight:theme.fontW.black
+        fontWeight:theme.fontW.bold,
+        transition:'color 0.2s ease',
+        '&:hover':{
+            color:'#66b3ff',
+        }
     },
     link:{
         fontFamily:theme.fonts.main,
-        fontWeight:theme.fontW.thin,
-        height:'50px',
-        fontSize:'1.3rem',
+        fontWeight:theme.fontW.normal,
+        height:'44px',
+        fontSize:'0.9rem',
         display:'flex',
         alignItems:'center',
         cursor:'pointer',
+        color:'#8090b8',
+        transition:'color 0.2s ease',
         "&:hover":{
-            color:theme.colors.secondary
+            color:'#eef2ff',
         }
     }
-    
+
 
 }))
 

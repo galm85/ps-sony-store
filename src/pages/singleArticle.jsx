@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme=>({
     articleContainer:{fontFamily:theme.fonts.main,fontSize:'1.2rem'},
     imageContainer:{width:'100%',height:'30vh',background:'red'},
     image:{width:"100%",height:'100%',objectFit:'cover'},
-    like:{color:theme.colors.main,height:'auto'},
+    like:{color:theme.colors.psBlue,height:'auto',cursor:'pointer'},
     comments:{marginTop:'30px',display:'flex',justifyContent:'space-around'},
     text:{
      '& p':{
@@ -63,7 +63,7 @@ export default function SingleArticle(){
        <>
        
         <Box className={classes.imageContainer}>
-            <img className={classes.image}   src={`${url}/${article.image}`} alt="article main image" />
+            <img className={classes.image}   src={article.image} alt="article main image" />
         </Box>
         <Container className={classes.container}>
             

@@ -11,49 +11,55 @@ const useStyles = makeStyles(theme=>({
     item:{
         position:'relative',
         margin:'10px 10px',
-        transition:'all ease 0.2s',
-        borderRadius:'10px',
+        transition:'all 0.3s ease',
+        borderRadius:'16px',
         cursor:'pointer',
+        overflow:'hidden',
+        background:'#1a1f2e',
+        border:'1px solid rgba(255,255,255,0.06)',
         "&:hover $image":{
-            boxShadow:'5px 5px 5px rgba(0,0,0,0.2)',
-            transform:'scale(1.03)'
+            transform:'scale(1.06)',
         },
         "&:hover $data":{
-            display:'block',
             opacity:'1',
-            bottom:'50%',
-            transition:'translateY(-50%)',
-            padding:'20px 5px'
+            transform:'translateY(0)',
         },
         "&:hover $remove":{
-            opacity:1
+            opacity:1,
+        },
+        "&:hover":{
+            boxShadow:'0 12px 40px rgba(0,103,221,0.25)',
+            transform:'translateY(-6px)',
+            border:'1px solid rgba(0,103,221,0.3)',
         }
-        
     },
     data:{
         opacity:'0',
         position:'absolute',
-        transition:'all ease 0.2s',
+        transition:'all 0.3s ease',
         bottom:'0',
+        left:'0',
+        right:'0',
+        transform:'translateY(8px)',
         textAlign:'center',
-        width:'100%',
-        background:'rgba(0,0,0,0.8)',
-        color:'white'   
+        background:'linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 60%, transparent 100%)',
+        color:'white',
+        padding:'50px 12px 16px',
     },
     image:{
         width:'100%',
         height:'100%',
-        objectFit:'contain',
-        borderRadius:'10px',
-        transition:'all ease 0.2s',
-
+        objectFit:'cover',
+        display:'block',
+        transition:'all 0.3s ease',
     },
     remove:{
         opacity:0,
         position:'absolute',
         zIndex:200,
-        top:-10,
-        right:-10
+        top:8,
+        right:8,
+        transition:'opacity 0.2s ease',
     }
 }))
 

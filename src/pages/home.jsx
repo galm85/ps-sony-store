@@ -8,32 +8,38 @@ import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
 const useStyles = makeStyles(theme=>({
-    
-    
     container:{
         textAlign:'center',
-        margin:"50px auto",
-       
-        
+        margin:"70px auto",
+        padding:'0 16px',
     },
     bannerBtn:{
-        background:theme.colors.cyan,
+        background:'linear-gradient(135deg, #0067dd, #3399ff)',
+        color:'white',
+        fontWeight:700,
+        borderRadius:'50px',
+        padding:'14px 36px',
+        fontSize:'1rem',
+        textTransform:'none',
+        boxShadow:'0 4px 24px rgba(0,103,221,0.5)',
         '&:hover':{
-            background:theme.colors.primary
-        }
+            background:'linear-gradient(135deg, #004faa, #0067dd)',
+            boxShadow:'0 8px 32px rgba(0,103,221,0.7)',
+            transform:'translateY(-2px)',
+        },
+        transition:'all 0.2s ease',
     },
     gamesRow:{
         display:'flex',
-        justifyContent:'space-around'
+        justifyContent:'space-around',
     },
     banner:{
         width:"100%",
     },
     bannerImage:{
-        width:'100%'
+        width:'100%',
+        display:'block',
     }
-    
-
 }))
 
 const Home = () => {
@@ -86,7 +92,7 @@ const Home = () => {
             {promoteProduct &&
                 <div style={{position:'relative'}}>
                     <img src="./images/unchartedBanner.png" width='100%' alt="" />
-                    <Button variant="contained" style={{position:'absolute',top:'70%',right:'10%'}} onClick={()=>navigate(`/games/uncharted-collection`,{state:promoteProduct})}>Order Now</Button>
+                    <Button variant="contained" style={{position:'absolute',top:'70%',right:'10%',borderRadius:'50px',fontWeight:700,textTransform:'none',padding:'12px 32px',boxShadow:'0 4px 20px rgba(0,103,221,0.5)'}} onClick={()=>navigate(`/games/uncharted-collection`,{state:promoteProduct})}>Order Now</Button>
                 </div>
                 }
             

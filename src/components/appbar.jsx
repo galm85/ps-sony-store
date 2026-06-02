@@ -20,23 +20,34 @@ import ConfirmMenu from './confirm';
 
 const useStyles = makeStyles(theme=>({
   appnav:{
-    background:theme.colors.main, 
+    background:'rgba(14, 17, 23, 0.97)',
+    backdropFilter:'blur(20px)',
+    borderBottom:'1px solid rgba(255,255,255,0.06)',
+    boxShadow:'none',
   },
   mobileLink:{
-    color:theme.colors.main
+    color:'#f0f0f0',
   }
 }))
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  borderRadius: '50px',
+  backgroundColor: 'rgba(255,255,255,0.06)',
+  border: '1px solid rgba(255,255,255,0.08)',
   '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    backgroundColor: 'rgba(255,255,255,0.1)',
+    border: '1px solid rgba(255,255,255,0.12)',
+  },
+  '&:focus-within': {
+    backgroundColor: 'rgba(255,255,255,0.08)',
+    border: '1px solid rgba(0,103,221,0.7)',
+    boxShadow: '0 0 0 3px rgba(0,103,221,0.15)',
   },
   marginRight: theme.spacing(2),
   marginLeft: 0,
   width: '100%',
+  transition: 'all 0.2s ease',
   [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(3),
     width: 'auto',

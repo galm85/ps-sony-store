@@ -29,7 +29,52 @@ function Copyright(props) {
   );
 }
 
-const theme = createTheme();
+const theme = createTheme({
+    palette:{
+        mode:'dark',
+        primary:{main:'#0067dd',light:'#3399ff'},
+        background:{default:'#0e1117',paper:'#1a1f2e'},
+        text:{primary:'#eef2ff',secondary:'#a8b8d8'},
+    },
+    shape:{borderRadius:12},
+    typography:{
+        fontFamily:"'Inter', sans-serif",
+        h5:{fontFamily:"'Space Grotesk', 'Inter', sans-serif",fontWeight:600,color:'#eef2ff'},
+        body2:{color:'#a8b8d8'},
+    },
+    components:{
+        MuiOutlinedInput:{
+            styleOverrides:{
+                root:{
+                    '& .MuiOutlinedInput-notchedOutline':{borderColor:'rgba(255,255,255,0.2)'},
+                    '&:hover .MuiOutlinedInput-notchedOutline':{borderColor:'rgba(255,255,255,0.4)'},
+                    '&.Mui-focused .MuiOutlinedInput-notchedOutline':{borderColor:'#0067dd'},
+                    '& .MuiInputBase-input':{color:'#eef2ff'},
+                },
+            },
+        },
+        MuiInputLabel:{
+            styleOverrides:{
+                root:{color:'#8090b8','&.Mui-focused':{color:'#3399ff'}},
+            },
+        },
+        MuiFormControlLabel:{
+            styleOverrides:{
+                label:{color:'#a8b8d8',fontSize:'0.9rem'},
+            },
+        },
+        MuiLink:{
+            styleOverrides:{
+                root:{color:'#3399ff','&:hover':{color:'#66b3ff'}},
+            },
+        },
+        MuiButton:{
+            styleOverrides:{
+                root:{fontFamily:"'Space Grotesk', 'Inter', sans-serif",fontWeight:600},
+            },
+        },
+    },
+});
 
 
 export default function Signin() {
@@ -57,9 +102,15 @@ export default function Signin() {
         <Box
           sx={{
             marginTop: 8,
+            marginBottom: 4,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            background:'#1a1f2e',
+            padding:'40px 32px',
+            borderRadius:'16px',
+            border:'1px solid rgba(255,255,255,0.06)',
+            boxShadow:'0 8px 32px rgba(0,0,0,0.5)',
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -97,7 +148,7 @@ export default function Signin() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2, borderRadius:'50px', padding:'12px', textTransform:'none', fontWeight:700, fontSize:'1rem' }}
             >
               Sign In
             </Button>

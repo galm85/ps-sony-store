@@ -1,14 +1,65 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
-*{
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+body {
+  background-color: #0e1117;
+  color: #eef2ff;
+  font-family: 'Inter', 'Lato', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  color: #eef2ff;
+}
 
-.main{
+a {
+  color: #3399ff;
+}
+
+a:hover {
+  color: #66b3ff;
+}
+
+p {
+  color: #d0daf0;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1f2e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2d3650;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0067dd;
+}
+
+::selection {
+  background: rgba(0, 103, 221, 0.35);
+  color: #fff;
+}
+
+.app {
+  background: #0e1117;
+  min-height: 100vh;
+}
+
+.main {
   min-height: 90vh;
- 
 }

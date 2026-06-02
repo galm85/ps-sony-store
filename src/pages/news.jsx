@@ -64,7 +64,7 @@ export default function News(){
                 <Grid container className={classes.container}>    
                     {articles && articles.map(row=>(
                             <Grid item sm={5} className={classes.article} key={row._id} style={{marginBottom:'50px'}}>
-                                <img src={`${url}/${row.image}`} width="100%" style={{objectFit:'cover',height:'80%',borderRadius:'20px'}} alt="article main image" onClick={()=>navigate(`/news/${row.title.toLowerCase().replace(/ /g,'-')}`,{state:row})}/>
+                                <img src={row.image} width="100%" style={{objectFit:'cover',height:'80%',borderRadius:'20px'}} alt="article main image" onClick={()=>navigate(`/news/${row.title.toLowerCase().replace(/ /g,'-')}`,{state:row})}/>
                                 <h3>{row.title}</h3>
                                 {user && user.role === 'admin' && 
                                     <div className={classes.edit}>

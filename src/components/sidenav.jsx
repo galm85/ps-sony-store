@@ -17,34 +17,33 @@ import HomeIcon from '@mui/icons-material/Home';
 
 const useStyles = makeStyles(theme=>({
   sidenavContainer:{
-    background:theme.colors.main,
-    
+    background:'#0a0d14',
+    borderRight:'1px solid rgba(255,255,255,0.06)',
     minHeight:'100%',
-
   },
   listItem:{
     cursor:'pointer',
+    borderRadius:'10px',
+    margin:'3px 10px',
+    width:'calc(100% - 20px)',
+    transition:'all 0.2s ease',
     "&:hover":{
-      background:'rgba(255,255,255,0.3)',
-      
+      background:'rgba(0,103,221,0.12)',
     }
   },
   active:{
     textDecoration:'none',
-    color:theme.colors.green,
+    color:'#3399ff',
     fontFamily:theme.fonts.main,
+    fontWeight:600,
   },
   nonActive:{
     textDecoration:'none',
-    color:'white',
+    color:'#9aaccc',
     fontFamily:theme.fonts.main,
+    fontWeight:400,
   },
-  icon:{color:'white'}
-  
- 
-  
-  
-  
+  icon:{color:'#9aaccc'},
 }))
 
 
