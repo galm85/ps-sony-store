@@ -10,35 +10,40 @@ const useStyles = makeStyles(theme=>({
     container:{
         display:"flex",
         justifyContent:'space-between',
-        gap:'24px',
+        gap:'28px',
         paddingTop:'40px',
-        paddingBottom:'40px',
+        paddingBottom:'70px',
+        alignItems:'flex-start',
     },
     headRow:{
-        background:'rgba(0,103,221,0.1)',
+        background:'#f5f7fb',
     },
     headCell:{
-        color:'#c0cce8',
-        fontFamily:theme.fonts.main,
-        fontSize:'0.8rem',
+        color:'#6b7a99',
+        fontFamily:theme.fonts.heading || theme.fonts.main,
+        fontSize:'0.72rem',
         fontWeight:700,
         textTransform:'uppercase',
-        letterSpacing:'0.07em',
+        letterSpacing:'0.09em',
+        borderBottom:'2px solid #e8edf5 !important',
+        padding:'14px 16px',
     },
     bodyCell:{
-        color:'#c0cce8',
+        color:'#2c3e6a',
+        padding:'16px',
+        verticalAlign:'middle',
     },
     checkout:{
-        minHeight:"400px",
-        padding:'28px',
-        position:'relative',
-        background:'#1a1f2e',
-        borderRadius:'16px',
-        border:'1px solid rgba(255,255,255,0.06)',
-        boxShadow:'0 8px 32px rgba(0,0,0,0.4)',
+        padding:'32px',
+        position:'sticky',
+        top:'24px',
+        background:'#ffffff',
+        borderRadius:'20px',
+        border:'1px solid #e8edf5',
+        boxShadow:'0 4px 24px rgba(13,27,62,0.08)',
     },
     checkoutBtn:{
-        color:"yellow"
+        color:'#003791',
     }
 }))
 
@@ -67,11 +72,11 @@ const Cart = () => {
 
     return ( 
        <Container>
-            <Typography variant="h1">My Cart</Typography>
+            <Typography variant="h1" style={{marginBottom:'8px',fontSize:'2rem'}}>My Cart</Typography>
 
             <Grid container  className={classes.container}>
                 <Grid item sm={12} md={8}>
-                    <TableContainer component={Paper} sx={{background:'#1a1f2e',border:'1px solid rgba(255,255,255,0.06)',borderRadius:2}}>
+                    <TableContainer component={Paper} sx={{background:'#ffffff',border:'1px solid #e8edf5',borderRadius:3,boxShadow:'0 2px 12px rgba(13,27,62,0.06)'}}>
                         <Table>
                             <TableHead>
                                 <TableRow className={classes.headRow}>
@@ -104,10 +109,22 @@ const Cart = () => {
 
                 <Grid item sm={12} md={3}>
                     <Box  className={classes.checkout}>
-                        <Typography variant="h3" gutterBottom>Total</Typography>
-                        <Divider gutterBottom/>
-                        <Typography variant="h3" style={{marginTop:'20px'}}>$ {totalPrice}</Typography>
-                        <Button onClick={()=>navigate('/checkout')}  variant='contained' style={{background:'linear-gradient(135deg, #f59e0b, #fbbf24)',color:'black',fontWeight:700,borderRadius:'12px',textTransform:'none',position:'absolute',bottom:'20px',width:'85%'}} >Checkout</Button>
+                        <Typography variant="h3" gutterBottom style={{fontSize:'1.35rem',fontWeight:700,marginBottom:'20px'}}>Order Summary</Typography>
+                        <Divider/>
+                        <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',margin:'20px 0 8px'}}>
+                            <Typography variant="body1" style={{color:'#6b7a99',fontSize:'0.95rem'}}>Subtotal</Typography>
+                            <Typography variant="body1" style={{color:'#0d1b3e',fontWeight:600}}>$ {totalPrice}</Typography>
+                        </div>
+                        <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:'28px'}}>
+                            <Typography variant="body1" style={{color:'#6b7a99',fontSize:'0.95rem'}}>Shipping</Typography>
+                            <Typography variant="body1" style={{color:'#00a86b',fontWeight:600,fontSize:'0.9rem'}}>Free</Typography>
+                        </div>
+                        <Divider style={{marginBottom:'20px'}}/>
+                        <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:'28px'}}>
+                            <Typography variant="h4" style={{fontSize:'1.15rem',fontWeight:700}}>Total</Typography>
+                            <Typography variant="h4" style={{fontSize:'1.5rem',fontWeight:800,color:'#003791'}}>$ {totalPrice}</Typography>
+                        </div>
+                        <Button onClick={()=>navigate('/checkout')} fullWidth variant='contained' sx={{borderRadius:'12px',fontWeight:700,padding:'15px',fontSize:'1rem',letterSpacing:'0.01em'}} >Proceed to Checkout</Button>
                     </Box>
                 </Grid>
             </Grid>

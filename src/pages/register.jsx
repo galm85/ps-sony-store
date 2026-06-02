@@ -32,46 +32,48 @@ function Copyright(props) {
 
 const theme = createTheme({
     palette:{
-        mode:'dark',
-        primary:{main:'#0067dd',light:'#3399ff'},
-        background:{default:'#0e1117',paper:'#1a1f2e'},
-        text:{primary:'#eef2ff',secondary:'#a8b8d8'},
+        mode:'light',
+        primary:{main:'#003791',light:'#0058cc',contrastText:'#ffffff'},
+        background:{default:'#f5f7fb',paper:'#ffffff'},
+        text:{primary:'#0d1b3e',secondary:'#6b7a99'},
     },
     shape:{borderRadius:12},
     typography:{
         fontFamily:"'Inter', sans-serif",
-        h5:{fontFamily:"'Space Grotesk', 'Inter', sans-serif",fontWeight:600,color:'#eef2ff'},
-        body2:{color:'#a8b8d8'},
+        h5:{fontFamily:"'Space Grotesk', 'Inter', sans-serif",fontWeight:600,color:'#0d1b3e'},
+        body2:{color:'#6b7a99'},
     },
     components:{
         MuiOutlinedInput:{
             styleOverrides:{
                 root:{
-                    '& .MuiOutlinedInput-notchedOutline':{borderColor:'rgba(255,255,255,0.2)'},
-                    '&:hover .MuiOutlinedInput-notchedOutline':{borderColor:'rgba(255,255,255,0.4)'},
-                    '&.Mui-focused .MuiOutlinedInput-notchedOutline':{borderColor:'#0067dd'},
-                    '& .MuiInputBase-input':{color:'#eef2ff'},
+                    backgroundColor:'#ffffff',
+                    '& .MuiOutlinedInput-notchedOutline':{borderColor:'#d0d8ea'},
+                    '&:hover .MuiOutlinedInput-notchedOutline':{borderColor:'#003791'},
+                    '&.Mui-focused .MuiOutlinedInput-notchedOutline':{borderColor:'#003791'},
+                    '& .MuiInputBase-input':{color:'#0d1b3e'},
                 },
             },
         },
         MuiInputLabel:{
             styleOverrides:{
-                root:{color:'#8090b8','&.Mui-focused':{color:'#3399ff'}},
+                root:{color:'#6b7a99','&.Mui-focused':{color:'#003791'}},
             },
         },
         MuiFormControlLabel:{
             styleOverrides:{
-                label:{color:'#a8b8d8',fontSize:'0.9rem'},
+                label:{color:'#2c3e6a',fontSize:'0.9rem'},
             },
         },
         MuiLink:{
             styleOverrides:{
-                root:{color:'#3399ff','&:hover':{color:'#66b3ff'}},
+                root:{color:'#003791','&:hover':{color:'#0058cc'}},
             },
         },
         MuiButton:{
             styleOverrides:{
-                root:{fontFamily:"'Space Grotesk', 'Inter', sans-serif",fontWeight:600},
+                root:{fontFamily:"'Space Grotesk', 'Inter', sans-serif",fontWeight:600,textTransform:'none'},
+                contained:{boxShadow:'none','&:hover':{boxShadow:'0 4px 16px rgba(0,55,145,0.25)'}},
             },
         },
     },
@@ -88,7 +90,7 @@ export default function Register() {
       if(user){
         window.location = '/';
       }
-    },[])
+    },[user])
 
     
     const handleSubmit = (event) => {
@@ -117,16 +119,16 @@ export default function Register() {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 6,
             marginBottom: 4,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            background:'#1a1f2e',
-            padding:'40px 32px',
-            borderRadius:'16px',
-            border:'1px solid rgba(255,255,255,0.06)',
-            boxShadow:'0 8px 32px rgba(0,0,0,0.5)',
+            background:'#ffffff',
+            padding:'40px 36px',
+            borderRadius:'20px',
+            border:'1px solid #e8edf5',
+            boxShadow:'0 4px 24px rgba(13,27,62,0.08)',
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>

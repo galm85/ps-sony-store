@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme=>({
     articleContainer:{fontFamily:theme.fonts.main,fontSize:'1.2rem'},
     imageContainer:{width:'100%',height:'30vh',background:'red'},
     image:{width:"100%",height:'100%',objectFit:'cover'},
-    like:{color:theme.colors.psBlue,height:'auto',cursor:'pointer'},
+    like:{color:'#003791',height:'auto',cursor:'pointer'},
     comments:{marginTop:'30px',display:'flex',justifyContent:'space-around'},
     text:{
      '& p':{
@@ -28,7 +28,6 @@ const useStyles = makeStyles(theme=>({
 }))
 
 export default function SingleArticle(){
-    const url = process.env.REACT_APP_API_URL;
 
     const dispatch = useDispatch();
     const location = useLocation();
@@ -54,7 +53,7 @@ export default function SingleArticle(){
     React.useEffect(()=>{
         dispatch(getSingleArticle(location.state._id))
         dispatch(getCommentsByArticleId(location.state._id));
-    },[])
+    },[dispatch,location.state._id])
 
     return(
 
@@ -63,7 +62,7 @@ export default function SingleArticle(){
        <>
        
         <Box className={classes.imageContainer}>
-            <img className={classes.image}   src={article.image} alt="article main image" />
+            <img className={classes.image}   src={article.image} alt="article main " />
         </Box>
         <Container className={classes.container}>
             

@@ -100,7 +100,7 @@ export const getSingleArticle = (articleId)=>async(dispatch)=>{
 export const likeArticle = (articleId,op)=>async(dispatch)=>{
     try{
 
-        const res = await axios.patch(`${url}/articles/likes/${articleId}/${op}`);
+        await axios.patch(`${url}/articles/likes/${articleId}/${op}`);
       
     }catch(err){
         console.log(err.response.data)

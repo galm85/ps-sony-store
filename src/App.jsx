@@ -26,7 +26,7 @@ function App() {
      <ToastContainer  />
      <div className="main">
 
-      <div style={{position:'fixed',zIndex:'-2',opacity:'0.03'}}>
+      <div style={{position:'fixed',zIndex:'-2',opacity:'0.02'}}>
         <img src="./images/background.png" alt="background image" style={{width:'100%',height:'100%'}} />
       </div>
      

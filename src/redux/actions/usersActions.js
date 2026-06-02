@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import {url} from '../../config';
 import jwtDecode from "jwt-decode";
 import { toast } from "react-toastify";
 const url = process.env.REACT_APP_API_URL;
@@ -16,7 +15,7 @@ export const getAllUsers = ()=>async(dispatch)=>{
 
 export const registerUser = (user,admin=null)=>async(dispatch)=>{
     try{
-        const res = await axios.post(`${url}/users`,user);
+        await axios.post(`${url}/users`,user);
         dispatch({
             type:'registerUser',
             payload:user
@@ -57,7 +56,7 @@ export const signInUser = (user)=>async(dispatch)=>{
 
 export const updateUser = (user,userId)=>async(dispatch)=>{
     try{
-        const res = await axios.patch(`${url}/users/update-user/${userId}`,user);
+        await axios.patch(`${url}/users/update-user/${userId}`,user);
         
     }catch(error){
 
@@ -135,7 +134,7 @@ export const addToCart = (userId,product,amount) => async(dispatch)=>{
 
 export const removeItemFromCart = (userId,productId)=>async(dispatch)=>{
     try {
-        const res = await axios.patch(`${url}/users/cart/remove-item/${userId}`,{productId});
+        await axios.patch(`${url}/users/cart/remove-item/${userId}`,{productId});
         
         dispatch({
             type:'removeItemFromCart',
@@ -163,7 +162,7 @@ export const updateItemAmount = (userId,productId,op)=>async(dispatch)=>{
 
 export const clearCart = (userId)=>async(dispatch)=>{
   
-    const res = await axios.patch(`${url}/users/cart/clear-cart/${userId}`);
+    await axios.patch(`${url}/users/cart/clear-cart/${userId}`);
     dispatch({
         type:'clearCart'
     })
@@ -202,7 +201,7 @@ export const addToWishList = (userId,productId)=>async(dispatch)=>{
 export const removeFromWishList = (userId,productId)=>async(dispatch)=>{
     if(window.confirm("Remove from your wish List?")){
 
-        const res = await axios.patch(`${url}/users/wish-list/remove/${userId}`,{productId});
+         await axios.patch(`${url}/users/wish-list/remove/${userId}`,{productId});
         dispatch({
             type:'removeFromWishList',
             payload:productId

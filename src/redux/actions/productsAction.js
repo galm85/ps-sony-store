@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { toast } from "react-toastify";
-// import {url} from '../../config';
 const url = process.env.REACT_APP_API_URL;
 
 
@@ -42,7 +41,7 @@ export const addNewProducts = (product)=>async(dispatch)=>{
 export const updateProduct = (productId,product)=>async(dispatch)=>{
     console.log('update');
         try{
-            const res = await axios.patch(`${url}/products/update-product/${productId}`,product);
+            await axios.patch(`${url}/products/update-product/${productId}`,product);
             toast.dark('Product Updated',{progressClassName:'Toastify__progress-bar--success',})
             window.location = './admin-panel/products';
 
@@ -57,7 +56,7 @@ export const updateProduct = (productId,product)=>async(dispatch)=>{
 
 export const deleteProduct = (productId)=>async(dispatch)=>{
   
-        const res = await axios.delete(`${url}/products/delete/${productId}`);
+        await axios.delete(`${url}/products/delete/${productId}`);
         dispatch({
             type:"deleteProduct",
             payload:productId
@@ -69,7 +68,7 @@ export const deleteProduct = (productId)=>async(dispatch)=>{
 
 
 export const updateSells = (productId,amount)=>async(dispatch)=>{
-    const res = await axios.patch(`${url}/products/update-sells/${productId}`,{amount:amount});
+    await axios.patch(`${url}/products/update-sells/${productId}`,{amount:amount});
 }
 
 

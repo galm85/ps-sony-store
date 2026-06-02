@@ -12,20 +12,37 @@ import {useNavigate} from 'react-router-dom';
 
 const useStyles = makeStyles(theme=>({
     container:{
-        margin:'50px 0',
-        paddingTop:'20px',
-        paddingBottom:'40px',
+        margin:'0 auto',
+        paddingTop:'40px',
+        paddingBottom:'70px',
     },
     dataContainer:{
         display:'flex',
         justifyContent:'space-between',
-        marginBottom:'50px',
+        marginBottom:'60px',
+        alignItems:'flex-start',
+        gap:'40px',
+    },
+    imageBox:{
+        background:'#f8f9fc',
+        borderRadius:'20px',
+        padding:'32px',
+        border:'1px solid #e8edf5',
+        position:'sticky',
+        top:'24px',
     },
     image:{
         width:'100%',
-        borderRadius:'16px',
-        boxShadow:'0 8px 40px rgba(0,0,0,0.6)',
-    }
+        borderRadius:'12px',
+        display:'block',
+    },
+    detailBox:{
+        background:'#ffffff',
+        borderRadius:'20px',
+        padding:'40px',
+        border:'1px solid #e8edf5',
+        boxShadow:'0 2px 12px rgba(13,27,62,0.06)',
+    },
 }));
 
 const ProductPage = () => {
@@ -61,37 +78,40 @@ const ProductPage = () => {
            
            <Grid container className={classes.dataContainer}>
                <Grid item sm={12} lg={5}>
-                   
-                   <img className={classes.image} src={product.image} alt={product.title + 'image'} />
+                   <div className={classes.imageBox}>
+                       <img className={classes.image} src={product.image} alt={product.title + ' image'} />
+                   </div>
                </Grid>
                <Grid item sm={12} lg={6}>
-                   <div style={{display:'flex',justifyContent:'space-between'}}>
-                        <Typography variant='mainProductTitle'>{product.title}</Typography>
-                        <Button onClick={()=>{dispatch(addToWishList(user._id,product._id));displayAlert.current.show()}}><FavoriteBorderIcon /></Button>
-                   </div>
-
-                   <Divider style={{margin:'30px 0'}}/>
-
-                   <div style={{display:'flex',justifyContent:'space-between',marginBottom:'50px'}}>
-                       {product.onSale ? 
-                       <div style={{display:'flex',flexDirection:'column'}}>
-                       <Typography variant='h3' style={{textDecoration:'line-through'}} >Price: $ {product.price}</Typography>
-                       <Typography variant='h3' style={{color:'#4ade80',marginTop:'20px'}} >Sale Price: $ {product.salePrice}</Typography>
+                   <div className={classes.detailBox}>
+                       <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-start',marginBottom:'8px'}}>
+                            <Typography variant='mainProductTitle'>{product.title}</Typography>
+                            <Button onClick={()=>{dispatch(addToWishList(user._id,product._id));displayAlert.current.show()}} sx={{minWidth:'auto',color:'#6b7a99','&:hover':{color:'#e53935',background:'#fff5f5'}}}><FavoriteBorderIcon /></Button>
                        </div>
-                    :
-                        <Typography variant='h3' >Price: $ {product.price}</Typography>
-                    }
-                        {user && user.role === 'admin' && <Button onClick={()=>navigate(`/admin-panel/products/edit-product/${product.title}`,{state:product})}><EditIcon color="warning" /></Button>}
-                   </div>
 
-                   <Typography variant='rowLight' >{product.description}</Typography>
-                   
-                   <div>
-                       {product.onStock ?
-                       <Button style={{marginTop:'50px',borderRadius:'50px',fontWeight:700,textTransform:'none',padding:'14px 40px',fontSize:'1rem',boxShadow:'0 4px 20px rgba(0,103,221,0.4)'}} variant="contained" onClick={()=>addItem(product)}>Add To Cart</Button>
-                       :
-                       <Button style={{marginTop:'50px'}} variant="contained" disabled >Out Of Stock</Button>
-                    }
+                       <Divider style={{margin:'24px 0'}}/>
+
+                       <div style={{marginBottom:'32px'}}>
+                           {product.onSale ?
+                           <div style={{display:'flex',flexDirection:'column',gap:'8px'}}>
+                               <Typography variant='h3' style={{textDecoration:'line-through',color:'#94a3b8',fontSize:'1.4rem',fontWeight:400}}>$ {product.price}</Typography>
+                               <Typography variant='h3' style={{color:'#00a86b',fontSize:'2.2rem',fontWeight:700,letterSpacing:'-0.02em'}}>$ {product.salePrice} <span style={{fontSize:'1rem',fontWeight:500,color:'#6b7a99'}}>on sale</span></Typography>
+                           </div>
+                        :
+                            <Typography variant='h3' style={{fontSize:'2.2rem',fontWeight:700,letterSpacing:'-0.02em'}}>$ {product.price}</Typography>
+                        }
+                            {user && user.role === 'admin' && <Button onClick={()=>navigate(`/admin-panel/products/edit-product/${product.title}`,{state:product})} sx={{mt:1}}><EditIcon color="warning" /></Button>}
+                       </div>
+
+                       <Typography variant='rowLight' style={{display:'block',marginBottom:'36px'}}>{product.description}</Typography>
+
+                       <div>
+                           {product.onStock ?
+                           <Button fullWidth variant="contained" sx={{borderRadius:'12px',fontWeight:700,padding:'16px',fontSize:'1.05rem',letterSpacing:'0.01em'}} onClick={()=>addItem(product)}>Add to Cart</Button>
+                           :
+                           <Button fullWidth variant="contained" sx={{borderRadius:'12px',fontWeight:700,padding:'16px',fontSize:'1.05rem'}} disabled>Out of Stock</Button>
+                        }
+                       </div>
                    </div>
                </Grid>
            </Grid>

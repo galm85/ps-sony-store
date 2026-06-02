@@ -14,8 +14,8 @@ import HomeIcon from '@mui/icons-material/Home';
 const useStyles = makeStyles(theme=>({
 
     footer:{
-        background:'#090c12',
-        borderTop:'1px solid rgba(255,255,255,0.06)',
+        background:'#0d1b3e',
+        borderTop:'none',
         minHeight:'5vh',
         width:'100%',
         fontFamily:theme.fonts.main,

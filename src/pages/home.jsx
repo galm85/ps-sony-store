@@ -14,17 +14,17 @@ const useStyles = makeStyles(theme=>({
         padding:'0 16px',
     },
     bannerBtn:{
-        background:'linear-gradient(135deg, #0067dd, #3399ff)',
+        background:'#003791',
         color:'white',
         fontWeight:700,
         borderRadius:'50px',
-        padding:'14px 36px',
+        padding:'14px 40px',
         fontSize:'1rem',
         textTransform:'none',
-        boxShadow:'0 4px 24px rgba(0,103,221,0.5)',
+        boxShadow:'0 4px 20px rgba(0,55,145,0.4)',
         '&:hover':{
-            background:'linear-gradient(135deg, #004faa, #0067dd)',
-            boxShadow:'0 8px 32px rgba(0,103,221,0.7)',
+            background:'#002268',
+            boxShadow:'0 8px 28px rgba(0,55,145,0.5)',
             transform:'translateY(-2px)',
         },
         transition:'all 0.2s ease',
@@ -32,6 +32,7 @@ const useStyles = makeStyles(theme=>({
     gamesRow:{
         display:'flex',
         justifyContent:'space-around',
+        flexWrap:'wrap',
     },
     banner:{
         width:"100%",
@@ -92,7 +93,7 @@ const Home = () => {
             {promoteProduct &&
                 <div style={{position:'relative'}}>
                     <img src="./images/unchartedBanner.png" width='100%' alt="" />
-                    <Button variant="contained" style={{position:'absolute',top:'70%',right:'10%',borderRadius:'50px',fontWeight:700,textTransform:'none',padding:'12px 32px',boxShadow:'0 4px 20px rgba(0,103,221,0.5)'}} onClick={()=>navigate(`/games/uncharted-collection`,{state:promoteProduct})}>Order Now</Button>
+                    <Button variant="contained" style={{position:'absolute',top:'70%',right:'10%',borderRadius:'50px',fontWeight:700,textTransform:'none',padding:'13px 36px',fontSize:'1rem',boxShadow:'0 4px 20px rgba(0,55,145,0.5)'}} onClick={()=>navigate(`/games/uncharted-collection`,{state:promoteProduct})}>Order Now</Button>
                 </div>
                 }
             

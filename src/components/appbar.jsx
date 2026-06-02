@@ -20,29 +20,27 @@ import ConfirmMenu from './confirm';
 
 const useStyles = makeStyles(theme=>({
   appnav:{
-    background:'rgba(14, 17, 23, 0.97)',
-    backdropFilter:'blur(20px)',
-    borderBottom:'1px solid rgba(255,255,255,0.06)',
+    background:'#ffffff',
     boxShadow:'none',
   },
   mobileLink:{
-    color:'#f0f0f0',
+    color:'#0d1b3e',
   }
 }))
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: '50px',
-  backgroundColor: 'rgba(255,255,255,0.06)',
-  border: '1px solid rgba(255,255,255,0.08)',
+  backgroundColor: '#f0f4ff',
+  border: '1px solid #e2e8f4',
   '&:hover': {
-    backgroundColor: 'rgba(255,255,255,0.1)',
-    border: '1px solid rgba(255,255,255,0.12)',
+    backgroundColor: '#e8f0ff',
+    border: '1px solid rgba(0,55,145,0.25)',
   },
   '&:focus-within': {
-    backgroundColor: 'rgba(255,255,255,0.08)',
-    border: '1px solid rgba(0,103,221,0.7)',
-    boxShadow: '0 0 0 3px rgba(0,103,221,0.15)',
+    backgroundColor: '#ffffff',
+    border: '1px solid #003791',
+    boxShadow: '0 0 0 3px rgba(0,55,145,0.1)',
   },
   marginRight: theme.spacing(2),
   marginLeft: 0,
@@ -65,7 +63,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
+  color: '#0d1b3e',
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
@@ -251,7 +249,7 @@ export default function Appbar() {
         <Toolbar className={classes.appnav}>
         <Sidenav>
             <IconButton>
-              <MenuIcon  style={{color:'white'}} />
+              <MenuIcon  style={{color:'#0d1b3e'}} />
             </IconButton>
           </Sidenav>
 
@@ -265,7 +263,7 @@ export default function Appbar() {
             onClick={()=>navigate('/')}
             style={{cursor:'pointer'}}
           >
-           <i className="fab fa-playstation" style={{fontSize:'2rem'}} ></i>
+           <i className="fab fa-playstation" style={{fontSize:'2rem',color:'#003791'}} ></i>
           </Typography>
 
           <Search>
@@ -289,7 +287,7 @@ export default function Appbar() {
               {itemsInCart && itemsInCart > 0 ? 
                 <IconButton size="large" aria-label="show 4 new mails" color="inherit">
                   <Badge badgeContent={itemsInCart} color="error">
-                    <Link to="/cart" style={{color:"white"}}>
+                    <Link to="/cart" style={{color:"#0d1b3e"}}>
                       <ShoppingCartIcon />
                     </Link>
                   </Badge>
@@ -297,7 +295,7 @@ export default function Appbar() {
               :
               <IconButton size="large" aria-label="show 4 new mails" color="inherit">
                   
-                    <Link to="/cart" style={{color:"white"}}>
+                    <Link to="/cart" style={{color:"#0d1b3e"}}>
                       <ShoppingCartIcon />
                     </Link>
                   
@@ -308,7 +306,7 @@ export default function Appbar() {
             
               <IconButton size="large" aria-label="show 17 new notifications" color="inherit">
                 <Badge badgeContent={itemInWishList} color="error">
-                  <Link to="/wish-list" style={{color:'white'}}> 
+                  <Link to="/wish-list" style={{color:'#0d1b3e'}}> 
                     <FavoriteIcon />
                   </Link>
                 </Badge>

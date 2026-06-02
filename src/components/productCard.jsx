@@ -10,15 +10,16 @@ import {useDispatch,useSelector} from 'react-redux';
 const useStyles = makeStyles(theme=>({
     item:{
         position:'relative',
-        margin:'10px 10px',
+        margin:'12px',
         transition:'all 0.3s ease',
         borderRadius:'16px',
         cursor:'pointer',
         overflow:'hidden',
-        background:'#1a1f2e',
-        border:'1px solid rgba(255,255,255,0.06)',
+        background:'#ffffff',
+        border:'1px solid #e8edf5',
+        boxShadow:'0 2px 10px rgba(13,27,62,0.06)',
         "&:hover $image":{
-            transform:'scale(1.06)',
+            transform:'scale(1.05)',
         },
         "&:hover $data":{
             opacity:'1',
@@ -28,9 +29,9 @@ const useStyles = makeStyles(theme=>({
             opacity:1,
         },
         "&:hover":{
-            boxShadow:'0 12px 40px rgba(0,103,221,0.25)',
-            transform:'translateY(-6px)',
-            border:'1px solid rgba(0,103,221,0.3)',
+            boxShadow:'0 10px 32px rgba(13,27,62,0.14)',
+            transform:'translateY(-5px)',
+            border:'1px solid rgba(0,55,145,0.18)',
         }
     },
     data:{
@@ -42,7 +43,7 @@ const useStyles = makeStyles(theme=>({
         right:'0',
         transform:'translateY(8px)',
         textAlign:'center',
-        background:'linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 60%, transparent 100%)',
+        background:'linear-gradient(to top, rgba(13,27,62,0.92) 0%, rgba(13,27,62,0.55) 55%, transparent 100%)',
         color:'white',
         padding:'50px 12px 16px',
     },

@@ -25,7 +25,7 @@ const WishList = () => {
             window.location ='/signin';
         }
         dispatch(getWishList(user._id));
-    },[])
+    },[dispatch,user])
 
     return ( 
         

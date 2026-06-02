@@ -9,8 +9,8 @@
 }
 
 body {
-  background-color: #0e1117;
-  color: #eef2ff;
+  background-color: #f5f7fb;
+  color: #0d1b3e;
   font-family: 'Inter', 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -18,19 +18,19 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Space Grotesk', 'Inter', sans-serif;
-  color: #eef2ff;
+  color: #0d1b3e;
 }
 
 a {
-  color: #3399ff;
+  color: #003791;
 }
 
 a:hover {
-  color: #66b3ff;
+  color: #0058cc;
 }
 
 p {
-  color: #d0daf0;
+  color: #2c3e6a;
 }
 
 ::-webkit-scrollbar {
@@ -38,25 +38,25 @@ p {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1f2e;
+  background: #f0f4ff;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2d3650;
+  background: #c8d4e8;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #0067dd;
+  background: #003791;
 }
 
 ::selection {
-  background: rgba(0, 103, 221, 0.35);
-  color: #fff;
+  background: rgba(0, 55, 145, 0.12);
+  color: #003791;
 }
 
 .app {
-  background: #0e1117;
+  background: #f5f7fb;
   min-height: 100vh;
 }
 

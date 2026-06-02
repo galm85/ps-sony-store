@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import {url} from '../../config'
 import { toast } from "react-toastify";
 const url = process.env.REACT_APP_API_URL;
 
@@ -58,7 +57,7 @@ export const updateStatus = (messageId,status)=>async(dispatch)=>{
 
 export const readMessage = (messageId,read)=>async(dispatch)=>{
     console.log('read')
-    const res = await axios.patch(`${url}/messages/read-message/${messageId}/${read}`);
+    await axios.patch(`${url}/messages/read-message/${messageId}/${read}`);
 }
 
 
