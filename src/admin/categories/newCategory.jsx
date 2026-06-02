@@ -1,7 +1,7 @@
 import { Container, Grid, TextField, Typography,FormControl,InputLabel,Select,MenuItem, Divider, Button, Input } from '@mui/material';
 import React,{useState} from 'react';
 import { makeStyles } from '@mui/styles';
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addNewCategory } from '../../redux/actions/categoriesActions';
 
 
@@ -85,7 +85,7 @@ const NewCategory = () => {
                             </label>
                             {image && 
                             <div style={{width:'100%'}}>
-                                <img src={image} style={{width:'40%',marginTop:'10px'}} alt="product image" />
+                                <img src={image} style={{width:'40%',marginTop:'10px'}} alt="product"/>
                             </div>
                             }
                         </Grid>

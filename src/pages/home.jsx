@@ -6,7 +6,6 @@ import { getBestSells,getComingSoon,getNewGames} from '../redux/actions/products
 import ProductCard from '../components/productCard';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
-import {url} from '../config';
 
 const useStyles = makeStyles(theme=>({
     
@@ -38,7 +37,8 @@ const useStyles = makeStyles(theme=>({
 }))
 
 const Home = () => {
-    
+        const url = process.env.REACT_APP_API_URL;
+
     const classes = useStyles();
     const dispatch = useDispatch();
     const bestSells = useSelector(state => state.products.bestSells);

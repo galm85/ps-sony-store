@@ -4,7 +4,6 @@ import { makeStyles } from '@mui/styles';
 import { useDispatch } from 'react-redux';
 import { updateCategory } from '../../redux/actions/categoriesActions';
 import {useNavigate, useLocation} from 'react-router-dom';
-import {url} from '../../config';
 import Loader from '../../components/loader';
 
 const useStyles = makeStyles(theme=>({
@@ -22,6 +21,7 @@ const useStyles = makeStyles(theme=>({
 
 const EditCategory = () => {
 
+    const url = process.env.REACT_APP_API_URL;
     const classes = useStyles();
     const dispatch = useDispatch();
     const location = useLocation();
@@ -100,7 +100,7 @@ const EditCategory = () => {
                             </label>
                             {image && 
                             <div style={{width:'100%'}}>
-                                <img src={image} style={{width:'40%',marginTop:'10px'}} alt="product image" />
+                                <img src={image} style={{width:'40%',marginTop:'10px'}} alt="product" />
                             </div>
                             }
                         </Grid>

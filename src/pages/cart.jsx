@@ -3,10 +3,8 @@ import React,{useEffect} from 'react';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import { useDispatch,useSelector } from 'react-redux';
 import { getCart, removeItemFromCart } from '../redux/actions/usersActions';
-import {url} from '../config';
 import { makeStyles } from '@mui/styles';
 import { useNavigate } from 'react-router-dom';
-import Loader from '../components/loader';
 
 const useStyles = makeStyles(theme=>({
     container:{
@@ -51,7 +49,7 @@ const Cart = () => {
         }else{
             navigate('/signin')
         }
-    },[totalPrice])
+    },[dispatch,user,navigate])
 
     const removeItem = (userId,itemId)=>{
        dispatch(removeItemFromCart(userId,itemId));

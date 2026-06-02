@@ -1,7 +1,6 @@
-import { Button, Container, Grid, Typography,Divider, Box ,IconButton} from '@mui/material';
+import { Button, Container, Grid, Typography,Divider, Box } from '@mui/material';
 import * as React from 'react';
 import { useLocation,useNavigate } from 'react-router-dom';
-import { url } from '../config';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { makeStyles } from '@mui/styles';
@@ -29,6 +28,7 @@ const useStyles = makeStyles(theme=>({
 }))
 
 export default function SingleArticle(){
+    const url = process.env.REACT_APP_API_URL;
 
     const dispatch = useDispatch();
     const location = useLocation();

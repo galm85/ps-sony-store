@@ -2,8 +2,7 @@ import { Box, Button, Container,Divider,Grid, TextField, Typography,MenuItem,Inp
 import React,{useState,useEffect} from 'react';
 import { makeStyles } from '@mui/styles';
 import { useDispatch,useSelector } from "react-redux";
-import {url} from '../config';
-import { clearCart, getCart, getUserData } from '../redux/actions/usersActions';
+import { clearCart, getCart } from '../redux/actions/usersActions';
 import { addNewOrder } from '../redux/actions/ordersActions';
 
 
@@ -51,6 +50,7 @@ const renderYears = ()=>{
 
 
 const Checkout = () => {
+    const url = process.env.REACT_APP_API_URL;
 
     const dispatch = useDispatch();
     const classes = useStyles();

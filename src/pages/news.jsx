@@ -5,7 +5,6 @@ import PageHeader from '../components/pageHeader';
 
 import {useSelector,useDispatch} from 'react-redux';
 import {getPostedArticles } from '../redux/actions/articlesActions';
-import {url} from '../config';
 import {useNavigate} from 'react-router-dom';
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
@@ -45,6 +44,7 @@ const useStyles = makeStyles(theme=>({
 
 
 export default function News(){
+    const url = process.env.REACT_APP_API_URL;
 
     const dispatch = useDispatch();
     const articles = useSelector(state=>state.articles.articles);

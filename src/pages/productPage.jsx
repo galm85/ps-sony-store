@@ -1,7 +1,6 @@
 import { Container, Grid,Typography,Divider,Button } from '@mui/material';
 import React,{useState,useEffect} from 'react'
 import {useLocation} from 'react-router';
-import {url} from '../config';
 import {useDispatch,useSelector} from 'react-redux';
 import { getBestSells } from '../redux/actions/productsAction';
 import {makeStyles} from '@mui/styles';

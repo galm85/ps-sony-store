@@ -2,7 +2,6 @@ import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import {makeStyles} from '@mui/styles'
 import {Box,Drawer,Button,List,Divider,ListItem,ListItemText,ListItemIcon} from '@mui/material';
-import {url} from '../config';
 import { useDispatch,useSelector } from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 //icons
@@ -13,7 +12,6 @@ import StorageIcon from '@mui/icons-material/Storage';
 import RssFeedIcon from '@mui/icons-material/RssFeed';
 import AnnouncementIcon from '@mui/icons-material/Announcement';
 import HelpCenterIcon from '@mui/icons-material/HelpCenter';
-import LogoutIcon from '@mui/icons-material/Logout';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import HomeIcon from '@mui/icons-material/Home';
 
@@ -53,9 +51,9 @@ const useStyles = makeStyles(theme=>({
 
 
 export default function Sidenav({children}) {
+    const url = process.env.REACT_APP_API_URL;
 
   const classes = useStyles();
-  const dispatch = useDispatch();
   const user = useSelector(state => state.users.user);
   const navigate = useNavigate();
 

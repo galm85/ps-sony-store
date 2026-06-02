@@ -4,7 +4,6 @@ import {AppBar,Box,Toolbar,IconButton,Typography,InputBase,Badge,MenuItem,Menu, 
 import {makeStyles} from '@mui/styles';
 import { Link } from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
-import {url} from '../config';
 import { useNavigate } from 'react-router-dom';
 import {getCart, getWishList} from '../redux/actions/usersActions'
 
@@ -71,6 +70,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 
 export default function Appbar() {
+    const url = process.env.REACT_APP_API_URL;
 
   const dispatch = useDispatch();
   const classes = useStyles();
