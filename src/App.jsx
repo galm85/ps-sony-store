@@ -27,7 +27,7 @@ function App() {
      <div className="main">
 
       <div style={{position:'fixed',zIndex:'-2',opacity:'0.02'}}>
-        <img src="./images/background.png" alt="background image" style={{width:'100%',height:'100%'}} />
+        <img src="./images/background.png" alt="background" style={{width:'100%',height:'100%'}} />
       </div>
      
        <Routes>
