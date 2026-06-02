@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
-import { url } from "../../config";
 import SearchBar from '../../components/searchBar';
 import ConfirmMenu from '../../components/confirm';
 import {Table,TableBody,TableContainer,TableCell,tableCellClasses,TableHead,TableRow,Paper,Container, IconButton, Typography, Button, Divider, Grid} from '@mui/material';

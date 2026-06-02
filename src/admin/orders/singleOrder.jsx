@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { Container,Divider,Grid, Typography,FormControl,InputLabel,Select,MenuItem, Button } from '@mui/material';
 import {useLocation,useNavigate} from 'react-router-dom';
-import {url} from '../../config';
 import { makeStyles } from '@mui/styles';
 import {useDispatch} from 'react-redux';
 import { updateOrderStatus } from '../../redux/actions/ordersActions';
@@ -44,6 +43,7 @@ const useStyles = makeStyles(theme=>({
 }))
 
 const SingleOrder = () => {
+    const url = process.env.REACT_APP_API_URL;
 
     const location = useLocation();
     const [order,setOrder] = React.useState({...location.state});

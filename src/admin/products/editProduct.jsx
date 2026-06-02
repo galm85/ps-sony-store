@@ -5,7 +5,6 @@ import { useDispatch,useSelector } from 'react-redux';
 import { getAllCategories } from '../../redux/actions/categoriesActions';
 import { updateProduct } from '../../redux/actions/productsAction';
 import { useNavigate, useLocation } from "react-router-dom";
-import {url} from '../../config';
 import ConfirmMenu from '../../components/confirm';
 import Loader from '../../components/loader';
 
@@ -22,6 +21,7 @@ const useStyles = makeStyles(theme=>({
 
 
 const EditProduct = () => {
+    const url = process.env.REACT_APP_API_URL;
 
     const classes = useStyles();
     const dispatch = useDispatch();

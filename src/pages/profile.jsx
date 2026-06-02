@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Container,Divider,Grid, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useSelector,useDispatch } from 'react-redux';
-import {url} from '../config';
 import ProfileTab from '../components/profileTab';
 import { getOrdersByUser } from '../redux/actions/ordersActions';
 import {getWishList} from '../redux/actions/usersActions';
@@ -22,6 +21,7 @@ const useStyles = makeStyles(theme=>({
 }));
 
 export default function Profile(){
+    const url = process.env.REACT_APP_API_URL;
 
     const classes = useStyles();
     const dispatch = useDispatch();

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Button, Container, Grid, Modal, Typography} from '@mui/material';
+import { Container, Grid, Typography} from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import MyModal from '../components/myModal';
 
@@ -23,14 +23,10 @@ const useStyles = makeStyles(theme=>({
 const Services = () => {
 
 
-    const montlyGames = {title:"montlyGames",article:"Choose a one, three or 12-month recurring payment plan1 and take your PlayStation experience to the next level Choose to pay annually and you'll save 40% compared to paying monthly, and 37% compared to the three-month membership plan2."
-}
+
 
     const classes = useStyles();
 
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
 
     return ( 
             <>

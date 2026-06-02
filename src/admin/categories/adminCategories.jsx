@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
-import { url } from "../../config";
 
 import {Table,TableBody,TableContainer,TableCell,tableCellClasses,TableHead,TableRow,Paper,Container, IconButton, Typography, Button, Divider} from '@mui/material';
 import { useDispatch,useSelector } from 'react-redux';
@@ -39,7 +38,7 @@ export default function AdminCategories() {
   
     React.useEffect(()=>{
         dispatch(getAllCategories())
-    },[])
+    },[dispatch])
 
     return (
 

@@ -1,7 +1,6 @@
 import axios from 'axios';
 // import {url} from '../../config';
 import { toast } from "react-toastify";
-import  {Navigate}  from 'react-router';
 const url = process.env.REACT_APP_API_URL;
 
 
@@ -17,7 +16,7 @@ export const getAllOrders = ()=>async(dispatch)=>{
 
 export const addNewOrder = (order)=>async(dispatch)=>{
     try{
-        const res = await axios.post(`${url}/orders`,order);
+        await axios.post(`${url}/orders`,order);
         toast.dark('Thank you for the oirder',{progressClassName:'Toastify__progress-bar--info'})
         window.location = `./order-accepted`
        
@@ -78,7 +77,7 @@ export const deleteOrder = (orderId)=>async(dispatch)=>{
     if(window.confirm('Delete this Order?')){
 
         try{
-            const res = await axios.delete(`${url}/orders/delete-order/${orderId}`);
+            await axios.delete(`${url}/orders/delete-order/${orderId}`);
             dispatch({
                 type:'deleteOrder',
                 payload:orderId

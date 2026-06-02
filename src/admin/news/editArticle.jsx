@@ -4,9 +4,8 @@ import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import { makeStyles } from '@mui/styles';
 import TextEditor from '../../components/textEditor';
 import {useDispatch,useSelector} from 'react-redux';
-import { postNewArticle, updateArticle } from '../../redux/actions/articlesActions';
+import { updateArticle } from '../../redux/actions/articlesActions';
 import { useLocation,useNavigate } from 'react-router-dom';
-import { url } from '../../config';
 import ConfirmMenu from '../../components/confirm';
 
 const useStyles = makeStyles(theme=>({
@@ -19,6 +18,8 @@ const useStyles = makeStyles(theme=>({
 
 export default function EditArticle(){
     
+    const url = process.env.REACT_APP_API_URL;
+
     const location = useLocation();
     const dispatch = useDispatch();
     const classes = useStyles();

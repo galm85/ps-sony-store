@@ -1,7 +1,6 @@
-import { Button, Container, Grid, Typography,Divider, Box ,IconButton} from '@mui/material';
+import { Button, Container, Grid, Typography,Divider, Box } from '@mui/material';
 import * as React from 'react';
 import { useLocation,useNavigate } from 'react-router-dom';
-import { url } from '../config';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { makeStyles } from '@mui/styles';
@@ -19,7 +18,7 @@ const useStyles = makeStyles(theme=>({
     articleContainer:{fontFamily:theme.fonts.main,fontSize:'1.2rem'},
     imageContainer:{width:'100%',height:'30vh',background:'red'},
     image:{width:"100%",height:'100%',objectFit:'cover'},
-    like:{color:theme.colors.main,height:'auto'},
+    like:{color:'#003791',height:'auto',cursor:'pointer'},
     comments:{marginTop:'30px',display:'flex',justifyContent:'space-around'},
     text:{
      '& p':{
@@ -54,7 +53,7 @@ export default function SingleArticle(){
     React.useEffect(()=>{
         dispatch(getSingleArticle(location.state._id))
         dispatch(getCommentsByArticleId(location.state._id));
-    },[])
+    },[dispatch,location.state._id])
 
     return(
 
@@ -63,7 +62,7 @@ export default function SingleArticle(){
        <>
        
         <Box className={classes.imageContainer}>
-            <img className={classes.image}   src={`${url}/${article.image}`} alt="article main image" />
+            <img className={classes.image}   src={article.image} alt="article main " />
         </Box>
         <Container className={classes.container}>
             

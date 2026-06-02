@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
-import { url } from "../../config";
 
 import {Table,TableBody,TableContainer,TableCell,tableCellClasses,TableHead,TableRow,Paper,Container, IconButton, Typography, Button, Divider} from '@mui/material';
 import { useDispatch,useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import {deleteCategory, getAllCategories} from '../../redux/actions/categoriesActions';
+import {getAllCategories} from '../../redux/actions/categoriesActions';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import EditIcon from '@mui/icons-material/Edit';
 import { deleteUser, getAllUsers } from '../../redux/actions/usersActions';
@@ -33,9 +32,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 
 export default function AdminUsers() {
-  
+    
+    const url = process.env.REACT_APP_API_URL;
     const dispatch = useDispatch();
-    const categories = useSelector(state => state.categories.categories);
     const users = useSelector(state => state.users.users);
     const navigate = useNavigate();
   

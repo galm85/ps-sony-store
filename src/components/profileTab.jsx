@@ -5,12 +5,12 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import PersonPinIcon from '@mui/icons-material/PersonPin';
 import ShopIcon from '@mui/icons-material/Shop';
 import { Container, Button, Table, TableBody, TableCell, TableHead, TableRow, TextField, Grid } from '@mui/material';
-import { url } from '../config';
 import ProductCard from './productCard';
 
 export default function ProfileTab({orders,wishList}) {
   const [value, setValue] = React.useState(0);
   const [oldPassword, setOldPassword] = React.useState(null);
+    const url = process.env.REACT_APP_API_URL;
 
   
   const handleChange = (event, newValue) => {

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
-import { url } from '../../config';
 import {Table,TableBody,TableContainer,TableCell,tableCellClasses,TableHead,TableRow,Paper,Container, IconButton, Typography, Button, Divider,Grid, Select, MenuItem} from '@mui/material';
 import { useDispatch,useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -47,7 +46,8 @@ const useStyles = makeStyles(theme=>({
 
 
 export default function AdminNews() {
-  
+      const url = process.env.REACT_APP_API_URL;
+
     const dispatch = useDispatch();
     const articles = useSelector(state => state.articles.articles);
     const navigate = useNavigate();
